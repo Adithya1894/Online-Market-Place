@@ -7,6 +7,13 @@ import java.rmi.RemoteException;
 public class Client {
     static MPlaceInterface object;
 
+    /**
+     *
+     * @param args
+     * @throws RemoteException
+     * @throws MalformedURLException
+     * @throws NotBoundException
+     */
     public static void main(String[] args) throws RemoteException, MalformedURLException, NotBoundException{
 
         System.setSecurityManager(new SecurityManager());

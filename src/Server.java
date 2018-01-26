@@ -5,7 +5,12 @@ import java.rmi.RemoteException;
 
 
 public class Server {
-
+    /**
+     *
+     * @param args
+     * @throws RemoteException
+     * @throws MalformedURLException
+     */
     public static void main(String[] args) throws RemoteException, MalformedURLException {
 
         System.setSecurityManager(new SecurityManager());
