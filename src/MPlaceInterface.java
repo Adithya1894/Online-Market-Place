@@ -6,7 +6,7 @@ import java.rmi.RemoteException;
 public interface MPlaceInterface extends Remote{
 
     /**
-     *
+     *Registration method
      * @param firstName
      * @param lastName
      * @param userName
