@@ -1,4 +1,21 @@
 # Assignment 1  
-Implementation of RMI and MVC for the Project Skeleton
+Implementation of RMI and MVC for the online MarketPlace application  
 
-Start the RmiRegistry using rmiregistry &  
+Clone the project using the command git clone https://github.iu.edu/amorampu/csci50700_spring2018_marketplace.git  
+
+cd to the src directory using the 'cd src' command in terminal  
+
+# Running RmiRegistry and the Server
+This MUST be run on the 10.234.136.57 computer    
+you can run the project using the makeServer.sh file  
+To run the registry and start the server use the command sh makeServer.sh command
+
+# Running Client
+
+To run the client open any other pegasus terminal and use the makeClient.sh file.  
+
+use sh makeClient.sh to run the client.  
+
+# Terminating Server and the Registry
+use the makeTerminate.sh file to terminate the registry  
+use sh makeTerminate.sh to achieve this.  
