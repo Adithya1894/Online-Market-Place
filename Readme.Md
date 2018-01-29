@@ -17,5 +17,6 @@ To run the client open any other pegasus terminal and use the makeClient.sh file
 use sh makeClient.sh to run the client.  
 
 # Terminating Server and the Registry
+To do this you need to first Terminate the server, do this using "cmd + c" in MAC  
 use the makeTerminate.sh file to terminate the registry  
 use sh makeTerminate.sh to achieve this.  
