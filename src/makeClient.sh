@@ -1,1 +1,1 @@
-java -Djava.security.policy=policy Clientjava
+java -Djava.security.policy=policy Client
