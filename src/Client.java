@@ -27,8 +27,9 @@ public class Client {
         System.setSecurityManager(new SecurityManager());
 
         try{
+            //storing the location of the server in the string format
             String server = "//10.234.136.57/server";
-
+            //lookup function to find the desired service from the registry
             object =  (MPlaceInterface) Naming.lookup(server);
 
             System.out.println("CLient connected to server");

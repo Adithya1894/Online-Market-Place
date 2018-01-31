@@ -25,12 +25,12 @@ public class Server {
 
         try{
 
-
+            //Naming our server so that it can be binded to the registry
             String name = "server";
 
-
+            //object of the controller class which is MPlaceImplementation
             MPlaceImplementation stub = new MPlaceImplementation(name);
-
+            //binding the server
             Naming.rebind(name, stub);
 
             System.out.println("Server Started");
