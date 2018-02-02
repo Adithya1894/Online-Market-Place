@@ -32,6 +32,7 @@ public class Client {
             //lookup function to find the desired service from the registry
             object =  (MPlaceInterface) Naming.lookup(server);
 
+			// Ryan: How do you know you are connected to the server here?
             System.out.println("CLient connected to server");
 
         }
