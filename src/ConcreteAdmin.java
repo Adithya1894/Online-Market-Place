@@ -1,3 +1,11 @@
+// Honor Pledge:
+//
+// I pledge that I have neither given nor
+// received any help on this assignment.
+//
+
+//amorampu
+
 import java.util.Scanner;
 
 public class ConcreteAdmin implements Admin {

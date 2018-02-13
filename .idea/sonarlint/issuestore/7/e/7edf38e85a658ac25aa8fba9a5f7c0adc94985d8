@@ -1,0 +1,10 @@
+
+1squid:S1220""Move this file to a named package.
+–squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(é´Öë
+=squid:S1068"(Remove this unused "name" private field.(Ë¥¼
+Esquid:S2160"+Override the "equals" method in this class.(Ó¼µ—üÿÿÿÿ
+–squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(áø‘¡
+–squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ûñÓ¯
+–squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(«‹¡±
+›squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(íÒËÈÿÿÿÿÿ
+›squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(íÿ»õúÿÿÿÿ

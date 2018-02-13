@@ -1,1 +1,1 @@
-rmiregistry 2012
+rmiregistry 2012 &
