@@ -29,7 +29,7 @@ public interface MPlaceInterface extends Remote{
      * @param password
      * @throws RemoteException
      */
-    void loginAdmin(String userName, String password) throws RemoteException;
+    boolean loginAdmin(String userName, String password) throws RemoteException;
 
     /**
      *
@@ -37,7 +37,7 @@ public interface MPlaceInterface extends Remote{
      * @param password
      * @throws RemoteException
      */
-    void loginUser(String userName, String password) throws RemoteException;
+    boolean loginUser(String userName, String password) throws RemoteException;
 
     /**
      *
@@ -73,6 +73,8 @@ public interface MPlaceInterface extends Remote{
      * @throws RemoteException
      */
     void purchase(int itemId) throws RemoteException;
+    
+    public String hello() throws RemoteException;
 
 
 }
