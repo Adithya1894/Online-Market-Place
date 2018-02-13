@@ -1,4 +1,4 @@
-# Assignment 1  
+# Assignment 2  
 Implementation of RMI, MVC, Command Pattern  
 Abstract Factory, Front Controller for the online MarketPlace application  
 
