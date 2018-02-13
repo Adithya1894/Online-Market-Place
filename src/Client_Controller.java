@@ -16,6 +16,8 @@ import java.rmi.RemoteException;
 public class Client_Controller {
 
     static MPlaceInterface object;
+    static FrontController fc;
+    static Entry ep;
 
 
 
@@ -36,8 +38,30 @@ public class Client_Controller {
 
     }
 
+    public static boolean loginAdmin(String uname, String pass){
 
+        boolean val = false;
 
+        //System.out.println(uname + " " +pass);
+        try{
+            val = object.loginAdmin(uname, pass);
+        }catch (RemoteException e){
+            e.printStackTrace();
+        }
+        return val;
+    }
+
+    public static boolean loginUser(String uname, String pass){
+        boolean val = false;
+        try{
+            val = object.loginUser(uname, pass);
+
+        }catch(RemoteException e){
+            e.printStackTrace();
+        }
+
+        return val;
+    }
 
     /**
      *
@@ -50,7 +74,24 @@ public class Client_Controller {
 
         System.setSecurityManager(new SecurityManager());
         //Creating an object of the class view to call the methods present in the view
+
+
+
+
         Client_View obj =  new Client_View();
+
+
+        //obj.print();
+
+        //Accessing the front controller
+        fc = new FrontController();
+
+        //accessing the initial view of the project
+        ep = new Entry();
+
+
+
+
 
 
         try{
@@ -62,6 +103,12 @@ public class Client_Controller {
     		printHello();
 
     		obj.print();
+
+    		System.out.println();
+
+            //fc.dispatchRequest("Admin");
+
+            fc.dispatchRequest(ep.login());
 
 
         }
