@@ -12,8 +12,32 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-public class Client {
+
+public class Client_Controller {
+
     static MPlaceInterface object;
+
+
+
+//Interacts with the controller on the server side.
+
+    public static String printHello() {
+
+        //obj.print();
+
+        String val = "";
+        try {
+             val =  object.hello();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
+        return val;
+
+    }
+
+
+
 
     /**
      *
@@ -25,6 +49,9 @@ public class Client {
     public static void main(String[] args) throws RemoteException, MalformedURLException, NotBoundException{
 
         System.setSecurityManager(new SecurityManager());
+        //Creating an object of the class view to call the methods present in the view
+        Client_View obj =  new Client_View();
+
 
         try{
             //storing the location of the server in the string format
@@ -32,8 +59,10 @@ public class Client {
             //lookup function to find the desired service from the registry
             object =  (MPlaceInterface) Naming.lookup(server);
 
-			// Ryan: How do you know you are connected to the server here?
-            System.out.println("CLient connected to server");
+    		printHello();
+
+    		obj.print();
+
 
         }
         catch(Exception e)
@@ -42,4 +71,11 @@ public class Client {
         }
 
     }
+
+
+
+
+
+
+
 }

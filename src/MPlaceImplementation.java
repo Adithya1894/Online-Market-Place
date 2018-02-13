@@ -12,6 +12,10 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class MPlaceImplementation extends UnicastRemoteObject implements MPlaceInterface{
 
+	// Ryan: Where is your implementation of the MVC pattern? You need to revisit the
+	// MVC pattern design and determine how/where it fits into your RMI implementation.
+	
+	// Ryan: Is this your controller? If so, it is not implemented properly.
 
 
     private String name;
