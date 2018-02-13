@@ -21,7 +21,54 @@ public class Dispatcher {
         if(view.equalsIgnoreCase("Admin"))
         {
             Admin admin = adminFactory.getAdmin("Admin");
-            admin.display();
+            int option = admin.display();
+
+            ConcreteBrowseItems cbr = new ConcreteBrowseItems(admin);
+
+            ConcreteUpdateItems cui = new ConcreteUpdateItems(admin);
+
+            ConcreteRemoveItems cri = new ConcreteRemoveItems(admin);
+
+            ConcreteAddItems cai = new ConcreteAddItems(admin);
+
+
+
+
+            InvokerAdmin ia = new InvokerAdmin();
+
+
+            switch(option){
+
+                case 1: {
+                    ia.takeCommand(cbr);
+                    ia.placeCommand();
+                    break;
+                }
+
+                case 2: {
+                    ia.takeCommand(cui);
+                    ia.placeCommand();
+                    break;
+                }
+
+                case 3:{
+                    ia.takeCommand(cri);
+                    ia.placeCommand();
+                    break;
+                }
+
+                case 4: {
+                    ia.takeCommand(cai);
+                    ia.placeCommand();
+                    break;
+                }
+
+
+
+        }
+
+
+
         }
         else {
 
