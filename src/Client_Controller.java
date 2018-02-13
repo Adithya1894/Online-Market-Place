@@ -116,7 +116,7 @@ public class Client_Controller {
 
         try{
             //storing the location of the server in the string format
-            String name1 = "//10.234.136.57:1894/server";
+            String name1 = "//10.234.136.57:1895/server";
             //lookup function to find the desired service from the registry
             object =  (MPlaceInterface) Naming.lookup(name1);
 

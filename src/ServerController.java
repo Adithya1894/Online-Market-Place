@@ -99,7 +99,7 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
         try{
 
             //Naming our server so that it can be binded to the registry
-            String name = "//10.234.136.57:1894/server";
+            String name = "//10.234.136.57:1895/server";
 
             //object of the controller class which is MplaceModel
              ServerController stub = new ServerController(name);
