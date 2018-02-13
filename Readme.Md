@@ -8,7 +8,7 @@ cd to the src directory using the 'cd src' command in terminal
 
 # Running RmiRegistry and the ServerController
 This MUST be run on the 10.234.136.57 computer  
-To run the rmiregistry use the command sh makeRegistry.sh  
+To run the rmiregistry use the command rmiregistry 1895 &   
 open another instance of the same computer(10.234.136.57)        
 now you can run the project using the makeServer.sh file  
 To start the server use the command sh makeServer.sh command
@@ -20,9 +20,9 @@ To run the client open any other pegasus terminal and use the makeClient.sh file
 use sh makeClient.sh to run the client.  
 
 # Terminating ServerController and the Registry
-To do this you need to first Terminate the server, do this using "cmd + c" in MAC  
-
-Terminate the Registry in the same way using "cmd + c" in MAC
+To do this you need to first Terminate the server, do this using "cmd + c" in MAC    
+use fg to bring the registry to foreground  
+Terminate the Registry in the same way using "cmd + c" in MAC  
 
 # Passwords for logging in
 
