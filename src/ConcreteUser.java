@@ -6,6 +6,8 @@
 
 //amorampu
 
+
+//concrete user class of the Abstractfactory pattern, object of this class is created based upon the logic
 public class ConcreteUser implements User {
 
     @Override

@@ -9,6 +9,9 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Invoker class to take the commands and execute them
+ */
 public class InvokerAdmin {
 
     private List<Command> olist = new ArrayList<Command>();

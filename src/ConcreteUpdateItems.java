@@ -6,6 +6,9 @@
 
 //amorampu
 
+
+//command pattern to implement the UpdateItems method
+
 public class ConcreteUpdateItems implements Command{
 
     private Admin obj;

@@ -5,10 +5,14 @@
 //
 
 //amorampu
-
+//command pattern to implement the AddItems method
 public class ConcreteAddItems implements Command {
     private Admin obj;
 
+    /**
+     * constructor
+     * @param obj
+     */
     public ConcreteAddItems(Admin obj){
         this.obj = obj;
     }

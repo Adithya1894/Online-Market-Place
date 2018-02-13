@@ -8,6 +8,10 @@
 
 //amorampu
 
+
+/**
+ * just a sample class to demonstrate remote calls
+ */
 public class Client_View{
 
 

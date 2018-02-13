@@ -15,6 +15,7 @@ import java.rmi.RemoteException;
 
 public class Client_Controller {
 
+    //creating the static objects
     static MPlaceInterface object;
     static FrontController fc;
     static Entry ep;
@@ -22,13 +23,14 @@ public class Client_Controller {
 
 
 //Interacts with the controller on the server side.
-
+//just prints a welcome message when the client is connected to server
     public static String printHello() {
 
-        //obj.print();
+
 
         String val = "";
         try {
+            //remote call
              val =  object.hello();
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -38,12 +40,21 @@ public class Client_Controller {
 
     }
 
+    /**
+     * takes the uname and password from the frontController and passes them to the server
+     * makes a remote call and then if it is validated, then returns true and control
+     * goes back to front controller
+     * @param uname
+     * @param pass
+     * @return
+     */
     public static boolean loginAdmin(String uname, String pass){
-
+        //boolean, which stores the returned value from remote call
         boolean val = false;
 
-        //System.out.println(uname + " " +pass);
+
         try{
+            //remote call
             val = object.loginAdmin(uname, pass);
         }catch (RemoteException e){
             e.printStackTrace();
@@ -51,9 +62,20 @@ public class Client_Controller {
         return val;
     }
 
+    /**
+     * Customer Login
+     *
+     * Takes the user name and password from the frontController and passes them to the server
+     * makes a remote call and then if it is validated, then returns true and control
+     * goes back to front controller
+     * @param uname
+     * @param pass
+     * @return
+     */
     public static boolean loginUser(String uname, String pass){
         boolean val = false;
         try{
+            //remote call
             val = object.loginUser(uname, pass);
 
         }catch(RemoteException e){
@@ -64,24 +86,22 @@ public class Client_Controller {
     }
 
     /**
-     *
+     *Main method of the controller
      * @param args
      * @throws RemoteException
      * @throws MalformedURLException
      * @throws NotBoundException
      */
     public static void main(String[] args) throws RemoteException, MalformedURLException, NotBoundException{
-
+        //security manager
         System.setSecurityManager(new SecurityManager());
+
         //Creating an object of the class view to call the methods present in the view
-
-
-
 
         Client_View obj =  new Client_View();
 
 
-        //obj.print();
+
 
         //Accessing the front controller
         fc = new FrontController();
@@ -106,8 +126,8 @@ public class Client_Controller {
 
     		System.out.println();
 
-            //fc.dispatchRequest("Admin");
 
+            //requesting the view based on the input from the client
             fc.dispatchRequest(ep.login());
 
 

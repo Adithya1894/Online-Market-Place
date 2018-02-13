@@ -16,7 +16,7 @@ public class Dispatcher {
 
 
     public Dispatcher(){
-
+        //trying to access the concrete classes via FactoryProducer
         adminFactory = FactoryProducer.getFactory("Admin");
 
         userFactory = FactoryProducer.getFactory("User");
@@ -25,12 +25,15 @@ public class Dispatcher {
 
     public void dispatch(String view){
 
-
+        //gives the object of concrete Admin
         if(view.equalsIgnoreCase("Admin"))
         {
+            //calling the display method of the concreteAdmin class
             Admin admin = adminFactory.getAdmin("Admin");
             int option = admin.display();
 
+            //objects to access the command methods in the concreteAdmin class
+            //object of concreteAdmin will be created here
             ConcreteBrowseItems cbr = new ConcreteBrowseItems(admin);
 
             ConcreteUpdateItems cui = new ConcreteUpdateItems(admin);
@@ -41,13 +44,14 @@ public class Dispatcher {
 
 
 
-
+            //invoker object to invoke the functionality of command pattern
             InvokerAdmin ia = new InvokerAdmin();
 
 
             switch(option){
 
                 case 1: {
+                    //we are invoking the command and executing them
                     ia.takeCommand(cbr);
                     ia.placeCommand();
                     break;
@@ -78,6 +82,7 @@ public class Dispatcher {
 
 
         }
+        //gives the object of customerFactory
         else {
 
             User user = userFactory.getUser("User");
@@ -86,7 +91,7 @@ public class Dispatcher {
         }
 
     }
-
+    //if the authentication fails in frontController then the error page is displayed
     public void dispatch_error(String view){
         if(view.equalsIgnoreCase("ERROR")){
             ErrorPage obj = new ErrorPage();

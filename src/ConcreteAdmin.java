@@ -13,8 +13,8 @@ public class ConcreteAdmin implements Admin {
     @Override
     public int display() {
         int i = 0;
-        int val = 0;
-        //ConcreteAdmin obj = new ConcreteAdmin();
+
+
 
         Scanner sc = new Scanner(System.in);
 
@@ -33,7 +33,8 @@ public class ConcreteAdmin implements Admin {
 
             i = sc.nextInt();
 
-
+            //based on the choice, these values are returned back to the dispatcher of the front controller
+            //where it creates the object of this class to access the methods such as browse, update
             switch (i) {
 
 
@@ -58,6 +59,10 @@ public class ConcreteAdmin implements Admin {
 
 
     }
+
+    /**
+     * concrete methods to browse, update  or delete
+     */
 
     @Override
     public void browseItems(){

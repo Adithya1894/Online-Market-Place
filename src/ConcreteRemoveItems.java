@@ -6,6 +6,9 @@
 
 //amorampu
 
+
+//command pattern to implement the RemoveItems method
+
 public class ConcreteRemoveItems implements Command {
 
     private Admin obj;

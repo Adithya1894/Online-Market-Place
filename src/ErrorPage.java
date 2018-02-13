@@ -6,6 +6,11 @@
 
 //amorampu
 
+
+/**
+ * Defined to error page to redirect to this page if the authentication fails or user enters a
+ * invalid input
+ */
 public class ErrorPage {
 
     public void print(){

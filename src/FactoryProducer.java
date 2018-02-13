@@ -6,6 +6,10 @@
 
 //amorampu
 
+
+/**
+ * Factory producer uses the abstract factory to produce the required object of the concrete Classes
+ */
 public class FactoryProducer {
 
     public static AbstractFactory getFactory(String option){

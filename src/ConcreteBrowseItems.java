@@ -6,6 +6,8 @@
 
 //amorampu
 
+//command pattern to implement the BrowseItems method
+
 public class ConcreteBrowseItems implements Command {
 
     private Admin obj;
