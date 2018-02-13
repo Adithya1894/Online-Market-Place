@@ -1,4 +1,14 @@
 public interface Admin {
 
-    void display();
+    int display();
+
+
+    void browseItems();
+
+    void updateItems();
+
+    void removeItems();
+
+    void addItems();
+
 }
