@@ -23,3 +23,13 @@ use sh makeClient.sh to run the client.
 To do this you need to first Terminate the server, do this using "cmd + c" in MAC  
 
 Terminate the Registry in the same way using "cmd + c" in MAC
+
+# Passwords for logging in
+
+Admin details  
+Id: admin  
+pass: 12345  
+
+Customer Details  
+Id: amorampu  
+pass: 1234
