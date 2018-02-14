@@ -32,4 +32,34 @@ pass: 12345
 
 Customer Details  
 Id: amorampu  
-pass: 1234
+pass: 1234  
+
+# Domain Model
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
+
+
+![alt text](/Images/Domain.png "Domain Model")  
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
+# Class Diagram 
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
+
+![alt text](/Images/class.png "Class Diagram")
+
