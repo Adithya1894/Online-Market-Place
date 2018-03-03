@@ -84,6 +84,11 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
         return hello;
     }
 
+    @Override
+    public Session processLogin(String userType) throws RemoteException {
+        Session session = new Session(userType);
+        return session;
+    }
 
 
     /**
