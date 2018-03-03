@@ -74,7 +74,10 @@ public interface MPlaceInterface extends Remote{
      */
     void purchase(int itemId) throws RemoteException;
     
-    public String hello() throws RemoteException;
+    String hello() throws RemoteException;
+
+
+    Session processLogin(String userType) throws RemoteException;
 
 
 }
