@@ -13,8 +13,10 @@ public class ConcreteRemoveItems implements Command {
 
     private Admin obj;
 
-    public ConcreteRemoveItems(Admin obj){
-        this.obj = obj;
+    private Session session;
+
+    public ConcreteRemoveItems(Admin obj, Session session){
+        this.obj = obj; this.session = session;
     }
 
     @Override

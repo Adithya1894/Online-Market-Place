@@ -12,15 +12,27 @@ public class ConcreteBrowseItems implements Command {
 
     private Admin obj;
 
-    public ConcreteBrowseItems(Admin obj){
-        this.obj = obj;
+    private Session session;
+
+    public ConcreteBrowseItems(Admin obj, Session session){
+        this.obj = obj; this.session = session;
     }
 
 
     @Override
     public void execute() {
 
-        obj.browseItems();
+        Client_Controller client_controller = new Client_Controller();
+
+        //method returns a string of array.
+        try {
+            String[] val = client_controller.browseAdminItems(session);
+            System.out.println("Nothing in here now");
+        }
+        catch (AuthorizationException e){
+            e.getMessage();
+        }
+
 
     }
 }

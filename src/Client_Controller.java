@@ -10,6 +10,7 @@
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 
@@ -19,7 +20,7 @@ public class Client_Controller {
     static MPlaceInterface object;
     static FrontController fc;
     static Entry ep;
-
+    static Session session = null;
 
 
 //Interacts with the controller on the server side.
@@ -41,6 +42,23 @@ public class Client_Controller {
     }
 
     /**
+     * ProcessLogin Method for making the RBAC work
+     * @param userType
+     * @return
+     */
+    public static Session processLogin(String userType){
+
+        try {
+            session = object.processLogin(userType);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return session;
+    }
+
+
+
+    /**
      * takes the uname and password from the frontController and passes them to the server
      * makes a remote call and then if it is validated, then returns true and control
      * goes back to front controller
@@ -48,14 +66,14 @@ public class Client_Controller {
      * @param pass
      * @return
      */
-    public static boolean loginAdmin(String uname, String pass){
+    public static boolean loginAdmin(Session session,String uname, String pass){
         //boolean, which stores the returned value from remote call
         boolean val = false;
 
 
         try{
             //remote call
-            val = object.loginAdmin(uname, pass);
+            val = object.loginAdmin(session, uname, pass);
         }catch (RemoteException e){
             e.printStackTrace();
         }
@@ -72,11 +90,11 @@ public class Client_Controller {
      * @param pass
      * @return
      */
-    public static boolean loginUser(String uname, String pass){
+    public static boolean loginUser(Session session, String uname, String pass){
         boolean val = false;
         try{
             //remote call
-            val = object.loginUser(uname, pass);
+            val = object.loginUser(session, uname, pass);
 
         }catch(RemoteException e){
             e.printStackTrace();
@@ -84,6 +102,50 @@ public class Client_Controller {
 
         return val;
     }
+
+
+    /**
+     * Method to browse Admin Items.
+     * @param session
+     * @return
+     */
+
+    public static String[] browseAdminItems(Session session){
+
+        String[] val = {" "};
+        try {
+            val = object.browsingAdmin(session);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
+
+        return val;
+    }
+
+    public static void purchaseItems(Session session, int id){
+        try{
+            object.purchase(session,id);
+        }catch (RemoteException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      *Main method of the controller
@@ -100,18 +162,11 @@ public class Client_Controller {
 
         Client_View obj =  new Client_View();
 
-
-
-
         //Accessing the front controller
         fc = new FrontController();
 
         //accessing the initial view of the project
         ep = new Entry();
-
-
-
-
 
 
         try{
@@ -138,11 +193,4 @@ public class Client_Controller {
         }
 
     }
-
-
-
-
-
-
-
 }

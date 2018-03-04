@@ -28,6 +28,7 @@ public class ConcreteAdmin implements Admin {
             System.out.println("2.Update items");
             System.out.println("3. remove items");
             System.out.println("4. add Items");
+            System.out.println("5.Purchase Items, This Method wont work in ADMIN View(RBAC Demo)");
 
             System.out.println("Enter Choice");
 
@@ -49,6 +50,8 @@ public class ConcreteAdmin implements Admin {
 
                 case 4: return 4;
 
+                //added this case for unauthorised method(RBAC)
+                case 5: return 5;
 
 
             }

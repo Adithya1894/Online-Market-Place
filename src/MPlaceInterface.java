@@ -21,7 +21,8 @@ public interface MPlaceInterface extends Remote{
      * @param password
      * @throws RemoteException
      */
-    void registration(String firstName, String lastName,String userName, String email, String password) throws RemoteException;
+    @RequiresRole("User")
+    void registration(Session session, String firstName, String lastName,String userName, String email, String password) throws RemoteException;
 
     /**
      *
@@ -29,7 +30,8 @@ public interface MPlaceInterface extends Remote{
      * @param password
      * @throws RemoteException
      */
-    boolean loginAdmin(String userName, String password) throws RemoteException;
+    @RequiresRole("Admin")
+    boolean loginAdmin(Session session, String userName, String password) throws RemoteException;
 
     /**
      *
@@ -37,44 +39,54 @@ public interface MPlaceInterface extends Remote{
      * @param password
      * @throws RemoteException
      */
-    boolean loginUser(String userName, String password) throws RemoteException;
+    @RequiresRole("User")
+    boolean loginUser(Session session, String userName, String password) throws RemoteException;
 
     /**
      *
      * @return
      * @throws RemoteException
      */
-    String[] browsingAdmin() throws RemoteException;
+    //change this User role to Admin role. DONT FORGET
+    @RequiresRole("Admin")
+    String[] browsingAdmin(Session session) throws RemoteException;
 
     /**
      *
      * @return
      * @throws RemoteException
      */
-    String[] browsingUser() throws RemoteException;
+    @RequiresRole("User")
+    String[] browsingUser(Session session) throws RemoteException;
 
     /**
      *
      * @param itemId
      * @throws RemoteException
      */
-    void update(int itemId) throws RemoteException;
+    @RequiresRole("Admin")
+    void update(Session session, int itemId) throws RemoteException;
 
     /**
      *
      * @param itemId
      * @throws RemoteException
      */
-    void remove(int itemId) throws RemoteException;
+    @RequiresRole("Admin")
+    void remove(Session session, int itemId) throws RemoteException;
 
     /**
      *
      * @param itemId
      * @throws RemoteException
      */
-    void purchase(int itemId) throws RemoteException;
+    @RequiresRole("User")
+    void purchase(Session session, int itemId) throws RemoteException;
     
-    public String hello() throws RemoteException;
+    String hello() throws RemoteException;
+
+
+    Session processLogin(String userType) throws RemoteException;
 
 
 }

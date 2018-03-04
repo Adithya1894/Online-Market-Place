@@ -22,8 +22,8 @@ public class Dispatcher {
         userFactory = FactoryProducer.getFactory("User");
 
     }
-
-    public void dispatch(String view){
+    //added the session variable
+    public void dispatch(String view, Session session){
 
         //gives the object of concrete Admin
         if(view.equalsIgnoreCase("Admin"))
@@ -34,13 +34,16 @@ public class Dispatcher {
 
             //objects to access the command methods in the concreteAdmin class
             //object of concreteAdmin will be created here
-            ConcreteBrowseItems cbr = new ConcreteBrowseItems(admin);
+            ConcreteBrowseItems cbr = new ConcreteBrowseItems(admin, session);
 
-            ConcreteUpdateItems cui = new ConcreteUpdateItems(admin);
+            ConcreteUpdateItems cui = new ConcreteUpdateItems(admin,session);
 
-            ConcreteRemoveItems cri = new ConcreteRemoveItems(admin);
+            ConcreteRemoveItems cri = new ConcreteRemoveItems(admin, session);
 
-            ConcreteAddItems cai = new ConcreteAddItems(admin);
+            ConcreteAddItems cai = new ConcreteAddItems(admin, session);
+
+            //this is the unauthorized method, for Admin, demonstrating RBAC
+            ConcretePurchase concretePurchase = new ConcretePurchase(admin, session);
 
 
 
@@ -75,8 +78,11 @@ public class Dispatcher {
                     break;
                 }
 
-
-
+                //command for RBAC Demo, Admin cannot execute this
+                case 5: {
+                    ia.takeCommand(concretePurchase);
+                    ia.placeCommand();
+                }
         }
 
 

@@ -13,9 +13,10 @@ public class ConcreteUpdateItems implements Command{
 
     private Admin obj;
 
+    private Session session;
 
-    public ConcreteUpdateItems(Admin obj){
-        this.obj = obj;
+    public ConcreteUpdateItems(Admin obj, Session session){
+        this.obj = obj;this.session = session;
     }
 
     @Override

@@ -23,6 +23,8 @@ public class Entry {
 
     private String pass;
 
+    //private Session session = null;
+
 
     Scanner sc = new Scanner(System.in);
 

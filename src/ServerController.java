@@ -7,6 +7,7 @@
 //
 
 //amorampu
+import java.lang.reflect.Proxy;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
@@ -17,21 +18,21 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
 
     private  MplaceModel obj = new MplaceModel();;
 
-    private String name;
+    //private String name;
 
-    public ServerController(String m) throws RemoteException{
+    public ServerController() throws RemoteException{
         super();
-        name = m;
+        //name = m;
     }
 
 
     @Override
-    public void registration(String firstName, String lastName, String userName, String email, String password) throws RemoteException {
+    public void registration(Session session, String firstName, String lastName, String userName, String email, String password) throws RemoteException {
 
     }
 
     @Override
-    public boolean loginAdmin(String userName, String password) throws RemoteException {
+    public boolean loginAdmin(Session session, String userName, String password) throws RemoteException {
         boolean adminValue;
 
         adminValue = obj.loginAdmin(userName, password);
@@ -42,7 +43,7 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
     }
 
     @Override
-    public boolean loginUser(String userName, String password) throws RemoteException {
+    public boolean loginUser(Session session, String userName, String password) throws RemoteException {
 
         boolean value;
 
@@ -53,27 +54,27 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
     }
 
     @Override
-    public String[] browsingAdmin() throws RemoteException {
+    public String[] browsingAdmin(Session session) throws RemoteException {
         return new String[0];
     }
 
     @Override
-    public String[] browsingUser() throws RemoteException {
+    public String[] browsingUser(Session session) throws RemoteException {
         return new String[0];
     }
 
     @Override
-    public void update(int itemId) throws RemoteException {
+    public void update(Session session, int itemId) throws RemoteException {
 
     }
 
     @Override
-    public void remove(int itemId) throws RemoteException {
+    public void remove(Session session, int itemId) throws RemoteException {
 
     }
 
     @Override
-    public void purchase(int itemId) throws RemoteException {
+    public void purchase(Session session, int itemId) throws RemoteException {
 
     }
 
@@ -84,6 +85,11 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
         return hello;
     }
 
+    @Override
+    public Session processLogin(String userType) throws RemoteException {
+        Session session = new Session(userType);
+        return session;
+    }
 
 
     /**
@@ -101,8 +107,15 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
             //Naming our server so that it can be binded to the registry
             String name = "//10.234.136.57:1895/server";
 
+
+            MPlaceInterface stub = (MPlaceInterface) Proxy.newProxyInstance(MPlaceInterface.class.getClassLoader(),
+                    new Class<?>[] {MPlaceInterface.class},
+                    new AuthorizationInvocationHandler(new ServerController()));
+
+
+
             //object of the controller class which is MplaceModel
-             ServerController stub = new ServerController(name);
+            //ServerController stub = new ServerController(name);
             //binding the server
             Naming.rebind(name, stub);
 

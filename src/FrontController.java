@@ -10,6 +10,8 @@ public class FrontController {
 
     private Dispatcher dispatcher;
 
+    Session session = null;
+
     /**
      * creating the object of Dispatcher class
      *
@@ -36,16 +38,18 @@ public class FrontController {
             ep.adminLogin();
             String id = ep.getAdminUserId();
             String pass = ep.getAdminPass();
+            session = cc_obj.processLogin("Admin");
             //control goes to client controller to verify the login
-            return cc_obj.loginAdmin(id, pass);
+            return cc_obj.loginAdmin(session, id, pass);
         }else if(view.equalsIgnoreCase("User"))
         {
 
             ep.customerLogin();
             String id = ep.getUserId();
             String pass = ep.getPass();
+            session = cc_obj.processLogin("User");
             //control goes to client controller to verify the login
-            return cc_obj.loginUser(id, pass);
+            return cc_obj.loginUser(session, id, pass);
         }
 
         return false;
@@ -60,7 +64,7 @@ public class FrontController {
 
 
         if(isAuthenticUser(view)){
-            dispatcher.dispatch(view);
+            dispatcher.dispatch(view, session);
         }
         else {
             dispatcher.dispatch_error("Error");
