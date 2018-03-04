@@ -15,15 +15,6 @@ public class ConcretePurchase implements Command {
     @Override
     public void execute() {
 
-        Client_Controller client_controller = new Client_Controller();
-
-        //method returns a string of array.
-        try {
-            client_controller.purchaseItems(session, 3);
-            System.out.println("Method not implemented");
-        }
-        catch (AuthorizationException e){
-            System.out.println(e.getMessage());
-        }
+        obj.purchase(session);
     }
 }
