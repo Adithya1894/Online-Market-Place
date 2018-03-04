@@ -21,7 +21,8 @@ public interface MPlaceInterface extends Remote{
      * @param password
      * @throws RemoteException
      */
-    void registration(String firstName, String lastName,String userName, String email, String password) throws RemoteException;
+    @RequiresRole("Customer")
+    void registration(Session session, String firstName, String lastName,String userName, String email, String password) throws RemoteException;
 
     /**
      *
@@ -30,7 +31,7 @@ public interface MPlaceInterface extends Remote{
      * @throws RemoteException
      */
     @RequiresRole("Admin")
-    boolean loginAdmin(String userName, String password) throws RemoteException;
+    boolean loginAdmin(Session session, String userName, String password) throws RemoteException;
 
     /**
      *
@@ -39,7 +40,7 @@ public interface MPlaceInterface extends Remote{
      * @throws RemoteException
      */
     @RequiresRole("Customer")
-    boolean loginUser(String userName, String password) throws RemoteException;
+    boolean loginUser(Session session, String userName, String password) throws RemoteException;
 
     /**
      *
@@ -47,7 +48,7 @@ public interface MPlaceInterface extends Remote{
      * @throws RemoteException
      */
     @RequiresRole("Admin")
-    String[] browsingAdmin() throws RemoteException;
+    String[] browsingAdmin(Session session) throws RemoteException;
 
     /**
      *
@@ -55,7 +56,7 @@ public interface MPlaceInterface extends Remote{
      * @throws RemoteException
      */
     @RequiresRole("Customer")
-    String[] browsingUser() throws RemoteException;
+    String[] browsingUser(Session session) throws RemoteException;
 
     /**
      *
@@ -63,7 +64,7 @@ public interface MPlaceInterface extends Remote{
      * @throws RemoteException
      */
     @RequiresRole("Admin")
-    void update(int itemId) throws RemoteException;
+    void update(Session session, int itemId) throws RemoteException;
 
     /**
      *
@@ -71,7 +72,7 @@ public interface MPlaceInterface extends Remote{
      * @throws RemoteException
      */
     @RequiresRole("Admin")
-    void remove(int itemId) throws RemoteException;
+    void remove(Session session, int itemId) throws RemoteException;
 
     /**
      *
@@ -79,7 +80,7 @@ public interface MPlaceInterface extends Remote{
      * @throws RemoteException
      */
     @RequiresRole("Customer")
-    void purchase(int itemId) throws RemoteException;
+    void purchase(Session session, int itemId) throws RemoteException;
     
     String hello() throws RemoteException;
 
