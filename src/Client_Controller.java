@@ -47,9 +47,7 @@ public class Client_Controller {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-
         return session;
-
     }
 
 
@@ -122,10 +120,6 @@ public class Client_Controller {
 
         //accessing the initial view of the project
         ep = new Entry();
-
-
-
-
 
 
         try{
