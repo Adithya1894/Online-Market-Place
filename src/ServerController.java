@@ -26,12 +26,12 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
 
 
     @Override
-    public void registration(String firstName, String lastName, String userName, String email, String password) throws RemoteException {
+    public void registration(Session session, String firstName, String lastName, String userName, String email, String password) throws RemoteException {
 
     }
 
     @Override
-    public boolean loginAdmin(String userName, String password) throws RemoteException {
+    public boolean loginAdmin(Session session, String userName, String password) throws RemoteException {
         boolean adminValue;
 
         adminValue = obj.loginAdmin(userName, password);
@@ -42,7 +42,7 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
     }
 
     @Override
-    public boolean loginUser(String userName, String password) throws RemoteException {
+    public boolean loginUser(Session session, String userName, String password) throws RemoteException {
 
         boolean value;
 
@@ -53,27 +53,27 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
     }
 
     @Override
-    public String[] browsingAdmin() throws RemoteException {
+    public String[] browsingAdmin(Session session) throws RemoteException {
         return new String[0];
     }
 
     @Override
-    public String[] browsingUser() throws RemoteException {
+    public String[] browsingUser(Session session) throws RemoteException {
         return new String[0];
     }
 
     @Override
-    public void update(int itemId) throws RemoteException {
+    public void update(Session session, int itemId) throws RemoteException {
 
     }
 
     @Override
-    public void remove(int itemId) throws RemoteException {
+    public void remove(Session session, int itemId) throws RemoteException {
 
     }
 
     @Override
-    public void purchase(int itemId) throws RemoteException {
+    public void purchase(Session session, int itemId) throws RemoteException {
 
     }
 
