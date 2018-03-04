@@ -7,6 +7,7 @@
 //
 
 //amorampu
+import java.lang.reflect.Proxy;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
@@ -17,11 +18,11 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
 
     private  MplaceModel obj = new MplaceModel();;
 
-    private String name;
+    //private String name;
 
-    public ServerController(String m) throws RemoteException{
+    public ServerController() throws RemoteException{
         super();
-        name = m;
+        //name = m;
     }
 
 
@@ -106,8 +107,15 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
             //Naming our server so that it can be binded to the registry
             String name = "//10.234.136.57:1895/server";
 
+
+            MPlaceInterface stub = (MPlaceInterface) Proxy.newProxyInstance(MPlaceInterface.class.getClassLoader(),
+                    new Class<?>[] {MPlaceInterface.class},
+                    new AuthorizationInvocationHandler(new ServerController()));
+
+
+
             //object of the controller class which is MplaceModel
-             ServerController stub = new ServerController(name);
+            //ServerController stub = new ServerController(name);
             //binding the server
             Naming.rebind(name, stub);
 
