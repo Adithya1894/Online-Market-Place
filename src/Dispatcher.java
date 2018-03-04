@@ -42,6 +42,9 @@ public class Dispatcher {
 
             ConcreteAddItems cai = new ConcreteAddItems(admin, session);
 
+            //this is the unauthorized method, for Admin, demonstrating RBAC
+            ConcretePurchase concretePurchase = new ConcretePurchase(admin, session);
+
 
 
             //invoker object to invoke the functionality of command pattern
@@ -75,8 +78,11 @@ public class Dispatcher {
                     break;
                 }
 
-
-
+                //command for RBAC Demo, Admin cannot execute this
+                case 5: {
+                    ia.takeCommand(concretePurchase);
+                    ia.placeCommand();
+                }
         }
 
 
