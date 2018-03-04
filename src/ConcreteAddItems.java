@@ -9,12 +9,13 @@
 public class ConcreteAddItems implements Command {
     private Admin obj;
 
+    private Session session;
     /**
      * constructor
      * @param obj
      */
-    public ConcreteAddItems(Admin obj){
-        this.obj = obj;
+    public ConcreteAddItems(Admin obj, Session session){
+        this.obj = obj; this.session = session;
     }
 
 
