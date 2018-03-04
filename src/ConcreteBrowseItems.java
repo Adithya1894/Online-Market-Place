@@ -24,11 +24,14 @@ public class ConcreteBrowseItems implements Command {
 
         Client_Controller client_controller = new Client_Controller();
 
-        client_controller.browseAdminItems(session);
-
-
-
-        //obj.browseItems();
+        //method returns a string of array.
+        try {
+            String[] val = client_controller.browseAdminItems(session);
+            System.out.println("Nothing in here now");
+        }
+        catch (AuthorizationException e){
+            e.getMessage();
+        }
 
 
     }
