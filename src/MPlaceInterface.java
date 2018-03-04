@@ -47,6 +47,7 @@ public interface MPlaceInterface extends Remote{
      * @return
      * @throws RemoteException
      */
+    //change this User role to Admin role. DONT FORGET
     @RequiresRole("Admin")
     String[] browsingAdmin(Session session) throws RemoteException;
 
