@@ -40,6 +40,11 @@ public class Client_Controller {
 
     }
 
+    /**
+     * ProcessLogin Method for making the RBAC work
+     * @param userType
+     * @return
+     */
     public static Session processLogin(String userType){
 
         try {
@@ -97,6 +102,42 @@ public class Client_Controller {
         return val;
     }
 
+
+    /**
+     * Method to browse Admin Items.
+     * @param session
+     * @return
+     */
+
+    public static String[] browseAdminItems(Session session){
+
+        String[] val = {" "};
+        try {
+            val = object.browsingAdmin(session);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
+
+        return val;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      *Main method of the controller
      * @param args
@@ -111,9 +152,6 @@ public class Client_Controller {
         //Creating an object of the class view to call the methods present in the view
 
         Client_View obj =  new Client_View();
-
-
-
 
         //Accessing the front controller
         fc = new FrontController();
@@ -146,11 +184,4 @@ public class Client_Controller {
         }
 
     }
-
-
-
-
-
-
-
 }
