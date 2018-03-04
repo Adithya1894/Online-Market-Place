@@ -68,12 +68,24 @@ public class ConcreteAdmin implements Admin {
      */
 
     @Override
-    public void browseItems(){
+    public void browseItems(Session session){
 
-        System.out.println("Browse Items will be updated next time");
+
+        Client_Controller client_controller = new Client_Controller();
+
+        //method returns a string of array.
+        try {
+            String[] val = client_controller.browseAdminItems(session);
+            System.out.println("Nothing in here now");
+        }
+        catch (AuthorizationException e){
+            e.getMessage();
+        }
 
 
     }
+
+
     @Override
     public void updateItems(){
 
@@ -93,6 +105,23 @@ public class ConcreteAdmin implements Admin {
 
 
         System.out.println("Add Items will be updated next time");
+
+    }
+
+    @Override
+    public void purchase(Session session){
+
+        Client_Controller client_controller = new Client_Controller();
+
+        //method returns a string of array.
+        try {
+            client_controller.purchaseItems(session, 3);
+            System.out.println("Method not implemented");
+        }
+        catch (AuthorizationException e){
+            System.out.println(e.getMessage());
+        }
+
 
     }
 
