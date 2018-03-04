@@ -10,6 +10,7 @@
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 
@@ -122,6 +123,14 @@ public class Client_Controller {
         return val;
     }
 
+    public static void purchaseItems(Session session, int id){
+        try{
+            object.purchase(session,id);
+        }catch (RemoteException e)
+        {
+            e.printStackTrace();
+        }
+    }
 
 
 
