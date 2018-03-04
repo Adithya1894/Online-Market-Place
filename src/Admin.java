@@ -20,7 +20,7 @@ public interface Admin {
     /**
      * browseItems method to access the items
      */
-    void browseItems();
+    void browseItems(Session session);
 
     /**
      * updateItems to update the items
@@ -37,5 +37,11 @@ public interface Admin {
      * add items method
      */
     void addItems();
+
+    /**
+     *
+     * @param session
+     */
+    public void purchase(Session session);
 
 }
