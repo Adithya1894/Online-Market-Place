@@ -21,7 +21,7 @@ public interface MPlaceInterface extends Remote{
      * @param password
      * @throws RemoteException
      */
-    @RequiresRole("Customer")
+    @RequiresRole("User")
     void registration(Session session, String firstName, String lastName,String userName, String email, String password) throws RemoteException;
 
     /**
@@ -39,7 +39,7 @@ public interface MPlaceInterface extends Remote{
      * @param password
      * @throws RemoteException
      */
-    @RequiresRole("Customer")
+    @RequiresRole("User")
     boolean loginUser(Session session, String userName, String password) throws RemoteException;
 
     /**
@@ -55,7 +55,7 @@ public interface MPlaceInterface extends Remote{
      * @return
      * @throws RemoteException
      */
-    @RequiresRole("Customer")
+    @RequiresRole("User")
     String[] browsingUser(Session session) throws RemoteException;
 
     /**
@@ -79,7 +79,7 @@ public interface MPlaceInterface extends Remote{
      * @param itemId
      * @throws RemoteException
      */
-    @RequiresRole("Customer")
+    @RequiresRole("User")
     void purchase(Session session, int itemId) throws RemoteException;
     
     String hello() throws RemoteException;
