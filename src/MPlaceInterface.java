@@ -30,8 +30,8 @@ public interface MPlaceInterface extends Remote{
      * @param password
      * @throws RemoteException
      */
-    @RequiresRole("Admin")
-    boolean loginAdmin(Session session, String userName, String password) throws RemoteException;
+    //@RequiresRole("Admin")
+    boolean loginAdmin(String userName, String password) throws RemoteException;
 
     /**
      *
@@ -39,8 +39,8 @@ public interface MPlaceInterface extends Remote{
      * @param password
      * @throws RemoteException
      */
-    @RequiresRole("User")
-    boolean loginUser(Session session, String userName, String password) throws RemoteException;
+    //@RequiresRole("User")
+    boolean loginUser(String userName, String password) throws RemoteException;
 
     /**
      *
