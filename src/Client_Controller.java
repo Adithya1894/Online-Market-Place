@@ -66,14 +66,14 @@ public class Client_Controller {
      * @param pass
      * @return
      */
-    public static boolean loginAdmin(Session session,String uname, String pass){
+    public static boolean loginAdmin(String uname, String pass){
         //boolean, which stores the returned value from remote call
         boolean val = false;
 
 
         try{
             //remote call
-            val = object.loginAdmin(session, uname, pass);
+            val = object.loginAdmin(uname, pass);
         }catch (RemoteException e){
             e.printStackTrace();
         }
@@ -90,11 +90,11 @@ public class Client_Controller {
      * @param pass
      * @return
      */
-    public static boolean loginUser(Session session, String uname, String pass){
+    public static boolean loginUser(String uname, String pass){
         boolean val = false;
         try{
             //remote call
-            val = object.loginUser(session, uname, pass);
+            val = object.loginUser(uname, pass);
 
         }catch(RemoteException e){
             e.printStackTrace();
