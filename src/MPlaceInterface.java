@@ -13,6 +13,7 @@ import java.rmi.RemoteException;
 public interface MPlaceInterface extends Remote{
 
     /**
+     * Added annotations for Role based access control
      *Registration method
      * @param firstName
      * @param lastName
@@ -52,7 +53,7 @@ public interface MPlaceInterface extends Remote{
     String[] browsingAdmin(Session session) throws RemoteException;
 
     /**
-     *
+     *Added annotation for role based access control
      * @return
      * @throws RemoteException
      */
@@ -60,7 +61,7 @@ public interface MPlaceInterface extends Remote{
     String[] browsingUser(Session session) throws RemoteException;
 
     /**
-     *
+     *added annotation for role based access control
      * @param itemId
      * @throws RemoteException
      */
@@ -68,7 +69,7 @@ public interface MPlaceInterface extends Remote{
     void update(Session session, int itemId) throws RemoteException;
 
     /**
-     *
+     *added annotation for role based access control
      * @param itemId
      * @throws RemoteException
      */
@@ -76,7 +77,7 @@ public interface MPlaceInterface extends Remote{
     void remove(Session session, int itemId) throws RemoteException;
 
     /**
-     *
+     *added annotation for role based access control
      * @param itemId
      * @throws RemoteException
      */
@@ -85,7 +86,7 @@ public interface MPlaceInterface extends Remote{
     
     String hello() throws RemoteException;
 
-
+    //ProcessLogin method is invoked, whenever a user is authenticated to create a session object and return it
     Session processLogin(String userType) throws RemoteException;
 
 
