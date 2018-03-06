@@ -6,6 +6,10 @@
 
 //amorampu
 
+/**
+ * ROle class to get the role of the user
+ */
+
 import java.io.Serializable;
 
 public class Role implements Serializable{
@@ -18,6 +22,7 @@ public class Role implements Serializable{
         this.userRole=userRole;
     }
 
+    //returns the user role
     public String getRoleType(){
 
         return userRole;
