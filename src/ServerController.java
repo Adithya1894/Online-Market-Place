@@ -32,7 +32,7 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
     }
 
     @Override
-    public boolean loginAdmin(Session session, String userName, String password) throws RemoteException {
+    public boolean loginAdmin(String userName, String password) throws RemoteException {
         boolean adminValue;
 
         adminValue = obj.loginAdmin(userName, password);
@@ -43,7 +43,7 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
     }
 
     @Override
-    public boolean loginUser(Session session, String userName, String password) throws RemoteException {
+    public boolean loginUser(String userName, String password) throws RemoteException {
 
         boolean value;
 
