@@ -38,18 +38,25 @@ public class FrontController {
             ep.adminLogin();
             String id = ep.getAdminUserId();
             String pass = ep.getAdminPass();
-            session = cc_obj.processLogin("Admin");
+
             //control goes to client controller to verify the login
-            return cc_obj.loginAdmin(session, id, pass);
+            if(cc_obj.loginAdmin(id, pass)){
+
+                session = cc_obj.processLogin("Admin");
+                return true;
+            }
         }else if(view.equalsIgnoreCase("User"))
         {
 
             ep.customerLogin();
             String id = ep.getUserId();
             String pass = ep.getPass();
-            session = cc_obj.processLogin("User");
+            //session = cc_obj.processLogin("User");
             //control goes to client controller to verify the login
-            return cc_obj.loginUser(session, id, pass);
+            if(cc_obj.loginUser(id, pass)){
+                session = cc_obj.processLogin("User");
+                return true;
+            }
         }
 
         return false;
