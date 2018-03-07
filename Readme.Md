@@ -37,7 +37,12 @@ pass: 1234
 # Demonstrating RBAC  
 Login to Admin Method using the Above credentials  
 select option 1 to see the working RBAC for Admin  
-select option 5 "purchase Items" this should deny access      
+select option 5 "purchase Items" this should deny access  
+
+Login to Customer Method using the Above credentials  
+Select one of the two options and it should allow access.        
+
+ 
 
 # Domain Model
 
