@@ -39,9 +39,10 @@ public interface Admin {
     void addItems();
 
     /**
-     *
+     *added this new purchase method, which is only accessible to customer, just added this
+     * in Admin view to demonstrate the role based access control.
      * @param session
      */
-    public void purchase(Session session);
+    void purchase(Session session);
 
 }

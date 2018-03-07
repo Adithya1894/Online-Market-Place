@@ -16,16 +16,18 @@ public class InvokerAdmin {
 
     private List<Command> olist = new ArrayList<Command>();
 
-    public void takeCommand(Command command){
+    //takes the list of commands to process and stores them in the arraylist
+    public void takeCommand(Command command)
+    {
         olist.add(command);
     }
-
+    //takes the List as input and executes each command from the list
     public void placeCommand(){
 
         for(Command command : olist){
             command.execute();
         }
-
+    //clears the list of commands
         olist.clear();
     }
 

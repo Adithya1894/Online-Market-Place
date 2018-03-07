@@ -41,7 +41,7 @@ public class FrontController {
 
             //control goes to client controller to verify the login
             if(cc_obj.loginAdmin(id, pass)){
-
+            //if the login is successful, then it creates a sesison obejct
                 session = cc_obj.processLogin("Admin");
                 return true;
             }
@@ -51,9 +51,9 @@ public class FrontController {
             ep.customerLogin();
             String id = ep.getUserId();
             String pass = ep.getPass();
-            //session = cc_obj.processLogin("User");
             //control goes to client controller to verify the login
             if(cc_obj.loginUser(id, pass)){
+                //if the login is successful, then it creates a sesison obejct
                 session = cc_obj.processLogin("User");
                 return true;
             }
