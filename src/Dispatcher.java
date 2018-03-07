@@ -33,16 +33,16 @@ public class Dispatcher {
 
             //objects to access the command methods in the concreteAdmin class
             //object of concreteAdmin will be created here
-            ConcreteBrowseItems cbr = new ConcreteBrowseItems(admin, session);
+            Command cbr = new ConcreteBrowseItems(admin, session);
 
-            ConcreteUpdateItems cui = new ConcreteUpdateItems(admin, session);
+            Command cui = new ConcreteUpdateItems(admin, session);
 
-            ConcreteRemoveItems cri = new ConcreteRemoveItems(admin, session);
+            Command cri = new ConcreteRemoveItems(admin, session);
 
-            ConcreteAddItems cai = new ConcreteAddItems(admin, session);
+            Command cai = new ConcreteAddItems(admin, session);
 
             //this is the unauthorized method, for Admin, demonstrating RBAC
-            ConcretePurchase concretePurchase = new ConcretePurchase(admin, session);
+            Command concretePurchase = new ConcretePurchase(admin, session);
 
 
             //invoker object to invoke the functionality of command pattern
@@ -93,9 +93,9 @@ public class Dispatcher {
             int option = user.display();
 
 
-            ConcreteUserBrowseItems cbr = new ConcreteUserBrowseItems(user, session);
+            Command cbr = new ConcreteUserBrowseItems(user, session);
 
-            ConcreteUserPurchaseItems concreteUserPurchaseItems = new ConcreteUserPurchaseItems(user, session);
+            Command concreteUserPurchaseItems = new ConcreteUserPurchaseItems(user, session);
 
 
             Invoker ia = new Invoker();
