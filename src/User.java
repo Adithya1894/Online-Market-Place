@@ -9,6 +9,22 @@
 
 public interface User {
 
-    void display();
+    /**
+     *
+     */
+    int display();
+
+    /**
+     *
+     * @param session
+     */
+    void browseItems(Session session);
+
+    /**
+     *
+     * @param session
+     */
+    void purchase(Session session);
+
 
 }
