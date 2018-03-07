@@ -123,6 +123,23 @@ public class Client_Controller {
         return val;
     }
 
+
+    public static String[] browseUserItems(Session session){
+
+        String[] val = {" "};
+        try {
+            val = object.browsingUser(session);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
+
+        return val;
+    }
+
+
+
+    //calling the purchase items method on the server side
     public static void purchaseItems(Session session, int id){
         try{
             object.purchase(session,id);
