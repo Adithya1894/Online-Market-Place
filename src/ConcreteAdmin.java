@@ -15,13 +15,11 @@ public class ConcreteAdmin implements Admin {
         int i = 0;
 
 
-
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Welcome Admin");
 
         System.out.println();
-
 
 
             System.out.println("1.browse Items");
@@ -39,28 +37,30 @@ public class ConcreteAdmin implements Admin {
             switch (i) {
 
 
-                case 1: return 1;
+                case 1:
+                    return 1;
 
 
-                case 2: return 2;
+                case 2:
+                    return 2;
 
 
-                case 3: return 3;
+                case 3:
+                    return 3;
 
 
-                case 4: return 4;
+                case 4:
+                    return 4;
 
                 //added this case for unauthorised method(RBAC)
-                case 5: return 5;
+                case 5:
+                    return 5;
 
 
+                default:System.out.println("Please enter a valid choice! from the menu, you entered" +i);
             }
 
-            return 0;
-
-
-
-
+        return 0;
     }
 
     /**

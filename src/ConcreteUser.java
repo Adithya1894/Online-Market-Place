@@ -16,19 +16,19 @@ public class ConcreteUser implements User {
      *
      */
     @Override
-    public int display(){
+    public int display() {
 
-       // System.out.println("Welcome User");
-            int i;
-
+        // System.out.println("Welcome User");
 
 
-            Scanner sc = new Scanner(System.in);
+        int i = 0;
 
-            System.out.println("Welcome Customer");
 
-            System.out.println();
+        Scanner sc = new Scanner(System.in);
 
+        System.out.println("Welcome Customer");
+
+        System.out.println();
 
 
             System.out.println("1.browse Items");
@@ -46,19 +46,20 @@ public class ConcreteUser implements User {
             switch (i) {
 
 
-                case 1: return 1;
+                case 1:
+                    return 1;
 
 
-                case 2: return 2;
+                case 2:
+                    return 2;
 
+                default:System.out.println("Please enter a valid choice! from the menu, you entered" +i);
             }
 
-            return 0;
-
-        }
 
 
-
+        return 0;
+    }
 
 
     /**
