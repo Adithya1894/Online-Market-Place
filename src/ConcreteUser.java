@@ -32,9 +32,6 @@ public class ConcreteUser implements User {
 
 
             System.out.println("1.browse Items");
-            //System.out.println("2.Update items");
-            //System.out.println("3. remove items");
-            //System.out.println("4. add Items");
             System.out.println("2.Purchase Items");
 
             System.out.println("Enter Choice");
