@@ -10,7 +10,7 @@
 import java.rmi.RemoteException;
 public class MplaceModel {
 
-
+	// Ryan: Please include useful comments in each file.
 
     private String username;
     private String userpass;

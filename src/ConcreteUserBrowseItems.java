@@ -1,3 +1,6 @@
+// Ryan: Missing Honor Pledge & Digital Signature.
+
+// Ryan: Please include useful comments in each file.
 public class ConcreteUserBrowseItems implements Command {
 
 

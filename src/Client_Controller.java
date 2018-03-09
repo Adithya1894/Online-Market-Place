@@ -15,6 +15,8 @@ import java.rmi.RemoteException;
 
 
 public class Client_Controller {
+	
+	// Ryan: Why are these static here?
 
     //creating the static objects
     static MPlaceInterface object;
