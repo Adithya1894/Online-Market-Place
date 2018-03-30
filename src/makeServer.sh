@@ -1,3 +1,4 @@
-javac *.java
+javac -cp /home/amorampu/OOAD/src/mysql-connector.jar *.java
 
-java -Djava.security.policy=policy ServerController
+java -cp ".:/home/amorampu/OOAD/src/mysql-connector.jar" -Djava.security.policy=policy ServerController
+
