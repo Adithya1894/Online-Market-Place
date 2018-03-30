@@ -12,11 +12,18 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ServerController extends UnicastRemoteObject implements MPlaceInterface {
 
-    private  MplaceModel obj = new MplaceModel();;
+    private  MplaceModel obj = new MplaceModel();
+
+    ResultSet resultSet = null;
+
 
     //private String name;
 
@@ -59,8 +66,46 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
     }
 
     @Override
-    public String[] browsingUser(Session session) throws RemoteException {
-        return new String[0];
+    public List<String> browsingUser(Session session) throws RemoteException {
+
+
+        //Creating a new arrayList to add the items and return it to the Client
+        List<String> itemList=new ArrayList<>();
+        String data;
+        int i=0;
+
+        DbConnection dbConnection = new DbConnection();
+
+        //checking if the connection is established
+        if(dbConnection.setConnectionEstablished()){
+
+            try {
+
+               resultSet = dbConnection.getResultSet();
+                while(resultSet.next())
+                {
+                    data=resultSet.getString("item_id")+","+resultSet.getString("item_price")+","+resultSet.getString("item_stock")+","+resultSet.getString("item_name")+","+resultSet.getString("item_description");
+                    //adding the items into the arrayList
+                    itemList.add(i,data);
+                    i++;
+                }
+
+                return itemList;
+
+            }catch (SQLException e){
+
+                System.out.println("cannot get the result!");
+
+            }
+
+
+
+        }
+
+
+
+
+        return null;
     }
 
     @Override
@@ -105,7 +150,7 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
         try{
 
             //Naming our server so that it can be binded to the registry
-            String name = "//10.234.136.57:1895/server";
+            String name = "//10.234.136.55:1895/server";
 
 
             MPlaceInterface stub = (MPlaceInterface) Proxy.newProxyInstance(MPlaceInterface.class.getClassLoader(),
