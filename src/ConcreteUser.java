@@ -87,7 +87,7 @@ public class ConcreteUser implements User {
 
 
             //Formatting the output.
-            System.out.printf("\n%s %s %-5s %-10s %-30s\n",itemId,itemPrice,itemStock,itemName,itemDescription);
+            System.out.printf("\n%s %-7s %-10s %-15s %-30s\n",itemId,itemPrice,itemStock,itemName,itemDescription);
             for(int i=0;i<val.size();i++)
             {
                 inditem=val.get(i).split(",");
@@ -98,13 +98,13 @@ public class ConcreteUser implements User {
                         System.out.printf("%s",inditem[j]);
                     }
                     else if(j==1){
-                        System.out.printf("%-3s",inditem[j]);
+                        System.out.printf("%-7s",inditem[j]);
                     }
                     else if(j==2){
-                        System.out.printf("%-3s",inditem[j]);
+                        System.out.printf("%-10s",inditem[j]);
                     }
                     else if(j==3){
-                        System.out.printf("%-10s",inditem[j]);
+                        System.out.printf("%-15s",inditem[j]);
                     }else{
                         System.out.printf("%-30s", inditem[j]);
                     }
