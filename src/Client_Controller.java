@@ -12,6 +12,8 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Client_Controller {
@@ -123,10 +125,10 @@ public class Client_Controller {
         return val;
     }
 
+    //Gets the list of products from the database.
+    public static List<String> browseUserItems(Session session){
 
-    public static String[] browseUserItems(Session session){
-
-        String[] val = {" "};
+        List<String> val = new ArrayList<>();
         try {
             val = object.browsingUser(session);
         } catch (RemoteException e) {
@@ -188,7 +190,7 @@ public class Client_Controller {
 
         try{
             //storing the location of the server in the string format
-            String name1 = "//10.234.136.57:1895/server";
+            String name1 = "//10.234.136.55:1895/server";
             //lookup function to find the desired service from the registry
             object =  (MPlaceInterface) Naming.lookup(name1);
 
