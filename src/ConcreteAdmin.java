@@ -10,6 +10,14 @@ import java.util.Scanner;
 
 public class ConcreteAdmin implements Admin {
 
+    private Client_Controller client_controller;
+
+    public ConcreteAdmin() {
+
+        client_controller = new Client_Controller();
+
+    }
+
     @Override
     public int display() {
         int i = 0;
@@ -71,7 +79,7 @@ public class ConcreteAdmin implements Admin {
     public void browseItems(Session session){
 
 
-        Client_Controller client_controller = new Client_Controller();
+        //Client_Controller client_controller = new Client_Controller();
 
         //method returns a string of array.
         try {
@@ -101,17 +109,60 @@ public class ConcreteAdmin implements Admin {
 
     }
     @Override
-    public void addItems(){
+    public void addItems(Session session){
 
+        //initializing a string array to empty values
+        String[] val = {"", "", "", "", ""};
+        System.out.println("Enter the details of the items to be added!");
+        System.out.println("");
+        //reading the input from the user
+        Scanner sc = new Scanner(System.in);
+        //entering the details into the string array
+        for(int i = 0; i < 5; i++){
+            if(i == 0){
+                System.out.println("Enter the id of the product");
+                val[i] = sc.nextLine();
+            }
+            if(i == 1){
+                System.out.println("Enter the price of the product");
+                val[i] = sc.nextLine();
+            }
+            if(i == 2){
 
-        System.out.println("Add Items will be updated next time");
+                System.out.println("Enter the stock of the product");
+                val[i] = sc.nextLine();
+
+            }
+            if(i == 3){
+                System.out.println("enter the name of the product");
+                val[i] = sc.nextLine();
+            }
+            if(i == 4){
+
+                System.out.println("enter the description of the product");
+                val[i] = sc.nextLine();
+            }
+
+        }
+        try {
+            //
+            boolean status = client_controller.add(session, val);
+
+            if(status)
+                System.out.println("Item added into the database successfully.");
+            else
+            System.out.println("problem adding the product, try again");
+        }
+        catch (AuthorizationException e){
+            System.out.println(e.getMessage());
+        }
+
 
     }
 
     @Override
     public void purchase(Session session){
 
-        Client_Controller client_controller = new Client_Controller();
 
         //method returns a string of array.
         try {
