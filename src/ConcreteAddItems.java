@@ -24,6 +24,6 @@ public class ConcreteAddItems implements Command {
     @Override
     public void execute() {
 
-        obj.addItems();
+        obj.addItems(session);
     }
 }
