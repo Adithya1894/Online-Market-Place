@@ -54,6 +54,15 @@ public interface MPlaceInterface extends Remote{
     String[] browsingAdmin(Session session) throws RemoteException;
 
     /**
+     * Used by admin to add the products into the database.
+     * @param session
+     * @param items
+     * @return
+     */
+    @RequiresRole("Admin")
+    boolean addItems(Session session, String[] items) throws RemoteException;
+
+    /**
      *Added annotation for role based access control
      * @return
      * @throws RemoteException
