@@ -7,6 +7,8 @@
 //amorampu
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 //concrete user class of the Abstractfactory pattern, object of this class is created based upon the logic
@@ -32,9 +34,6 @@ public class ConcreteUser implements User {
 
 
             System.out.println("1.browse Items");
-            //System.out.println("2.Update items");
-            //System.out.println("3. remove items");
-            //System.out.println("4. add Items");
             System.out.println("2.Purchase Items");
 
             System.out.println("Enter Choice");
@@ -71,10 +70,48 @@ public class ConcreteUser implements User {
 
         Client_Controller client_controller = new Client_Controller();
 
+        List<String> val = new ArrayList<>();
+
         //method returns a string of array.
         try {
-            String[] val = client_controller.browseUserItems(session);
-            System.out.println("Nothing in here now, but you are granted access to this method");
+            val = client_controller.browseUserItems(session);
+            System.out.println("-------------------------------------------");
+
+            String itemId,itemName,itemStock,itemPrice,itemDescription;
+            String[] inditem;
+            itemId="Item ID";
+            itemName="Item Name";
+            itemStock="Stock";
+            itemPrice="Price";
+            itemDescription = "Description";
+
+
+            //Formatting the output.
+            System.out.printf("\n%s %-7s %-10s %-15s %-30s\n",itemId,itemPrice,itemStock,itemName,itemDescription);
+            for(int i=0;i<val.size();i++)
+            {
+                inditem=val.get(i).split(",");
+                for(int j=0;j<inditem.length;j++)
+                {
+                    if(j==0){
+
+                        System.out.printf("%s",inditem[j]);
+                    }
+                    else if(j==1){
+                        System.out.printf("%-7s",inditem[j]);
+                    }
+                    else if(j==2){
+                        System.out.printf("%-10s",inditem[j]);
+                    }
+                    else if(j==3){
+                        System.out.printf("%-15s",inditem[j]);
+                    }else{
+                        System.out.printf("%-30s", inditem[j]);
+                    }
+                }
+                System.out.printf("\n");
+                //inditem=null;
+            }
         }
         catch (AuthorizationException e){
             e.getMessage();

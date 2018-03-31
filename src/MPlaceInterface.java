@@ -9,6 +9,7 @@
 //amorampu
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.List;
 
 public interface MPlaceInterface extends Remote{
 
@@ -58,7 +59,7 @@ public interface MPlaceInterface extends Remote{
      * @throws RemoteException
      */
     @RequiresRole("User")
-    String[] browsingUser(Session session) throws RemoteException;
+    List<String> browsingUser(Session session) throws RemoteException;
 
     /**
      *added annotation for role based access control
