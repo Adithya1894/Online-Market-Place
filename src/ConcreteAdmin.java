@@ -42,6 +42,7 @@ public class ConcreteAdmin implements Admin {
 
             //based on the choice, these values are returned back to the dispatcher of the front controller
             //where it creates the object of this class to access the methods such as browse, update
+        while(i!= 6) {
             switch (i) {
 
 
@@ -65,9 +66,10 @@ public class ConcreteAdmin implements Admin {
                     return 5;
 
 
-                default:System.out.println("Please enter a valid choice! from the menu, you entered" +i);
+                default:
+                    System.out.println("Please enter a valid choice! from the menu, you entered" + i);
             }
-
+        }
         return 0;
     }
 
@@ -118,11 +120,8 @@ public class ConcreteAdmin implements Admin {
         //reading the input from the user
         Scanner sc = new Scanner(System.in);
         //entering the details into the string array
-        for(int i = 0; i < 5; i++){
-            if(i == 0){
-                System.out.println("Enter the id of the product");
-                val[i] = sc.nextLine();
-            }
+        for(int i = 1; i < 5; i++){
+
             if(i == 1){
                 System.out.println("Enter the price of the product");
                 val[i] = sc.nextLine();

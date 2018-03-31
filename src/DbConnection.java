@@ -103,7 +103,7 @@ public class DbConnection {
     //this method is to add items to the database by the admin
     public boolean addItems(String[] val){
 
-        String query="INSERT INTO item(item_id,item_price,item_stock,item_name,Item_Description) "+"VALUES('"+Integer.parseInt(val[0])+"',"+Integer.parseInt(val[1])+","+Integer.parseInt(val[2])+",'"+val[3]+"','"+val[4]+"')";
+        String query="INSERT INTO item(item_price,item_stock,item_name,Item_Description) "+"VALUES('"+Integer.parseInt(val[1])+","+Integer.parseInt(val[2])+",'"+val[3]+"','"+val[4]+"')";
 
         if(connection!=null){
 
