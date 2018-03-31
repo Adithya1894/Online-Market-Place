@@ -1,3 +1,9 @@
+
+// Ryan: Missing Honor Pledge & Digital Signature.
+
+// Ryan: Please include useful comments in each file.
+public class ConcreteUserBrowseItems implements Command {
+=======
 // Honor Pledge:
 //
 // I pledge that I have neither given nor
@@ -5,6 +11,7 @@
 //
 
 //amorampu
+
 
 
 public class ConcreteUserBrowseItems implements Command {

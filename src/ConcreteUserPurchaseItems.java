@@ -1,11 +1,7 @@
-// Honor Pledge:
-//
-// I pledge that I have neither given nor
-// received any help on this assignment.
-//
 
-//amorampu
+// Ryan: Missing Honor Pledge & Digital Signature.
 
+// Ryan: Please include useful comments in each file.
 
 public class ConcreteUserPurchaseItems implements Command {
 

@@ -6,6 +6,7 @@
 
 //amorampu
 
+// Ryan: Please include useful comments in each file.
 public class UserFactory extends AbstractFactory{
 
 

@@ -17,6 +17,8 @@ import java.util.List;
 
 
 public class Client_Controller {
+	
+	// Ryan: Why are these static here?
 
     //creating the static objects
     static MPlaceInterface object;
