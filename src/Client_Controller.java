@@ -141,6 +141,23 @@ public class Client_Controller {
         return val;
     }
 
+    //takes the items from the Admin and adds it into the database.
+    public static boolean add(Session session, String[] val){
+
+        boolean status;
+
+        try {
+            status = object.addItems(session,val);
+            if(status)
+                return status;
+
+            return false;
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
 
 
     //calling the purchase items method on the server side
