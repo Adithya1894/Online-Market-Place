@@ -24,11 +24,19 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
 
     ResultSet resultSet = null;
 
+    DbConnection dbConnection;
+
+
 
     //private String name;
 
     public ServerController() throws RemoteException{
         super();
+
+        //creating the object of the DbConnection class.
+        dbConnection = new DbConnection();
+        //setting the connection
+        dbConnection.setConnectionEstablished();
         //name = m;
     }
 
@@ -66,6 +74,31 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
     }
 
     @Override
+    public boolean addItems(Session session, String[] items) throws RemoteException{
+
+        //boolean variable to determine the status of the add item query.
+        boolean status;
+
+        if(items!=null){
+
+            //calling the addItems method to add the item into the database.
+               status = dbConnection.addItems(items);
+
+               if(status){
+                   return true;
+               }
+
+               return false;
+
+
+        }
+
+        return false;
+    }
+
+
+    //function which displays all the available products to the user.
+    @Override
     public List<String> browsingUser(Session session) throws RemoteException {
 
 
@@ -74,16 +107,17 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
         String data;
         int i=0;
 
-        DbConnection dbConnection = new DbConnection();
+        //careating a new object of the DbConnection class
 
         //checking if the connection is established
-        if(dbConnection.setConnectionEstablished()){
+        if(dbConnection.isConnectionEstablished()){
 
             try {
 
                resultSet = dbConnection.getResultSet();
                 while(resultSet.next())
                 {
+                    //getting the result from the database using the DbConnection class
                     data=resultSet.getString("item_id")+","+resultSet.getString("item_price")+","+resultSet.getString("item_stock")+","+resultSet.getString("item_name")+","+resultSet.getString("item_description");
                     //adding the items into the arrayList
                     itemList.add(i,data);
@@ -92,18 +126,14 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
 
                 return itemList;
 
+                //catching the sql exception
             }catch (SQLException e){
 
                 System.out.println("cannot get the result!");
 
             }
 
-
-
         }
-
-
-
 
         return null;
     }
