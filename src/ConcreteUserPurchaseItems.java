@@ -3,6 +3,15 @@
 
 // Ryan: Please include useful comments in each file.
 
+
+// Honor Pledge:
+//
+// I pledge that I have neither given nor
+// received any help on this assignment.
+//
+
+//amorampu
+
 public class ConcreteUserPurchaseItems implements Command {
 
     //private user object
