@@ -70,7 +70,7 @@ public class ConcreteUser implements User {
 
         Client_Controller client_controller = new Client_Controller();
 
-        List<String> val = new ArrayList<>();
+        List<String> val;
 
         //method returns a string of array.
         try {
@@ -78,7 +78,7 @@ public class ConcreteUser implements User {
             System.out.println("-------------------------------------------");
 
             String itemId,itemName,itemStock,itemPrice,itemDescription;
-            String[] inditem;
+            String[] item;
             itemId="Item ID";
             itemName="Item Name";
             itemStock="Stock";
@@ -90,27 +90,27 @@ public class ConcreteUser implements User {
             System.out.printf("\n%s %-7s %-10s %-15s %-30s\n",itemId,itemPrice,itemStock,itemName,itemDescription);
             for(int i=0;i<val.size();i++)
             {
-                inditem=val.get(i).split(",");
-                for(int j=0;j<inditem.length;j++)
+                item=val.get(i).split(",");
+                for(int j=0;j<item.length;j++)
                 {
                     if(j==0){
 
-                        System.out.printf("%s",inditem[j]);
+                        System.out.printf("%s",item[j]);
                     }
                     else if(j==1){
-                        System.out.printf("%-7s",inditem[j]);
+                        System.out.printf("%-7s",item[j]);
                     }
                     else if(j==2){
-                        System.out.printf("%-10s",inditem[j]);
+                        System.out.printf("%-10s",item[j]);
                     }
                     else if(j==3){
-                        System.out.printf("%-15s",inditem[j]);
+                        System.out.printf("%-15s",item[j]);
                     }else{
-                        System.out.printf("%-30s", inditem[j]);
+                        System.out.printf("%-30s", item[j]);
                     }
                 }
                 System.out.printf("\n");
-                //inditem=null;
+
             }
         }
         catch (AuthorizationException e){
