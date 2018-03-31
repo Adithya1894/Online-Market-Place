@@ -35,8 +35,9 @@ public interface Admin {
 
     /**
      * add items method
+     * @param session
      */
-    void addItems();
+    void addItems(Session session);
 
     /**
      *added this new purchase method, which is only accessible to customer, just added this
