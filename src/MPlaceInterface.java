@@ -92,7 +92,7 @@ public interface MPlaceInterface extends Remote{
      * @throws RemoteException
      */
     @RequiresRole("User")
-    void purchase(Session session, int itemId) throws RemoteException;
+    boolean purchase(Session session, int itemId) throws RemoteException;
     
     String hello() throws RemoteException;
 
