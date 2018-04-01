@@ -11,8 +11,11 @@ This MUST be run on the 10.234.136.55 computer
 To run the rmiregistry use the command rmiregistry 1895 &           
 now you can run the project using the makeServer.sh file  
 To start the server use the command sh makeServer.sh command  
+
 I have added the database connection, so in the makeServer.sh file just add the path to mySQL-connector.jar file  
+
 My makeFile looks like below, in place of the path to the connector, add your path for application to run    
+
 javac -cp /home/amorampu/OOAD/src/mysql-connector.jar *.java  
 
 java -cp ".:/home/amorampu/OOAD/src/mysql-connector.jar" -Djava.security.policy=policy ServerController  
