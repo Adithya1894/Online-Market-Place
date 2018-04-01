@@ -161,29 +161,17 @@ public class Client_Controller {
 
 
     //calling the purchase items method on the server side
-    public static void purchaseItems(Session session, int id){
+    public static boolean purchaseItems(Session session, int id){
+
+        boolean status = false;
         try{
-            object.purchase(session,id);
+          status = object.purchase(session,id);
         }catch (RemoteException e)
         {
             e.printStackTrace();
         }
+        return status;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     /**
      *Main method of the controller
