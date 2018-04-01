@@ -25,11 +25,12 @@ public class Dispatcher {
     //added the session variable
     public void dispatch(String view, Session session) {
 
+        int option=0;
+
         //gives the object of concrete Admin
         if (view.equalsIgnoreCase("Admin")) {
             //calling the display method of the concreteAdmin class
             Admin admin = adminFactory.getAdmin("Admin");
-            int option = admin.display();
 
             //objects to access the command methods in the concreteAdmin class
             //object of concreteAdmin will be created here
@@ -49,38 +50,47 @@ public class Dispatcher {
             Invoker ia = new Invoker();
 
 
-            switch (option) {
+            while (option!=6) {
+                option = admin.display();
 
-                case 1: {
-                    //we are invoking the command and executing them
-                    ia.takeCommand(cbr);
-                    ia.placeCommand();
-                    break;
-                }
 
-                case 2: {
-                    ia.takeCommand(cui);
-                    ia.placeCommand();
-                    break;
-                }
+                switch (option) {
 
-                case 3: {
-                    ia.takeCommand(cri);
-                    ia.placeCommand();
-                    break;
-                }
+                    case 1: {
+                        //we are invoking the command and executing them
+                        ia.takeCommand(cbr);
+                        ia.placeCommand();
+                        break;
+                    }
 
-                case 4: {
-                    ia.takeCommand(cai);
-                    ia.placeCommand();
-                    break;
-                }
+                    case 2: {
+                        //we are invoking the command  update items and executing them
+                        ia.takeCommand(cui);
+                        ia.placeCommand();
+                        break;
+                    }
 
-                //command for RBAC Demo, Admin cannot execute this
-                case 5: {
-                    ia.takeCommand(concretePurchase);
-                    ia.placeCommand();
+                    case 3: {
+                        //we are invoking the command remove items and executing them
+                        ia.takeCommand(cri);
+                        ia.placeCommand();
+                        break;
+                    }
+
+                    case 4: {
+                        //we are invoking the command add items and executing them
+                        ia.takeCommand(cai);
+                        ia.placeCommand();
+                        break;
+                    }
+
+                    //command for RBAC Demo, Admin cannot execute this
+                    case 5: {
+                        ia.takeCommand(concretePurchase);
+                        ia.placeCommand();
+                    }
                 }
+                option = 0;
             }
 
 
@@ -88,11 +98,11 @@ public class Dispatcher {
         //gives the object of customerFactory
         else {
 
+            //creeating the user view using abstract factory
             User user = userFactory.getUser("User");
 
-            int option = user.display();
-
-
+            //objects to access the command methods in the ConcreteUser class
+            //object of concreteUser will be created here
             Command cbr = new ConcreteUserBrowseItems(user, session);
 
             Command concreteUserPurchaseItems = new ConcreteUserPurchaseItems(user, session);
@@ -100,23 +110,27 @@ public class Dispatcher {
 
             Invoker ia = new Invoker();
 
+            while(option!=3) {
+                option = user.display();
 
-            switch (option) {
 
-                case 1: {
-                    //we are invoking the command and executing them
-                    ia.takeCommand(cbr);
-                    ia.placeCommand();
-                    break;
+                switch (option) {
+
+                    case 1: {
+                        //we are invoking the command and executing them
+                        ia.takeCommand(cbr);
+                        ia.placeCommand();
+                        break;
+                    }
+
+                    case 2: {
+                        ia.takeCommand(concreteUserPurchaseItems);
+                        ia.placeCommand();
+                        break;
+                    }
+
+
                 }
-
-                case 2: {
-                    ia.takeCommand(concreteUserPurchaseItems);
-                    ia.placeCommand();
-                    break;
-                }
-
-
             }
 
         }
