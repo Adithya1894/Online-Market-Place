@@ -11,7 +11,8 @@ import java.rmi.RemoteException;
 public class MplaceModel {
 
 	// Ryan: Please include useful comments in each file.
-
+    //fixed
+    //private fields so, other classes cannot access these fields
     private String username;
     private String userpass;
     private String adminId;
@@ -19,6 +20,7 @@ public class MplaceModel {
 
     public MplaceModel() throws RemoteException{
 
+        //initializing the variables
         username = "amorampu";
         userpass = "1234";
         adminId = "admin";
@@ -29,6 +31,7 @@ public class MplaceModel {
 
      boolean loginUser(String uname, String pass) {
 
+        //making a comparison to check if the entered username equals the initialized one
          if (this.username.equals(uname) && this.userpass.equals(pass))
 
              return true;
@@ -38,6 +41,7 @@ public class MplaceModel {
          }
      }
 
+     //Athentication for admin
      boolean loginAdmin(String adminId, String adminPass) {
          //System.out.println(adminId +" "+adminPass);
          if (this.adminId.equals(adminId) && this.adminPass.equals(adminPass))
