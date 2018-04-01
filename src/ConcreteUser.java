@@ -110,7 +110,7 @@ public class ConcreteUser implements User {
                         System.out.printf("%-10s",item[j]);
                     }
                     else if(j==3){
-                        System.out.printf("%-15s",item[j]);
+                        System.out.printf("%-15s"+"$",item[j]);
                     }else{
                         System.out.printf("%-30s", item[j]);
                     }
