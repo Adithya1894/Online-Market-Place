@@ -19,12 +19,11 @@ import java.util.List;
 public class Client_Controller {
 	
 	// Ryan: Why are these static here?
-
+    //fixed, moved the variables to the static method instead of global access
+    //MplaceInterface is static because we are accessing it in the main method. which is static
     //creating the static objects
     static MPlaceInterface object;
-    static FrontController fc;
-    static Entry ep;
-    static Session session = null;
+    Session session = null;
 
 
 //Interacts with the controller on the server side.
@@ -50,7 +49,7 @@ public class Client_Controller {
      * @param userType
      * @return
      */
-    public static Session processLogin(String userType){
+    public  Session processLogin(String userType){
 
         try {
             session = object.processLogin(userType);
@@ -183,6 +182,9 @@ public class Client_Controller {
     public static void main(String[] args) throws RemoteException, MalformedURLException, NotBoundException{
         //security manager
         System.setSecurityManager(new SecurityManager());
+        //variables of type FrontController and Entry
+        FrontController fc;
+        Entry ep;
 
         //Creating an object of the class view to call the methods present in the view
 

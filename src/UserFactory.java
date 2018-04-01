@@ -7,7 +7,9 @@
 //amorampu
 
 // Ryan: Please include useful comments in each file.
+//fixed
 public class UserFactory extends AbstractFactory{
+
 
 
     @Override
@@ -15,6 +17,7 @@ public class UserFactory extends AbstractFactory{
         return null;
     }
 
+    //returns the user view when requested by the user.
     @Override
     User getUser(String user) {
 
