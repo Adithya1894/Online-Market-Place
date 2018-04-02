@@ -6,6 +6,7 @@
 
 //amorampu
 
+import java.util.List;
 import java.util.Scanner;
 
 public class ConcreteAdmin implements Admin {
@@ -81,16 +82,54 @@ public class ConcreteAdmin implements Admin {
     public void browseItems(Session session){
 
 
-        //Client_Controller client_controller = new Client_Controller();
+        List<String> val;
 
         //method returns a string of array.
         try {
-            String[] val = client_controller.browseAdminItems(session);
-            System.out.println("Nothing in here now");
+            val = client_controller.browseUserItems(session);
+            System.out.println("-------------------------------------------");
+
+            String itemId,itemName,itemStock,itemPrice,itemDescription;
+            String[] item;
+            itemId="Item ID";
+            itemName="Item Name";
+            itemStock="Stock";
+            itemPrice="Price";
+            itemDescription = "Description";
+
+
+            //Formatting the output.
+            System.out.printf("\n%-7s %-15s %-10s %-15s %-30s\n",itemId,itemName,itemStock,itemPrice,itemDescription);
+            for(int i=0;i<val.size();i++)
+            {
+                //displaying the formatted output.
+                item=val.get(i).split(",");
+                for(int j=0;j<item.length;j++)
+                {
+                    if(j==0){
+
+                        System.out.printf("%-7s",item[j]);
+                    }
+                    else if(j==1){
+                        System.out.printf("%-15s",item[j]);
+                    }
+                    else if(j==2){
+                        System.out.printf("%-10s",item[j]);
+                    }
+                    else if(j==3){
+                        System.out.printf("$"+"%-15s",item[j]);
+                    }else{
+                        System.out.printf("%-30s", item[j]);
+                    }
+                }
+                System.out.printf("\n");
+
+            }
         }
         catch (AuthorizationException e){
             e.getMessage();
         }
+
 
 
     }
