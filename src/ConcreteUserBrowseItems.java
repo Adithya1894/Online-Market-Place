@@ -3,9 +3,9 @@
 
 // Ryan: Please include useful comments in each file.
 
-//Fixed
+//Fixed: Added the honor pledge and digital signature, Added comments.
 
-// Honor Pledge:
+// Honor Pledge
 //
 // I pledge that I have neither given nor
 // received any help on this assignment.

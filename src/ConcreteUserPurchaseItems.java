@@ -4,8 +4,7 @@
 // Ryan: Please include useful comments in each file.
 
 
-// Honor Pledge:
-//
+// Honor Pledge: added the honor pledge, added comments
 // I pledge that I have neither given nor
 // received any help on this assignment.
 //

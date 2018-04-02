@@ -8,8 +8,10 @@
 
 public class FrontController {
 
+    //private variable of type Dispatcher
     private Dispatcher dispatcher;
 
+    //Session variable and assigning it to null
     Session session = null;
 
     /**
@@ -36,6 +38,7 @@ public class FrontController {
 
         if (view.equalsIgnoreCase("Admin")) {
             ep.adminLogin();
+            //getting the values from the entry point.
             String id = ep.getAdminUserId();
             String pass = ep.getAdminPass();
 
@@ -49,6 +52,7 @@ public class FrontController {
         {
 
             ep.customerLogin();
+            //getting the values of user Id and Password from the entry point file
             String id = ep.getUserId();
             String pass = ep.getPass();
             //control goes to client controller to verify the login
@@ -69,10 +73,10 @@ public class FrontController {
      */
     public void dispatchRequest(String view){
 
-
+        //if the user is authenticated, then it dispatchs the respected view.
         if(isAuthenticUser(view)){
             dispatcher.dispatch(view, session);
-        }
+        }//if the user is not authenticated, then it dispatches the error view
         else {
             dispatcher.dispatch_error("Error");
         }

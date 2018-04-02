@@ -2,7 +2,7 @@
 
 // Ryan: Please include useful comments in each file.
 
-//Fixed
+//Fixed: Added the honor pledge, Added comments.
 
 // Honor Pledge:
 //

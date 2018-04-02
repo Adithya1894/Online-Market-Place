@@ -22,14 +22,15 @@ public class UserFactory extends AbstractFactory{
     User getUser(String user) {
 
 
-
+        //if the value of the user string is null, then the getUser method returns null
         if(user == null)
             return null;
 
+        //if the user string contains the value "USER" then it return the ConcreteUser
         if(user.equalsIgnoreCase("USER"))
 
             return new ConcreteUser();
-
+        //returns null by default.
         return null;
     }
 }

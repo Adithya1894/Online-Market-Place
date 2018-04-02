@@ -8,7 +8,7 @@
 
 public class Dispatcher {
 
-
+    //private variables of the type AbstractFactory
     private AbstractFactory adminFactory;
 
     private AbstractFactory userFactory;
@@ -123,6 +123,7 @@ public class Dispatcher {
                         break;
                     }
 
+                    //we are invoking the command and executing them
                     case 2: {
                         ia.takeCommand(concreteUserPurchaseItems);
                         ia.placeCommand();

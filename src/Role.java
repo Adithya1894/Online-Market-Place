@@ -12,6 +12,7 @@
 
 import java.io.Serializable;
 
+//this class is used to get the user role
 public class Role implements Serializable{
 
 

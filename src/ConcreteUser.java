@@ -31,7 +31,7 @@ public class ConcreteUser implements User {
 
         int i = 0;
 
-
+    //getting the input from the user
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Welcome Customer");
@@ -80,9 +80,12 @@ public class ConcreteUser implements User {
 
         //method returns a string of array.
         try {
+            //calling the client controller to access the server from the client, and storing the values of the
+            //items in the val variable.
             val = client_controller.browseUserItems(session);
-            System.out.println("-------------------------------------------");
 
+
+            //declaring the string variables. and assigning values to them to display to the user
             String itemId,itemName,itemStock,itemPrice,itemDescription;
             String[] item;
             itemId="Item ID";
@@ -140,6 +143,7 @@ public class ConcreteUser implements User {
         int option = scanner.nextInt();
         //method returns a string of array.
         try {
+            //purchase items returns a boolean
             if(client_controller.purchaseItems(session, option))
                 System.out.println("Item purchase success!");
 

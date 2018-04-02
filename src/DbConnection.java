@@ -17,6 +17,7 @@ public class DbConnection {
 
     //returns the connection object.
     public Connection getConnection() {
+    //checking if the connection is established, if the connection is established then it returns the connection
         if (connectionEstablished)
             return connection;
 
@@ -25,6 +26,7 @@ public class DbConnection {
 
     //static,since we need only one instance of connection
     private Connection connection = null;
+    //declaring the variables of type statement and resultSet and assigning them to null.
     Statement statement = null;
     ResultSet resultSet = null;
 
@@ -158,16 +160,27 @@ public class DbConnection {
         return false;
     }
 
+    /**
+     * this method is used to purchase the items
+     * takes two inputs as parameters which is itemId and stock
+     * takes the stock and updates it in the database.
+     * @param itemId
+     * @param stock
+     * @return
+     */
     public boolean purchaseItems(int itemId, int stock) {
 
         //query to reduce the stock once the purchase is made
         String query = "UPDATE item SET item_stock="+stock+" WHERE item_id="+itemId;
 
         if(connection!=null)
+            //assigning the statement to null
             statement = null;
 
         try {
+            //creating a statement.
             statement = connection.createStatement();
+            //executing the query
                 statement.executeUpdate(query);
                 return true;
         } catch (SQLException e) {
@@ -178,8 +191,12 @@ public class DbConnection {
 
     }
 
-        public boolean isConnectionEstablished () {
-            return connectionEstablished;
-        }
+    /**
+     * if the connection is established, then it returns a true.
+     * @return
+     */
+    public boolean isConnectionEstablished () {
+        return connectionEstablished;
+    }
 
 }
