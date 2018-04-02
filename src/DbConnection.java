@@ -176,30 +176,7 @@ public class DbConnection {
 
         return false;
 
-
-
-//        if (connection != null) {
-//
-//            statement = null;
-//            try {
-//                statement = connection.createStatement();
-//
-//                statement.executeQuery(query);
-//                return 2;
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//
-//
-//        }else
-//        return 0;
-//
-//        return 0;
     }
-
-
-
-
 
         public boolean isConnectionEstablished () {
             return connectionEstablished;
