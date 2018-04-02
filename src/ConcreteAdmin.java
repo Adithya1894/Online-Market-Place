@@ -11,14 +11,20 @@ import java.util.Scanner;
 
 public class ConcreteAdmin implements Admin {
 
+    //variable of client_Controller type, private because, we dont want this instance to be accessed by another file
     private Client_Controller client_controller;
 
+    //creating the instance upon program starting.
     public ConcreteAdmin() {
 
         client_controller = new Client_Controller();
 
     }
 
+    /**
+     * This method is displayed to user immediately after the login and based on the user input, specific return value is returned
+     * @return
+     */
     @Override
     public int display() {
         int i = 0;
@@ -30,7 +36,7 @@ public class ConcreteAdmin implements Admin {
 
         System.out.println();
 
-
+//options displayed to the user
             System.out.println("1.browse Items");
             System.out.println("2.Update items");
             System.out.println("3. remove items");
@@ -39,6 +45,7 @@ public class ConcreteAdmin implements Admin {
 
             System.out.println("Enter Choice");
 
+            //taking the input from the user
             i = sc.nextInt();
 
             //based on the choice, these values are returned back to the dispatcher of the front controller
@@ -86,9 +93,11 @@ public class ConcreteAdmin implements Admin {
 
         //method returns a string of array.
         try {
-            val = client_controller.browseUserItems(session);
-            System.out.println("-------------------------------------------");
 
+            //calls the server side method using the client controller and then stores the value in the list of Strings.
+            val = client_controller.browseUserItems(session);
+
+            //declaring the string variables, and assigning the values to the
             String itemId,itemName,itemStock,itemPrice,itemDescription;
             String[] item;
             itemId="Item ID";
@@ -134,7 +143,10 @@ public class ConcreteAdmin implements Admin {
 
     }
 
-
+    /**
+     * this method is used to update the item values
+     * this is not yet implemented
+     */
     @Override
     public void updateItems(){
 
@@ -142,6 +154,11 @@ public class ConcreteAdmin implements Admin {
         System.out.println("Update Items will be updated next time");
 
     }
+
+    /**
+     * method to remove the items from the database
+     * not yet implemented
+     */
     @Override
     public void removeItems(){
 
@@ -149,6 +166,12 @@ public class ConcreteAdmin implements Admin {
         System.out.println("Remove Items will be updated next time");
 
     }
+
+    /**
+     * Method to add the items to the database
+     * takes Session as an argument to send the session object to the server
+     * @param session
+     */
     @Override
     public void addItems(Session session){
 
@@ -183,14 +206,14 @@ public class ConcreteAdmin implements Admin {
 
         }
         try {
-            //
+            //calling the server using client controller and we are passing the session object as well as string array
             boolean status = client_controller.add(session, val);
 
             if(status)
                 System.out.println("Item added into the database successfully.");
             else
             System.out.println("problem adding the product, try again");
-        }
+        }//if the method cannot be accessed, then it throws an authourization exception
         catch (AuthorizationException e){
             System.out.println(e.getMessage());
         }
@@ -198,6 +221,11 @@ public class ConcreteAdmin implements Admin {
 
     }
 
+    /**
+     * This is just to show the RBAC, This method is not accessible to admin
+     * just for demonstrating RBAC, I have kept this method here
+     * @param session
+     */
     @Override
     public void purchase(Session session){
 
