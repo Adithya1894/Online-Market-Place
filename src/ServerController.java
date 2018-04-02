@@ -74,7 +74,7 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
     }
 
     @Override
-    public synchronized boolean addItems(Session session, String[] items) throws RemoteException{
+    public boolean addItems(Session session, String[] items) throws RemoteException{
 
         //boolean variable to determine the status of the add item query.
         boolean status;
