@@ -32,12 +32,9 @@ public class DbConnection {
 
     //method to establish the connection and set the boolean value
     public void setConnectionEstablished() {
-        //setting the mysql connection variables.
-        String hostName = "localhost:3306";
-        String dbname = "amorampu_db";
 
         //Connection and authentication data
-        String url = "jdbc:mysql://" + hostName + "/" + dbname;
+        String url = "jdbc:mysql://localhost:3306/amorampu_db";
         String username = "amorampu";
         String password = "amorampu";
 

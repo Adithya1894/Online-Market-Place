@@ -22,9 +22,7 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
 
     private  MplaceModel obj = new MplaceModel();
 
-    ResultSet resultSet = null;
 
-    DbConnection dbConnection;
 
 
 
@@ -33,11 +31,7 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
     public ServerController() throws RemoteException{
         super();
 
-        //creating the object of the DbConnection class.
-        dbConnection = new DbConnection();
-        //setting the connection
-        dbConnection.setConnectionEstablished();
-        //name = m;
+
     }
 
 
@@ -74,68 +68,24 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
     }
 
     @Override
-    public boolean addItems(Session session, String[] items) throws RemoteException{
+    public synchronized boolean addItems(Session session, String[] items) throws RemoteException{
 
-        //boolean variable to determine the status of the add item query.
-        boolean status;
+       boolean val = obj.addItems(items);
 
-        if(items!=null){
-
-            //calling the addItems method to add the item into the database.
-               status = dbConnection.addItems(items);
-
-               if(status){
-                   return true;
-               }
-
-               return false;
-
-
-        }
-
-        return false;
+       return val;
     }
 
-
+    //
     //function which displays all the available products to the user.
     @Override
     public synchronized List<String> browsingUser(Session session) throws RemoteException {
 
+        List<String> list = new ArrayList<>();
 
-        //Creating a new arrayList to add the items and return it to the Client
-        List<String> itemList=new ArrayList<>();
-        String data;
-        int i=0;
+        list = obj.browsingUser(session);
 
-        //careating a new object of the DbConnection class
+        return list;
 
-        //checking if the connection is established
-        if(dbConnection.isConnectionEstablished()){
-
-            try {
-
-               resultSet = dbConnection.getResultSet();
-                while(resultSet.next())
-                {
-                    //getting the result from the database using the DbConnection class
-                    data=resultSet.getString("item_id")+","+resultSet.getString("item_name")+","+resultSet.getString("item_stock")+","+resultSet.getString("item_price")+","+resultSet.getString("item_description");
-                    //adding the items into the arrayList
-                    itemList.add(i,data);
-                    i++;
-                }
-
-                return itemList;
-
-                //catching the sql exception
-            }catch (SQLException e){
-
-                System.out.println("cannot get the result!");
-
-            }
-
-        }
-
-        return null;
     }
 
     @Override
@@ -151,58 +101,16 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
     @Override
     public synchronized boolean purchase(Session session, int itemId) throws RemoteException {
 
+        boolean val = obj.purchase(session, itemId);
 
-        ResultSet resultSet = null;
-        int stock = 0;
+        return val;
 
-        if(dbConnection.isConnectionEstablished()){
-            try{
-                resultSet = dbConnection.getUniqueItem(itemId);
-                while(resultSet.next())
-                {
-                    stock=Integer.parseInt(resultSet.getString("item_stock").toString());
-
-                    System.out.println(stock);
-                }
-                resultSet.beforeFirst();
-
-
-                while(resultSet.next())
-                {
-                    if(!(stock<=0)){
-                        //reduce the stock by 1 after purchase
-
-                        System.out.println("before substraction"+stock);
-
-                        stock=stock-1;
-
-                        System.out.println(stock);
-                        //calling the database
-                        if(dbConnection.purchaseItems(itemId, stock));
-                        {
-                            //System.out.println(val);
-                            //if success returns true
-                            return true;
-                        }
-                    }
-                    else{
-                        return false;
-                    }
-                }
-                System.out.println("Hello bug");
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return false;
     }
 
     @Override
     public String hello() throws RemoteException {
 
-        String hello = "welcome to RMI";
+        String hello = "welcome to MarketPlace Application";
         return hello;
     }
 
