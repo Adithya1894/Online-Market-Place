@@ -67,7 +67,7 @@ public interface MPlaceInterface extends Remote{
      * @return
      * @throws RemoteException
      */
-    @RequiresRole("User")
+    //@RequiresRole("User")
     List<String> browsingUser(Session session) throws RemoteException;
 
     /**
