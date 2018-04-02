@@ -6,6 +6,9 @@
 
 //amorampu
 
+/**
+ * command interface to execute the selected command
+ */
 public interface Command {
 
     void execute();

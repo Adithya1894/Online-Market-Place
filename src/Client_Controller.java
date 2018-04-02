@@ -19,7 +19,7 @@ import java.util.List;
 public class Client_Controller {
 	
 	// Ryan: Why are these static here?
-    //fixed, moved the variables to the static method instead of global access
+    //Fixed: moved the variables to the static method instead of global access
     //MplaceInterface is static because we are accessing it in the main method. which is static
     //creating the static objects
     static MPlaceInterface object;
@@ -131,6 +131,7 @@ public class Client_Controller {
 
         List<String> val = new ArrayList<>();
         try {
+            //returns a List of Strings and stored in the val variable.
             val = object.browsingUser(session);
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -146,6 +147,7 @@ public class Client_Controller {
         boolean status;
 
         try {
+            //returns a boolean value to show the status of the addition of product
             status = object.addItems(session,val);
             if(status)
                 return status;
@@ -164,6 +166,7 @@ public class Client_Controller {
 
         boolean status = false;
         try{
+            //purchase function at the server returns true if purchase is made.
           status = object.purchase(session,id);
         }catch (RemoteException e)
         {
