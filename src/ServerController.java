@@ -114,7 +114,7 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
     //
     //function which displays all the available products to the user.
     @Override
-    public synchronized List<String> browsingUser(Session session) throws RemoteException {
+    public List<String> browsingUser(Session session) throws RemoteException {
 
         List<String> list;
 
