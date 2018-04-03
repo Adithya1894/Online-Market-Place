@@ -29,7 +29,7 @@ public class MplaceModel {
     ResultSet resultSet = null;
 
 
-    public MplaceModel() throws RemoteException {
+    public MplaceModel(){
 
         //initializing the variables
         username = "amorampu";
@@ -72,11 +72,11 @@ public class MplaceModel {
     /**
      * purchase method to purchase the items and change the stock to stock - 1 in the database.
      *
-     * @param session
+     *
      * @param itemId
      * @return
      */
-    public boolean purchase(Session session, int itemId) {
+    public boolean purchase(int itemId) {
 
         ResultSet resultSet = null;
         int stock = 0;
@@ -130,10 +130,10 @@ public class MplaceModel {
 
     /**
      *
-     * @param session
+     * @param
      * @return
      */
-    public List<String> browsingUser(Session session) {
+    public List<String> browsingUser() {
 
         //Creating a new arrayList to add the items and return it to the Client
         List<String> itemList = new ArrayList<>();
