@@ -185,12 +185,13 @@ public class ConcreteAdmin implements Admin {
         for(int i = 1; i < 5; i++){
 
             if(i == 1){
-                System.out.println("Enter the price of the product");
+                System.out.println("Enter the price of the product(Only Integers please)");
                 val[i] = sc.nextLine();
+
             }
             if(i == 2){
 
-                System.out.println("Enter the stock of the product");
+                System.out.println("Enter the stock of the product(Only Integers please)");
                 val[i] = sc.nextLine();
 
             }
