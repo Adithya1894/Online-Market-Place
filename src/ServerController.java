@@ -20,6 +20,7 @@ import java.util.List;
 
 public class ServerController extends UnicastRemoteObject implements MPlaceInterface {
 
+    //creating an object of MplaceModel to access its methods and properties
     private  MplaceModel obj = new MplaceModel();
 
 
@@ -35,15 +36,33 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
     }
 
 
+    /**
+     * Registration method, this is currently not implemented
+     * @param session
+     * @param firstName
+     * @param lastName
+     * @param userName
+     * @param email
+     * @param password
+     * @throws RemoteException
+     */
     @Override
     public void registration(Session session, String firstName, String lastName, String userName, String email, String password) throws RemoteException {
 
     }
 
+    /**
+     * Login method for admin, This method gets the login credentials from the client and verifies it with the model
+     * @param userName
+     * @param password
+     * @return
+     * @throws RemoteException
+     */
     @Override
     public boolean loginAdmin(String userName, String password) throws RemoteException {
         boolean adminValue;
 
+        //calling the model to find if the user is legitimate
         adminValue = obj.loginAdmin(userName, password);
 
         //System.out.println(adminValue);
@@ -51,11 +70,19 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
         return adminValue;
     }
 
+    /**
+     *login user method to log users into the system, takes the credentials as parameters.
+     * @param userName
+     * @param password
+     * @return
+     * @throws RemoteException
+     */
     @Override
     public boolean loginUser(String userName, String password) throws RemoteException {
 
         boolean value;
 
+        //calling the loginUser method in the model
         value = obj.loginUser(userName, password);
 
         return value;
@@ -67,9 +94,18 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
         return new String[0];
     }
 
+    /**
+     * Add items method to add items into the database, this is only accessible to admin
+     * This method is synchronized
+     * @param session
+     * @param items
+     * @return
+     * @throws RemoteException
+     */
     @Override
     public synchronized boolean addItems(Session session, String[] items) throws RemoteException{
 
+        //calling the addItems method in the model
        boolean val = obj.addItems(items);
 
        return val;
@@ -80,9 +116,10 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
     @Override
     public synchronized List<String> browsingUser(Session session) throws RemoteException {
 
-        List<String> list = new ArrayList<>();
+        List<String> list;
 
-        list = obj.browsingUser(session);
+        //calling the browsingUser method in the model.
+        list = obj.browsingUser();
 
         return list;
 
@@ -98,11 +135,21 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
 
     }
 
+    /**
+     * This method is only accessible to User and this is used to purchase items
+     * takes a session object and item id as parameters
+     * @param session
+     * @param itemId
+     * @return
+     * @throws RemoteException
+     */
     @Override
     public synchronized boolean purchase(Session session, int itemId) throws RemoteException {
 
-        boolean val = obj.purchase(session, itemId);
+        //calling the purchase method in the model
+        boolean val = obj.purchase(itemId);
 
+        //boolean value
         return val;
 
     }
@@ -114,6 +161,12 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
         return hello;
     }
 
+    /**
+     * checks the login and creates a session object and returns it.
+     * @param userType
+     * @return
+     * @throws RemoteException
+     */
     @Override
     public Session processLogin(String userType) throws RemoteException {
         Session session = new Session(userType);
