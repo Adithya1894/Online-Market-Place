@@ -6,6 +6,7 @@
 
 //amorampu
 
+// Ryan: Do you really need the entire package here?
 import java.sql.*;
 
 public class DbConnection {

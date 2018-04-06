@@ -26,6 +26,7 @@ public class Entry {
     //private Session session = null;
 
 
+	// Ryan: Shouldn't this have a scope associated with it?
     Scanner sc = new Scanner(System.in);
 
     /**
