@@ -12,9 +12,6 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -131,9 +128,12 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
     }
 
     @Override
-    public void removeProduct(Session session, int itemId) throws RemoteException {
+    public boolean removeProduct(Session session, int itemId) throws RemoteException {
 
+        //calling the removeProduct method in the model to remove the items and return true if removed successfully.
+        boolean val = obj.removeProduct(itemId);
 
+        return val;
     }
 
     /**
