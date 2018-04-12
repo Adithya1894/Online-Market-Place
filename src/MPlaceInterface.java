@@ -41,7 +41,7 @@ public interface MPlaceInterface extends Remote{
      * @param password
      * @throws RemoteException
      */
-    //@RequiresRole("User")
+    @RequiresRole("User")
     boolean loginUser(String userName, String password) throws RemoteException;
 
     /**
@@ -84,7 +84,7 @@ public interface MPlaceInterface extends Remote{
      * @throws RemoteException
      */
     @RequiresRole("Admin")
-    void remove(Session session, int itemId) throws RemoteException;
+    void removeProduct(Session session, int itemId) throws RemoteException;
 
     /**
      *added annotation for role based access control
