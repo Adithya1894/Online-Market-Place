@@ -151,6 +151,7 @@ public class ConcreteAdmin implements Admin {
     public void updateItems(){
 
 
+
         System.out.println("Update Items will be updated next time");
 
     }
@@ -160,10 +161,27 @@ public class ConcreteAdmin implements Admin {
      * not yet implemented
      */
     @Override
-    public void removeItems(){
+    public void removeItems(Session session){
 
 
-        System.out.println("Remove Items will be updated next time");
+        System.out.println("Enter the itemId to be removed");
+        //getting the input id from the user.
+        Scanner sc = new Scanner(System.in);
+
+        int val = sc.nextInt();
+        try {
+            //calling the server using client controller and we are passing the session object as well as item id.
+            boolean status = client_controller.removeProduct(session, val);
+
+            if(status)
+                System.out.println("Item removed successfully from the database");
+            else
+                System.out.println("problem removing the product, please try again");
+        }//if the method cannot be accessed, then it throws an authourization exception
+        catch (AuthorizationException e){
+            System.out.println(e.getMessage());
+        }
+
 
     }
 
