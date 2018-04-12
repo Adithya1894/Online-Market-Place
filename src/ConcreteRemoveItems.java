@@ -33,7 +33,7 @@ public class ConcreteRemoveItems implements Command {
     @Override
     public void execute() {
 
-        obj.removeItems();
+        obj.removeItems(session);
 
     }
 }
