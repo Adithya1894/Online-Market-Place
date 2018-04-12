@@ -15,21 +15,22 @@ import java.util.List;
 public class Invoker {
 
 	// Ryan: What is an olist?
-    private List<Command> olist = new ArrayList<Command>();
+    //Fixed: variable now have a more meaningful name, orderList is the list which takes the orders.
+    private List<Command> orderList = new ArrayList<Command>();
 
     //takes the list of commands to process and stores them in the arraylist
     public void takeCommand(Command command)
     {
-        olist.add(command);
+        orderList.add(command);
     }
     //takes the List as input and executes each command from the list
     public void placeCommand(){
 
-        for(Command command : olist){
+        for(Command command : orderList){
             command.execute();
         }
     //clears the list of commands
-        olist.clear();
+        orderList.clear();
     }
 
 }

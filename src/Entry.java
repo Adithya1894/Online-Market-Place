@@ -27,7 +27,8 @@ public class Entry {
 
 
 	// Ryan: Shouldn't this have a scope associated with it?
-    Scanner sc = new Scanner(System.in);
+    //Fixed: added the scope to the variable.
+    private Scanner sc = new Scanner(System.in);
 
     /**
      * login method which takes the information from the user about the type of user and his details

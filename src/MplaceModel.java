@@ -25,7 +25,8 @@ public class MplaceModel {
 
 
 	// Ryan: Shouldn't these have a scope associated with them?
-    DbConnection dbConnection;
+    //Fixed: assigned the scope to the variable.
+    private DbConnection dbConnection;
 
     ResultSet resultSet = null;
 

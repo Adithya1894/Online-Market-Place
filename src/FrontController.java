@@ -12,9 +12,9 @@ public class FrontController {
     private Dispatcher dispatcher;
 
 	// Ryan: Shouldn't this have a scope associated with it?
-	
+	//Fixed: added the scope to the session
     //Session variable and assigning it to null
-    Session session = null;
+    private Session session = null;
 
     /**
      * creating the object of Dispatcher class
