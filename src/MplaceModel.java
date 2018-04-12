@@ -33,12 +33,6 @@ public class MplaceModel {
 
     public MplaceModel(){
 
-        //initializing the variables
-        username = "amorampu";
-        userpass = "1234";
-        adminId = "admin";
-        adminPass = "12345";
-
         //creating the object of the DbConnection class.
         dbConnection = new DbConnection();
         //setting the connection
@@ -63,12 +57,15 @@ public class MplaceModel {
     //Athentication for admin
     boolean loginAdmin(String adminId, String adminPass) {
         //System.out.println(adminId +" "+adminPass);
-        if (this.adminId.equals(adminId) && this.adminPass.equals(adminPass)) {
+        ResultSet resultSet = null;
 
+        //getting the result set from the database, if the values match.
+        resultSet = dbConnection.loginAdmin(adminId,adminPass);
+        //if resultSet is not null, then the user is authenticated, return true
+        if(resultSet!=null)
             return true;
-        } else {
-            return false;
-        }
+        //else return false
+        return false;
     }
 
     /**
