@@ -14,6 +14,7 @@ import java.util.List;
  */
 public class Invoker {
 
+	// Ryan: What is an olist?
     private List<Command> olist = new ArrayList<Command>();
 
     //takes the list of commands to process and stores them in the arraylist

@@ -11,6 +11,8 @@ public class FrontController {
     //private variable of type Dispatcher
     private Dispatcher dispatcher;
 
+	// Ryan: Shouldn't this have a scope associated with it?
+	
     //Session variable and assigning it to null
     Session session = null;
 
