@@ -24,6 +24,7 @@ public class MplaceModel {
     private String adminPass;
 
 
+	// Ryan: Shouldn't these have a scope associated with them?
     DbConnection dbConnection;
 
     ResultSet resultSet = null;

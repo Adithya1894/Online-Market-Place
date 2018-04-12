@@ -6,11 +6,18 @@
 
 //amorampu
 
+
+
+
+// Ryan: Do you really need the entire package here?
+//Fixed: only added the required packages
 import java.sql.ResultSet;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+
 
 
 public class DbConnection {
