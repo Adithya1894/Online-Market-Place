@@ -6,7 +6,10 @@
 
 //amorampu
 
-import java.sql.*;
+import java.sql.ResultSet;
+import java.sql.DriverManager;
+import java.sql.Connection;
+
 
 public class DbConnection {
 
