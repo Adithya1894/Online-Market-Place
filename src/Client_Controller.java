@@ -175,6 +175,20 @@ public class Client_Controller {
         return status;
     }
 
+    //calling the remove item method on the server side.
+    public static boolean removeProduct(Session session, int itemId){
+        //trying to connect to the server and access the removeProducts method
+        try{
+            //if item removed then the return value is true.
+            if(object.removeProduct(session, itemId));
+                return true;
+        }catch (RemoteException e){
+            e.printStackTrace();
+        }
+        //if item is not removed then item value is not removed and return false.
+        return false;
+    }
+
     /**
      *Main method of the controller
      * @param args

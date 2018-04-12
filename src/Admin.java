@@ -30,7 +30,7 @@ public interface Admin {
     /**
      * RemoveItems to remove the items
      */
-    void removeItems();
+    void removeItems(Session session);
 
 
     /**
