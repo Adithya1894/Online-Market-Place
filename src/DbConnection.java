@@ -127,6 +127,7 @@ public class DbConnection {
     //this method is to add items to the database by the admin
     public boolean addItems(String[] val) {
 
+
         //query to add items into the database
         String query = "INSERT INTO item(item_price,item_stock,item_name,Item_Description) " + "VALUES(" + Integer.parseInt(val[1]) + "," + Integer.parseInt(val[2]) + ",'" + val[3] + "','" + val[4] + "')";
 
@@ -186,6 +187,36 @@ public class DbConnection {
 
         return false;
 
+    }
+
+    /**
+     *  This method is used to delete the
+     * @param itemId
+     * @return
+     */
+    public boolean removeProduct(int itemId){
+
+
+        String query = "DELETE FROM item WHERE item_id="+itemId;
+
+        if(connection!=null)
+            //assigning the statement to null
+            statement = null;
+
+        try {
+            //creating a statement.
+            statement = connection.createStatement();
+            //executing the query
+            statement.executeUpdate(query);
+            return true;
+        } catch (SQLException e) {
+            System.out.println("cannot execute query");
+            e.printStackTrace();
+        }
+
+
+
+        return false;
     }
 
     /**
