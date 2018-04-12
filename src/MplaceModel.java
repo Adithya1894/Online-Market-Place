@@ -194,8 +194,27 @@ public class MplaceModel {
 
         }
 
+
         return false;
 
+    }
+
+    /**
+     * Takes the itemId as input and then deletes the item from the database
+     * Returns true if successfully removed the product, else false.
+     * @param itemId
+     * @return
+     * @throws RemoteException
+     */
+    public boolean removeProduct(int itemId) throws RemoteException {
+
+        if(itemId!=0){
+            if(dbConnection.removeProduct(itemId));
+                return true;
+        }else{
+            System.out.println("Item Id cannot be 0");
+        }
+        return false;
     }
 
 }
