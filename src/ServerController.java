@@ -131,7 +131,8 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
     }
 
     @Override
-    public void remove(Session session, int itemId) throws RemoteException {
+    public void removeProduct(Session session, int itemId) throws RemoteException {
+
 
     }
 
