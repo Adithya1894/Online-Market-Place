@@ -55,6 +55,9 @@ public class Entry {
           else if(type == 2) {
               return "User";
           }
+          else if(type == 3){
+              return "newUser";
+          }
           return "false";
 
 }

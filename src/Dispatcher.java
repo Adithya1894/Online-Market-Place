@@ -13,12 +13,15 @@ public class Dispatcher {
 
     private AbstractFactory userFactory;
 
+    private AbstractFactory newUserFactory;
 
     public Dispatcher() {
         //trying to access the concrete classes via FactoryProducer
         adminFactory = FactoryProducer.getFactory("Admin");
 
         userFactory = FactoryProducer.getFactory("User");
+
+        newUserFactory = FactoryProducer.getFactory("newUser");
 
     }
 
@@ -96,7 +99,7 @@ public class Dispatcher {
 
         }
         //gives the object of customerFactory
-        else {
+        else if(view.equalsIgnoreCase("User")){
 
             //creeating the user view using abstract factory
             User user = userFactory.getUser("User");
@@ -133,6 +136,15 @@ public class Dispatcher {
 
                 }
             }
+
+        }
+        else if(view.equalsIgnoreCase("newUser")){
+
+            //getting the instance of new User.
+            NewUser newUser = newUserFactory.getNewUser("newUser");
+            //displaying the new user view, if registered
+            newUser.display();
+
 
         }
     }

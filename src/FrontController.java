@@ -63,13 +63,8 @@ public class FrontController {
             }
         }
 
-        return false;
-    }
-    //Method which returns true if the user is registered.
-    private boolean isUserRegistered(String view){
-
         //checking if the required view is a new user view
-        if(view.equalsIgnoreCase("newUser")){
+        else if(view.equalsIgnoreCase("newUser")){
             //calling registration method to get the login details
             entry.customerRegistration();
 
@@ -83,15 +78,17 @@ public class FrontController {
 
             password = entry.getPassword();
 
+
+
             if(cc_obj.isUserRegistered(firstName, lastName, userName, password)){
-                return true;
+                session = cc_obj.processLogin("newUser");
+                  return true;
             }
 
         }
 
         return false;
     }
-
 
     /**
      * dispatches the view based upon the login and required view
@@ -103,10 +100,6 @@ public class FrontController {
         if(isAuthenticUser(view)){
             dispatcher.dispatch(view, session);
         }//if the user is not authenticated, then it dispatches the error view
-        else if(isUserRegistered(view)){
-            //dispatcher dispatches the new user registered message, if the user is registered.
-            dispatcher.dispatch_newUser(view);
-        }
         else {
             dispatcher.dispatch_error("Error");
         }
