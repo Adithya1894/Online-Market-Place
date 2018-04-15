@@ -194,10 +194,12 @@ public class Client_Controller {
 
         try {
             if(object.registration(firstName, lastName, userName, password))
+                System.out.println("success");
                 return true;
         }catch (RemoteException e){
             e.printStackTrace();
         }
+        System.out.println("failure");
 
         return false;
     }
