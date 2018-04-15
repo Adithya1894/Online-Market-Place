@@ -25,7 +25,7 @@ public class Dispatcher {
     //added the session variable
     public void dispatch(String view, Session session) {
 
-        int option=0;
+        int option = 0;
 
         //gives the object of concrete Admin
         if (view.equalsIgnoreCase("Admin")) {
@@ -50,7 +50,7 @@ public class Dispatcher {
             Invoker ia = new Invoker();
 
 
-            while (option!=6) {
+            while (option != 6) {
                 option = admin.display();
 
 
@@ -110,7 +110,7 @@ public class Dispatcher {
 
             Invoker ia = new Invoker();
 
-            while(option!=3) {
+            while (option != 3) {
                 option = user.display();
 
 
@@ -136,15 +136,28 @@ public class Dispatcher {
 
         }
     }
-        //if the authentication fails in frontController then the error page is displayed
-        public void dispatch_error(String view){
-            if(view.equalsIgnoreCase("ERROR")){
-                ErrorPage obj = new ErrorPage();
-                obj.print();
 
-            }
+    //if the authentication fails in frontController then the error page is displayed
+    public void dispatch_error(String view) {
+        if (view.equalsIgnoreCase("ERROR")) {
+            ErrorPage obj = new ErrorPage();
+            obj.print();
+
         }
     }
 
+    //This page is displayed when a new Customer is registered.
+    public void dispatch_newUser(String view) {
+
+        //this is used to return a user registered message when a new user is registered.
+        if (view.equalsIgnoreCase("newUserPage")) {
+            NewUserPage newUserPage = new NewUserPage();
+            //creating the entry object to get the firstName of the registered user, so as to wish the user once registeres.
+            Entry entry = new Entry();
+            String firstName = entry.getFirstName();
+            newUserPage.print(firstName);
+        }
+    }
+}
 
 
