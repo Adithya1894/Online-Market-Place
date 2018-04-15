@@ -27,4 +27,12 @@ public abstract class AbstractFactory {
      */
 
     abstract User getUser(String user);
+
+    /**
+     * getNewUser method of abstract factory
+     * this is used by the factory producer to get the newUser object
+     * @param user
+     * @return
+     */
+    abstract NewUser getNewUser(String user);
 }

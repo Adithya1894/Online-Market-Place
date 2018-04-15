@@ -26,8 +26,17 @@ public class AdminFactory extends AbstractFactory {
         return null;
     }
 
+    //returns null since we don't need User object in AdminFactory
     @Override
     User getUser(String user) {
         return null;
     }
+
+    //returns null since we don't need newUser object in AdminFactory
+    @Override
+    NewUser getNewUser(String user) {
+        return null;
+    }
+
+
 }
