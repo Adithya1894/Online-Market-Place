@@ -15,6 +15,10 @@ public class FrontController {
 	//Fixed: added the scope to the session
     //Session variable and assigning it to null
     private Session session = null;
+    private Client_Controller cc_obj = new Client_Controller();
+
+    //object of Entry to get the login details
+    private Entry entry = new Entry();
 
     /**
      * creating the object of Dispatcher class
@@ -32,17 +36,11 @@ public class FrontController {
      */
     private boolean isAuthenticUser(String view) {
 
-        Client_Controller cc_obj = new Client_Controller();
-
-        //object of Entry to get the login details
-        Entry ep = new Entry();
-
-
         if (view.equalsIgnoreCase("Admin")) {
-            ep.adminLogin();
+            entry.adminLogin();
             //getting the values from the entry point.
-            String id = ep.getAdminUserId();
-            String pass = ep.getAdminPass();
+            String id = entry.getAdminUserId();
+            String pass = entry.getAdminPass();
 
             //control goes to client controller to verify the login
             if(cc_obj.loginAdmin(id, pass)){
@@ -53,16 +51,42 @@ public class FrontController {
         }else if(view.equalsIgnoreCase("User"))
         {
 
-            ep.customerLogin();
+            entry.customerLogin();
             //getting the values of user Id and Password from the entry point file
-            String id = ep.getUserId();
-            String pass = ep.getPass();
+            String id = entry.getUserId();
+            String pass = entry.getPass();
             //control goes to client controller to verify the login
             if(cc_obj.loginUser(id, pass)){
                 //if the login is successful, then it creates a sesison obejct
                 session = cc_obj.processLogin("User");
                 return true;
             }
+        }
+
+        return false;
+    }
+    //Method which returns true if the user is registered.
+    private boolean isUserRegistered(String view){
+
+        //checking if the required view is a new user view
+        if(view.equalsIgnoreCase("newUser")){
+            //calling registration method to get the login details
+            entry.customerRegistration();
+
+            String firstName, lastName, userName, password;
+
+            firstName = entry.getFirstName();
+
+            lastName = entry.getLastName();
+
+            userName = entry.getUserName();
+
+            password = entry.getPassword();
+
+            if(cc_obj.isUserRegistered(firstName, lastName, userName, password)){
+                return true;
+            }
+
         }
 
         return false;
@@ -79,6 +103,10 @@ public class FrontController {
         if(isAuthenticUser(view)){
             dispatcher.dispatch(view, session);
         }//if the user is not authenticated, then it dispatches the error view
+        else if(isUserRegistered(view)){
+            //dispatcher dispatches the new user registered message, if the user is registered.
+            dispatcher.dispatch_newUser(view);
+        }
         else {
             dispatcher.dispatch_error("Error");
         }

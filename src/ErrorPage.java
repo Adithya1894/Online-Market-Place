@@ -12,7 +12,7 @@
  * invalid input
  */
 public class ErrorPage {
-
+    //Method which prints the error message when invoked.
     public void print(){
         System.out.println("Login incorrect, Please enter correct credentials");
     }
