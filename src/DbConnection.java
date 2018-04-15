@@ -272,6 +272,42 @@ public class DbConnection {
 
     }
 
+
+    public ResultSet loginUser(String userName, String password){
+
+        //query to find if the user is a valid user
+        String query = "SELECT * from tbl_customers where username= \""+userName+ "\" AND password= \""+password + "\"";
+
+        if (connection != null) {
+            statement = null;
+            resultSet = null;
+            try {
+
+                //creating a statement.
+                statement = connection.createStatement();
+
+                try {
+                    //Executing the created statement
+                    resultSet = statement.executeQuery(query);
+
+
+                    //Returning the result of executed query at desired location
+                    return resultSet;
+                } catch (SQLException e1) {
+                    System.out.println("Query cannot be executed");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            //returning the resultSet to the Model.
+            return resultSet;
+        } else {
+            System.out.println("Cannot retreive User, try again");
+            return null;
+        }
+
+    }
+
     /**
      * if the connection is established, then it returns a true.
      * @return
