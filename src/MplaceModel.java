@@ -42,16 +42,18 @@ public class MplaceModel {
 
     }
 
-    boolean loginUser(String uname, String pass) {
+    public boolean loginUser(String uname, String pass) {
 
         //making a comparison to check if the entered username equals the initialized one
-        if (this.username.equals(uname) && this.userpass.equals(pass))
+        ResultSet resultSet = null;
 
+        //getting the result from the database, only if the values match
+        resultSet = dbConnection.loginUser(uname, pass);
+
+        if(resultSet!=null)
             return true;
 
-        else {
-            return false;
-        }
+        return false;
     }
 
     //Athentication for admin
