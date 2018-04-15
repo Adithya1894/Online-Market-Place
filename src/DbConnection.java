@@ -294,7 +294,7 @@ public class DbConnection {
                     //Returning the result of executed query at desired location
                     return resultSet;
                 } catch (SQLException e1) {
-                    System.out.println("Query cannot be executed");
+                    System.out.println("Query can't be executed");
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -302,7 +302,7 @@ public class DbConnection {
             //returning the resultSet to the Model.
             return resultSet;
         } else {
-            System.out.println("Cannot retreive User, try again");
+            System.out.println("Cannot retreive Customer, try again");
             return null;
         }
 
