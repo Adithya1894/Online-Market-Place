@@ -17,11 +17,7 @@ public class MplaceModel {
 
     // Ryan: Please include useful comments in each file.
     //fixed
-    //private fields so, other classes cannot access these fields
-    private String username;
-    private String userpass;
-    private String adminId;
-    private String adminPass;
+    //Removed the unneccessary fields.
 
 
 	// Ryan: Shouldn't these have a scope associated with them?
@@ -67,6 +63,14 @@ public class MplaceModel {
         if(resultSet!=null)
             return true;
         //else return false
+        return false;
+    }
+    //This method is used for new User registration.
+    boolean registered(String firstName, String lastName, String userName, String password){
+
+        if(dbConnection.registration(firstName, lastName, userName, password)) {
+            return true;
+        }
         return false;
     }
 
@@ -178,26 +182,12 @@ public class MplaceModel {
      */
     public boolean addItems(String[] items) {
 
+        //if items are successfully added into database then return true, else false
+        if (dbConnection.addItems(items)) {
 
-        //boolean variable to determine the status of the add item query.
-        boolean status;
-
-        if (items != null) {
-
-            //calling the addItems method to add the item into the database.
-            status = dbConnection.addItems(items);
-
-            if (status) {
-                return true;
-            }
-
-            return false;
-
+            return true;
         }
-
-
         return false;
-
     }
 
     /**

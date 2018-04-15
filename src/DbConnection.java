@@ -308,6 +308,38 @@ public class DbConnection {
 
     }
 
+    public boolean registration(String firstName, String lastName, String userName, String password){
+
+        String query = "INSERT INTO tbl_customers(firstName,lastName,userName,password) " + "VALUES('" + firstName + "','" + lastName + "','" + userName + "','" + password + "')";
+
+
+        if (connection != null) {
+
+            statement = null;
+            try {
+
+                //creating a statement to execute the query
+                statement = connection.createStatement();
+
+                    //executing the Insert query
+                    statement.executeUpdate(query);
+                    return true;
+
+                }
+
+             catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+         else
+            return false;
+
+        return false;
+
+
+
+    }
+
     /**
      * if the connection is established, then it returns a true.
      * @return

@@ -41,7 +41,10 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
     @Override
     public boolean registration(String firstName, String lastName, String userName, String password) throws RemoteException {
 
-        return false;
+        boolean val = false;
+
+        val = obj.registered(firstName, lastName, userName, password);
+        return val;
     }
 
     /**
