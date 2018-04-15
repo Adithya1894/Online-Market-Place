@@ -23,6 +23,9 @@ public class Entry {
 
     private String pass;
 
+    //these fields are for user Registration.
+    private String firstName, lastName, userName, password;
+
     //private Session session = null;
 
 
@@ -40,6 +43,7 @@ public class Entry {
 
           System.out.println(" Enter 1 for Admin Login");
           System.out.println(" Enter 2 for Customer Login");
+          System.out.println(" Enter 3 for Customer Registration");
           System.out.println("Enter your choice: ");
 
           type = Integer.parseInt(sc.nextLine());
@@ -88,6 +92,32 @@ public class Entry {
     }
 
     /**
+     * This method is responsible to take the user details and store them in the database.
+     */
+    public void customerRegistration(){
+
+
+
+        //Taking the input from the command Line.
+        System.out.println("Enter the First Name: ");
+
+        firstName = sc.nextLine();
+
+        System.out.println("Enter the Last Name: ");
+
+        lastName = sc.nextLine();
+
+        System.out.println("Enter the User Name: ");
+
+        userName = sc.nextLine();
+
+        System.out.println("Enter the password: ");
+
+        password = sc.nextLine();
+
+    }
+
+    /**
      * getter methods to access the values
      * @return
      */
@@ -108,4 +138,19 @@ public class Entry {
     }
 
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }
