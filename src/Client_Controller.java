@@ -179,13 +179,26 @@ public class Client_Controller {
     public static boolean removeProduct(Session session, int itemId){
         //trying to connect to the server and access the removeProducts method
         try{
-            //if item removed then the return value is true.
-            if(object.removeProduct(session, itemId));
+            //if item removed then the return value is true.d
+            if(object.removeProduct(session, itemId))
                 return true;
         }catch (RemoteException e){
             e.printStackTrace();
         }
         //if item is not removed then item value is not removed and return false.
+        return false;
+    }
+
+    //returns true if the new user is registered into the system
+    public static boolean isUserRegistered(String firstName, String lastName, String userName, String password){
+
+        try {
+            if(object.registration(firstName, lastName, userName, password))
+                return true;
+        }catch (RemoteException e){
+            e.printStackTrace();
+        }
+
         return false;
     }
 
