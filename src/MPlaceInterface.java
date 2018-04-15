@@ -19,12 +19,11 @@ public interface MPlaceInterface extends Remote{
      * @param firstName
      * @param lastName
      * @param userName
-     * @param email
      * @param password
      * @throws RemoteException
      */
-    @RequiresRole("User")
-    void registration(Session session, String firstName, String lastName,String userName, String email, String password) throws RemoteException;
+    //@RequiresRole("User")
+    boolean registration(String firstName, String lastName,String userName, String password) throws RemoteException;
 
     /**
      *

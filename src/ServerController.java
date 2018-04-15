@@ -32,17 +32,16 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
 
     /**
      * Registration method, this is currently not implemented
-     * @param session
      * @param firstName
      * @param lastName
      * @param userName
-     * @param email
      * @param password
      * @throws RemoteException
      */
     @Override
-    public void registration(Session session, String firstName, String lastName, String userName, String email, String password) throws RemoteException {
+    public boolean registration(String firstName, String lastName, String userName, String password) throws RemoteException {
 
+        return false;
     }
 
     /**
