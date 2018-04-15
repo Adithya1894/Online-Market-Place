@@ -21,9 +21,6 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
     private  MplaceModel obj = new MplaceModel();
 
 
-
-
-
     //private String name;
 
     public ServerController() throws RemoteException{
@@ -211,9 +208,6 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
             e.printStackTrace();
         }
 
-
-
     }
-
 
 }
