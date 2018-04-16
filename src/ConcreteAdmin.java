@@ -37,12 +37,15 @@ public class ConcreteAdmin implements Admin {
         System.out.println();
 
 //options displayed to the user
-            System.out.println("1.browse Items");
-            System.out.println("2.Update items");
-            System.out.println("3. remove items");
-            System.out.println("4. add Items");
-            System.out.println("5.Purchase Items, This Method wont work in ADMIN View(RBAC Demo)");
-
+            System.out.println("1. Browse Items");
+            System.out.println("2. Update Items");
+            System.out.println("3. Remove Items");
+            System.out.println("4. Add Items");
+            System.out.println("5. Purchase Items, This Method wont work in ADMIN View(RBAC Demo)");
+            System.out.println("6. Add New Customer");
+            System.out.println("7. Add New Admin");
+            System.out.println("8. Remove Customer");
+            System.out.println("9. List All Customers");
             System.out.println("Enter Choice");
 
             //taking the input from the user
@@ -73,6 +76,14 @@ public class ConcreteAdmin implements Admin {
                 case 5:
                     return 5;
 
+                case 6:
+                    return 6;
+
+                case 7:
+                    return 7;
+
+                case 8:
+                    return 8;
 
                 default:
                     System.out.println("Please enter a valid choice! from the menu, you entered" + i);
@@ -261,5 +272,36 @@ public class ConcreteAdmin implements Admin {
 
     }
 
+    /**
+     * This method is used to add a new customer into the system by the administrator
+     * @param session
+     */
+    public void addNewCustomer(Session session){
+
+    }
+
+    /**
+     * This method is used to add new Admin into the system, this new admin will have all the functionality as the old admin
+     * @param session
+     */
+    public void addNewAdmin(Session session){
+
+    }
+
+    /**
+     * This method is used to remove customers from the database
+     * @param session
+     */
+    public void removeCusomter(Session session){
+
+    }
+
+    /**
+     * This method is used to list all the existing customers from the database.
+     * @param session
+     */
+    public void listAllCustomers(Session session){
+
+    }
 
 }
