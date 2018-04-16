@@ -207,7 +207,7 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
         val = obj.deleteItemFromCart(session.getUser().getUserName().toString(), itemId);
 
 
-        return false;
+        return val;
     }
 
     /**
