@@ -208,4 +208,52 @@ public class MplaceModel {
         return false;
     }
 
+    /**
+     * this method is used to add items into the cart of the particular user using the application
+     * @param userName
+     * @param itemId
+     * @return
+     */
+    public boolean addItemToCart(String userName, int itemId){
+        boolean val;
+
+        val = dbConnection.addItemToCart(userName, itemId);
+
+
+
+
+        return val;
+    }
+
+    /**
+     *
+     * @param userName
+     * @param itemId
+     * @return
+     */
+    public boolean deleteItemFromCart(String userName, int itemId){
+        boolean val;
+
+
+        val = dbConnection.deleteItemFromCart(userName, itemId);
+
+
+        return val;
+    }
+
+    /**
+     *
+     * @param userName
+     * @return
+     */
+    public List<String> displayUserCart(String userName){
+        List<String> cartList = new ArrayList<String>();
+
+        cartList = dbConnection.displayUserCart(userName);
+
+        return cartList;
+
+    }
+
+
 }
