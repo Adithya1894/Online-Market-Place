@@ -205,6 +205,33 @@ public class Client_Controller {
     }
 
     /**
+     * This method is used to add new customers into the database, this can only be done by admin
+     * @param session
+     * @param customerDetails
+     * @return
+     */
+    public static boolean addNewCustomer(Session session, String[] customerDetails){
+
+        return false;
+    }
+
+    /**
+     * This method is used to add new Admin into the database, this can only be done by Admin
+     * @param session
+     * @param adminDetails
+     * @return
+     */
+    public static boolean addNewAdmin(Session session, String[] adminDetails){
+
+        return false;
+    }
+
+    public static boolean removeCustomer(Session session, int userId){
+
+        return false;
+    }
+
+    /**
      *Main method of the controller
      * @param args
      * @throws RemoteException
