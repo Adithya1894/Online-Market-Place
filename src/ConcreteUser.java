@@ -24,7 +24,7 @@ public class ConcreteUser implements User {
      *
      */
     @Override
-    public int display() {
+    public int display(Session session) {
 
         // System.out.println("Welcome User");
 
@@ -34,7 +34,7 @@ public class ConcreteUser implements User {
     //getting the input from the user
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Welcome Customer");
+        System.out.println("Welcome "+session.getUser().getUserName().toUpperCase().toString()+" Enjoy your customized portal");
 
         System.out.println();
 
