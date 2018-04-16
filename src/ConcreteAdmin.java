@@ -277,7 +277,50 @@ public class ConcreteAdmin implements Admin {
      * This method is used to add a new customer into the system by the administrator
      * @param session
      */
-    public void addNewCustomer(Session session){
+    public void addNewCustomer(Session session) {
+        //initializing the customerDetails to empty string.
+        String[] customerDetails = {"", "", "", "", ""};
+        System.out.println("Enter the details of the Customer to be added!");
+        System.out.println("");
+        //reading the input from the user
+        Scanner sc = new Scanner(System.in);
+        //entering the details into the string array
+        for (int i = 1; i < 5; i++) {
+        //if i == 1, then the users firstName is taken in to the system
+            if (i == 1) {
+                System.out.println("Enter the First Name of the Customer");
+                customerDetails[i] = sc.nextLine();
+
+            }//for i == 2, the user's lastName is taken into the database
+            if (i == 2) {
+
+                System.out.println("Enter the Last Name of the Customer");
+                customerDetails[i] = sc.nextLine();
+
+            }// for i == 3 the users userName is taken into the database
+            if (i == 3) {
+                System.out.println("enter the User Name of the Customer");
+                customerDetails[i] = sc.nextLine();
+            }// for i == 4 the users password is taken into the database
+            if (i == 4) {
+
+                System.out.println("enter the Password of the customer");
+                customerDetails[i] = sc.nextLine();
+            }
+
+        }
+        try {
+            //calling the server using client controller and we are passing the session object as well as string array
+            boolean status = client_controller.addNewCustomer(session, customerDetails);
+            //checks if the status is true, here status is a boolean value, returns true if the new customer is added into the database, if not contains false.
+            if (status)
+                System.out.println("Customer added into the database successfully.");
+            else
+                System.out.println("problem adding Customer, try again");
+        }//if the method cannot be accessed, then it throws an authourization exception
+        catch (AuthorizationException e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 
@@ -286,6 +329,52 @@ public class ConcreteAdmin implements Admin {
      * @param session
      */
     public void addNewAdmin(Session session){
+
+        //initializing the customerDetails to empty string.
+        String[] adminDetails = {"","", "", "", ""};
+        System.out.println("Enter the details of the Admin to be added!");
+        System.out.println("");
+        //reading the input from the user
+        Scanner sc = new Scanner(System.in);
+        //entering the details into the string array
+        for (int i = 1; i < 5; i++) {
+            //if i == 1, then the users firstName is taken in to the system
+            if (i == 1) {
+                System.out.println("Enter the First Name of Admin");
+                adminDetails[i] = sc.nextLine();
+
+            }//for i == 2, the user's lastName is taken into the database
+            if (i == 2) {
+
+                System.out.println("Enter the Last Name of Admin");
+                adminDetails[i] = sc.nextLine();
+
+            }// for i == 3 the users userName is taken into the database
+            if (i == 3) {
+                System.out.println("enter the User Name of Admin");
+                adminDetails[i] = sc.nextLine();
+            }// for i == 4 the users password is taken into the database
+            if (i == 4) {
+
+                System.out.println("enter the Password of Admin");
+                adminDetails[i] = sc.nextLine();
+            }
+
+        }
+        try {
+            //calling the server using client controller and we are passing the session object as well as string array
+            boolean status = client_controller.addNewAdmin(session, adminDetails);
+            //checks if the status is true, here status is a boolean value, returns true if the new customer is added into the database, if not contains false.
+            if (status)
+                System.out.println("Admin added into the database successfully.");
+            else
+                System.out.println("problem adding Admin, try again");
+        }//if the method cannot be accessed, then it throws an authourization exception
+        catch (AuthorizationException e) {
+            System.out.println(e.getMessage());
+        }
+
+
 
     }
 
@@ -297,14 +386,28 @@ public class ConcreteAdmin implements Admin {
 
         System.out.println("Enter the userId to be removed: ");
 
+        //creating a scanner object
         Scanner scanner = new Scanner(System.in);
 
+        //getting the customerId
         int userId = scanner.nextInt();
 
-
+        try{
+            //calling the method on the server side, to remove the customer with the given userId
+            boolean status  = client_controller.removeCustomer(session, userId);
+            //display this message to the user if the customer is removed, else display the error message.
+            if(status)
+                System.out.println("Customer removed successfully from the database");
+            else
+                System.out.println("problem removing Customer, please try again");
+        }//if the method cannot be accessed, then it throws an authourization exception
+        catch (AuthorizationException e){
+            System.out.println(e.getMessage());
+        }
 
 
     }
+
 
     /**
      * This method is used to list all the existing customers from the database.
