@@ -32,11 +32,12 @@ public class ConcreteAdmin implements Admin {
 
         Scanner sc = new Scanner(System.in);
 
+        //simply displaying the greeting message by using the userName
         System.out.println("Welcome "+session.getUser().getUserName().toUpperCase().toString()+" you have full access to the system");
 
         System.out.println();
 
-//options displayed to the user
+            //options displayed to the user
             System.out.println("1. Browse Items");
             System.out.println("2. Update Items");
             System.out.println("3. Remove Items");
@@ -56,35 +57,35 @@ public class ConcreteAdmin implements Admin {
         while(i!= 6) {
             switch (i) {
 
-
+                //Browse items method is invoked on returning 1
                 case 1:
                     return 1;
 
-
+                //Update items methos is invoked on case 2
                 case 2:
                     return 2;
 
-
+                //Remove items method is invoked on case 3
                 case 3:
                     return 3;
 
-
+                //Add items method is invoked on case 4
                 case 4:
                     return 4;
 
                 //added this case for unauthorised method(RBAC)
                 case 5:
                     return 5;
-
+                //addNewCustomer method is invoked on case 6
                 case 6:
                     return 6;
-
+                //addNewAdmin method is invoked on case 7
                 case 7:
                     return 7;
-
+                //removeCustomer method is invoked on case 8
                 case 8:
                     return 8;
-
+                //default case
                 default:
                     System.out.println("Please enter a valid choice! from the menu, you entered" + i);
             }
@@ -293,6 +294,15 @@ public class ConcreteAdmin implements Admin {
      * @param session
      */
     public void removeCusomter(Session session){
+
+        System.out.println("Enter the userId to be removed: ");
+
+        Scanner scanner = new Scanner(System.in);
+
+        int userId = scanner.nextInt();
+
+
+
 
     }
 
