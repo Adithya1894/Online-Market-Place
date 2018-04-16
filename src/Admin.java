@@ -46,4 +46,28 @@ public interface Admin {
      */
     void purchase(Session session);
 
+    /**
+     * This method is used to add new customers into the database
+     * @param session
+     */
+    void addNewCustomer(Session session);
+
+    /**
+     * This method is used to add new admin into the database
+     * @param session
+     */
+    void addNewAdmin(Session session);
+
+    /**
+     * This method is used to remove already existing customer from the database.
+     * @param session
+     */
+    void removeCusomter(Session session);
+
+    /**
+     * This method is used to list all the customers registered in the system.
+     * @param session
+     */
+    void listAllCustomers(Session session);
+
 }
