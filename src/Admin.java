@@ -15,7 +15,7 @@ public interface Admin {
      * welcome method
      * @return
      */
-    int display();
+    int display(Session session);
 
     /**
      * browseItems method to access the items

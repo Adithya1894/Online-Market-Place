@@ -12,7 +12,7 @@ public interface User {
     /**
      *just the display method which is used by concreteUser class
      */
-    int display();
+    int display(Session session);
 
     /**
      *browseItems method which is being used by ConcreteUser class

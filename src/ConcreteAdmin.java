@@ -26,13 +26,13 @@ public class ConcreteAdmin implements Admin {
      * @return
      */
     @Override
-    public int display() {
+    public int display(Session session) {
         int i = 0;
 
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Welcome Admin");
+        System.out.println("Welcome "+session.getUser().getUserName().toUpperCase().toString()+" you have full access to the system");
 
         System.out.println();
 
