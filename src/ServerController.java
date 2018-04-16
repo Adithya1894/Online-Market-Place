@@ -12,6 +12,7 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -173,19 +174,56 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
         return session;
     }
 
+    /**
+     *Adds new items into the cart corresponding to each user.
+     * @param session
+     * @param itemId
+     * @return
+     * @throws RemoteException
+     */
     @Override
     public boolean addItemToCart(Session session, int itemId) throws RemoteException {
-        return false;
+
+        boolean val;
+
+        //calling the addItemToCart method present in the Model. return true if the item is added successfully, else false.
+        val = obj.addItemToCart(session.getUser().getUserName().toString(), itemId);
+
+
+        return val;
     }
 
+    /**
+     * deletes the item from the cart, corresponding to the user
+     * @param session
+     * @param itemId
+     * @return
+     * @throws RemoteException
+     */
     @Override
     public boolean deleteItemFromCart(Session session, int itemId) throws RemoteException {
+
+        boolean val;
+        val = obj.deleteItemFromCart(session.getUser().getUserName().toString(), itemId);
+
+
         return false;
     }
 
+    /**
+     * Displays the items in the user cart.
+     * @param session
+     * @return
+     * @throws RemoteException
+     */
     @Override
     public List<String> displayUserCart(Session session) throws RemoteException {
-        return null;
+
+        List<String> cartList = new ArrayList<String>();
+
+        cartList = obj.displayUserCart(session.getUser().getUserName().toString());
+
+        return cartList;
     }
 
 
