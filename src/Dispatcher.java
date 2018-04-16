@@ -54,7 +54,7 @@ public class Dispatcher {
 
 
             while (option != 6) {
-                option = admin.display();
+                option = admin.display(session);
 
 
                 switch (option) {
@@ -114,7 +114,7 @@ public class Dispatcher {
             Invoker ia = new Invoker();
 
             while (option != 3) {
-                option = user.display();
+                option = user.display(session);
 
 
                 switch (option) {
