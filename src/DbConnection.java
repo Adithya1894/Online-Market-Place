@@ -16,8 +16,8 @@ import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class DbConnection {
@@ -336,8 +336,49 @@ public class DbConnection {
 
         return false;
 
+    }
+
+    /**
+     * This method is used to add the item into the cart, this is connected to the database
+     * @param userName
+     * @param itemId
+     * @return
+     */
+    public boolean addItemToCart(String userName, int itemId){
+        boolean val;
 
 
+        return val;
+
+
+    }
+
+    /**
+     * THis method is used to delete item from the cart, this is connected to the database
+     * @param userName
+     * @param itemId
+     * @return
+     */
+    public boolean deleteItemFromCart(String userName, int itemId){
+
+        boolean val;
+
+        return val;
+
+    }
+
+    /**
+     * This method is used to display user cart data.
+     * @param userName
+     * @return
+     */
+    public List<String> displayUserCart(String userName){
+        //initializing a new arraylist
+        List<String> cartList = new ArrayList<String>();
+
+
+
+        return cartList;
     }
 
     /**
