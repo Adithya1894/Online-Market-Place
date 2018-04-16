@@ -173,6 +173,21 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
         return session;
     }
 
+    @Override
+    public boolean addItemToCart(Session session, int itemId) throws RemoteException {
+        return false;
+    }
+
+    @Override
+    public boolean deleteItemFromCart(Session session, int itemId) throws RemoteException {
+        return false;
+    }
+
+    @Override
+    public List<String> displayUserCart(Session session) throws RemoteException {
+        return null;
+    }
+
 
     /**
      *

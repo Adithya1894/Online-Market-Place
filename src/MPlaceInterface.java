@@ -98,5 +98,25 @@ public interface MPlaceInterface extends Remote{
     //ProcessLogin method is invoked, whenever a user is authenticated to create a session object and return it
     Session processLogin(String userType, String userName) throws RemoteException;
 
+    //method to add items into the cart for the specific user
+    boolean addItemToCart(Session session, int itemId) throws RemoteException;
+
+    /**
+     * Method delete item from cart takes the session and item Id as input and deletes the item from the cart
+     * of specific user
+     * @param session
+     * @param itemId
+     * @return
+     * @throws RemoteException
+     */
+    boolean deleteItemFromCart(Session session, int itemId) throws RemoteException;
+
+    /**
+     * Mehtod displayUserData takes the session as argument and displays the user's cart data.
+     * @param session
+     * @return
+     * @throws RemoteException
+     */
+    List<String> displayUserCart(Session session) throws RemoteException;
 
 }
