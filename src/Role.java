@@ -16,6 +16,7 @@ import java.io.Serializable;
 public class Role implements Serializable{
 
 
+    //private fields
     private String userRole, userName, firstName;
 
 
@@ -30,11 +31,12 @@ public class Role implements Serializable{
 
         return userRole;
     }
-
+    //returns the user name
     public String getUserName() {
         return userName;
     }
 
+    //returns the user firstName, this method is not yet implemented.
     public String getFirstName() {
         return firstName;
     }
