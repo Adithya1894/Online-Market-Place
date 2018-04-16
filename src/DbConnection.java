@@ -345,7 +345,7 @@ public class DbConnection {
      * @return
      */
     public boolean addItemToCart(String userName, int itemId){
-        boolean val;
+        boolean val = false;
 
 
         return val;
@@ -361,7 +361,7 @@ public class DbConnection {
      */
     public boolean deleteItemFromCart(String userName, int itemId){
 
-        boolean val;
+        boolean val = false;
 
         return val;
 
