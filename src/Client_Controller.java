@@ -49,10 +49,10 @@ public class Client_Controller {
      * @param userType
      * @return
      */
-    public  Session processLogin(String userType){
+    public  Session processLogin(String userType, String userName){
 
         try {
-            session = object.processLogin(userType);
+            session = object.processLogin(userType, userName);
         } catch (RemoteException e) {
             e.printStackTrace();
         }

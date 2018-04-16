@@ -16,16 +16,22 @@ import java.io.Serializable;
 public class Role implements Serializable{
 
 
-    private String userRole;
+    private String userRole, userName;
 
-    public Role(String userRole)
+
+    public Role(String userRole, String userName)
     {
         this.userRole=userRole;
+        this.userName = userName;
     }
 
     //returns the user role
     public String getRoleType(){
 
         return userRole;
+    }
+
+    public String getUserName() {
+        return userName;
     }
 }

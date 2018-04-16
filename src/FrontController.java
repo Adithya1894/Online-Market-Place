@@ -45,7 +45,7 @@ public class FrontController {
             //control goes to client controller to verify the login
             if(cc_obj.loginAdmin(id, pass)){
             //if the login is successful, then it creates a sesison obejct
-                session = cc_obj.processLogin("Admin");
+                session = cc_obj.processLogin("Admin", id);
                 return true;
             }
         }else if(view.equalsIgnoreCase("User"))
@@ -58,7 +58,7 @@ public class FrontController {
             //control goes to client controller to verify the login
             if(cc_obj.loginUser(id, pass)){
                 //if the login is successful, then it creates a sesison obejct
-                session = cc_obj.processLogin("User");
+                session = cc_obj.processLogin("User", id);
                 return true;
             }
         }
@@ -81,7 +81,7 @@ public class FrontController {
 
 
             if(cc_obj.isUserRegistered(firstName, lastName, userName, password)){
-                session = cc_obj.processLogin("newUser");
+                session = cc_obj.processLogin("newUser", userName);
                   return true;
             }
 

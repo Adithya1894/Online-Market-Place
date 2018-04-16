@@ -18,9 +18,9 @@ public class Session implements Serializable{
     private  Role role;
 
     //Instantiating the Role class to get his role
-    public Session(String userRole)
+    public Session(String userRole, String userName)
     {
-        this.role = new Role(userRole);
+        this.role = new Role(userRole, userName);
     }
 
     //returns the role of the user. this is being used by reflection in this application so far

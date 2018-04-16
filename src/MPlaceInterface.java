@@ -96,7 +96,7 @@ public interface MPlaceInterface extends Remote{
     String hello() throws RemoteException;
 
     //ProcessLogin method is invoked, whenever a user is authenticated to create a session object and return it
-    Session processLogin(String userType) throws RemoteException;
+    Session processLogin(String userType, String userName) throws RemoteException;
 
 
 }
