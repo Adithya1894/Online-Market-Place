@@ -216,7 +216,7 @@ public class Client_Controller {
 
         try {
             //returns a boolean value to show the status of the addition of customer
-            status = object.adNewCustomer(session,customerDetails);
+            status = object.addNewCustomer(session,customerDetails);
             if(status)
                 return status;
 
@@ -276,7 +276,7 @@ public class Client_Controller {
      * @return
      */
     public List<String> listAllCustomers(Session session){
-
+        //List to store the details of the customers and deliver it to the client
         List<String> allCustomers = new ArrayList<>();
         try {
             //returns a List of Strings and stored in the val variable.
