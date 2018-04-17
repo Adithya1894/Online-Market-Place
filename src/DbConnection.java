@@ -388,6 +388,28 @@ public class DbConnection {
      */
     public boolean addNewCustomer(String[] customerDetails){
 
+        //query to add items into the database
+        String query = "INSERT INTO tbl_customers(firstName,lastName,userName,password) " + "VALUES('" + customerDetails[1] + "','" + customerDetails[2] + "','" + customerDetails[3] + "','" + customerDetails[4] + "')";
+
+        //checking if connection is not null
+        if (connection != null) {
+
+            statement = null;
+            try {
+
+                //creating a statement
+                statement = connection.createStatement();
+
+                    //executing the Insert query
+                    statement.executeUpdate(query);
+                    return true;
+
+                } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } else
+            return false;
+
         return false;
     }
 
