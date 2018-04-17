@@ -41,13 +41,20 @@ public class MplaceModel {
     public boolean loginUser(String uname, String pass) {
 
         //making a comparison to check if the entered username equals the initialized one
-        ResultSet resultSet = null;
+        ResultSet resultSet;
 
         //getting the result from the database, only if the values match
         resultSet = dbConnection.loginUser(uname, pass);
+        try {
 
-        if(resultSet!=null)
-            return true;
+            if(!resultSet.next())
+                return true;
+
+        }catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
 
         return false;
     }
@@ -55,13 +62,18 @@ public class MplaceModel {
     //Athentication for admin
     boolean loginAdmin(String adminId, String adminPass) {
         //System.out.println(adminId +" "+adminPass);
-        ResultSet resultSet = null;
+        ResultSet resultSet;
 
         //getting the result set from the database, if the values match.
         resultSet = dbConnection.loginAdmin(adminId,adminPass);
         //if resultSet is not null, then the user is authenticated, return true
-        if(resultSet!=null)
-            return true;
+        try {
+
+            if(!resultSet.next())
+                return true;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
         //else return false
         return false;
     }
