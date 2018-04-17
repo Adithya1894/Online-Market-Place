@@ -174,7 +174,7 @@ public class ConcreteAdmin implements Admin {
 
     /**
      * method to remove the items from the database
-     * not yet implemented
+     *
      */
     @Override
     public void removeItems(Session session){
@@ -423,7 +423,54 @@ public class ConcreteAdmin implements Admin {
     @Override
     public void listAllCustomers(Session session){
 
+        List<String> val;
 
+        //method returns a string of array.
+        try {
+
+            //calls the server side method using the client controller and then stores the value in the list of Strings.
+            val = client_controller.listAllCustomers(session);
+
+            //declaring the string variables, and assigning the values to the
+            String customerId,firstName,lastName,userName;
+            String[] item;
+            customerId="Customer ID";
+            firstName="First Name";
+            lastName="Last Name";
+            userName="User Name";
+
+
+            System.out.println("====================================================================================");
+            //Formatting the output.
+            System.out.printf("\n%-7s %-15s %-10s %-15s \n",customerId,firstName,lastName,userName);
+            for(int i=0;i<val.size();i++)
+            {
+                //displaying the formatted output.
+                item=val.get(i).split(",");
+                for(int j=0;j<item.length;j++)
+                {
+                    if(j==0){
+
+                        System.out.printf("%-8s",item[j]);
+                    }
+                    else if(j==1){
+                        System.out.printf("%-16s",item[j]);
+                    }
+                    else if(j==2){
+                        System.out.printf("%-11s",item[j]);
+                    }
+                    else {
+                        System.out.printf("$"+"%-15s",item[j]);
+                    }
+                }
+                System.out.printf("\n");
+                System.out.println("================================================================================");
+
+            }
+        }
+        catch (AuthorizationException e){
+            e.getMessage();
+        }
 
     }
 
