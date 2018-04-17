@@ -226,9 +226,25 @@ public class Client_Controller {
         return false;
     }
 
+    /**
+     * This method is used to remove customers from the database
+     * @param session
+     * @param userId
+     * @return
+     */
     public static boolean removeCustomer(Session session, int userId){
 
         return false;
+    }
+
+    /**
+     * This method is used to list all the customers in the database
+     * @param session
+     * @return
+     */
+    public List<String> listAllCustomers(Session session){
+
+        return null;
     }
 
     /**
