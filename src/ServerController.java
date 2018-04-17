@@ -276,6 +276,7 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
     }
 
     /**
+     * This method is only accessible to Admin
      * This method is to list all the customers present in the database
      * @param session
      * @return
@@ -283,7 +284,15 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
      */
     @Override
     public List<String> listAllCustomers(Session session) throws RemoteException {
-        return null;
+
+        //Declaring a List of strings to assign the values returned by the database
+        List<String> list;
+
+        //calling the browsingUser method in the model.
+        list = obj.listAllCustomers();
+
+        //returns the list of customers, if no customers then it returns null.
+        return list;
     }
 
 
