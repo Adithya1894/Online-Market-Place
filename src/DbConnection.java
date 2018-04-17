@@ -315,6 +315,7 @@ public class DbConnection {
      * @return
      */
     public boolean addItemToCart(String userName, int itemId){
+
         boolean val = false;
 
 
@@ -358,9 +359,9 @@ public class DbConnection {
      */
     public boolean addNewCustomer(String[] customerDetails){
 
-        //query to add items into the database
+        //query to add customers into the database
         String query = "INSERT INTO tbl_customers(firstName,lastName,userName,password) " + "VALUES('" + customerDetails[1] + "','" + customerDetails[2] + "','" + customerDetails[3] + "','" + customerDetails[4] + "')";
-
+        //calling the execute query method
         boolean val = executeQuery(query);
 
         return val;
