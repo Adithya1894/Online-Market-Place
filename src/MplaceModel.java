@@ -299,4 +299,18 @@ public class MplaceModel {
         return val;
     }
 
+    /**
+     * This method is used to list all the customers from the database
+     * This method is only accessible to Administrator
+     * @return
+     */
+    public List<String> listAllCustomers(){
+        //declared a list to store the customer details.
+        List<String> customersList;
+        //calling the database to get the list of customers.
+        customersList = dbConnection.listAllCustomers();
+        //returning the list to the server controller.
+        return customersList;
+    }
+
 }

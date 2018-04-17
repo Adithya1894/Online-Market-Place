@@ -252,7 +252,7 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
     @Override
     public boolean addNewAdmin(Session session, String[] adminDetails) throws RemoteException {
         //calls the addNewAdmin method present in the Model to add the details of the Admin to the database
-        boolean val = obj.addnewAdmin(adminDetails);
+        boolean val = obj.addNewAdmin(adminDetails);
         //returns the status to the client controller
         return val;
     }
