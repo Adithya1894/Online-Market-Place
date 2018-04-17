@@ -183,21 +183,9 @@ public class DbConnection {
         //query to reduce the stock once the purchase is made
         String query = "UPDATE item SET item_stock="+stock+" WHERE item_id="+itemId;
 
-        if(connection!=null)
-            //assigning the statement to null
-            statement = null;
+        boolean val = executeQuery(query);
 
-        try {
-            //creating a statement.
-            statement = connection.createStatement();
-            //executing the query
-                statement.executeUpdate(query);
-                return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return false;
+        return val;
 
     }
 
@@ -313,28 +301,9 @@ public class DbConnection {
         String query = "INSERT INTO tbl_customers(firstName,lastName,userName,password) " + "VALUES('" + firstName + "','" + lastName + "','" + userName + "','" + password + "')";
 
 
-        if (connection != null) {
+       boolean val = executeQuery(query);
 
-            statement = null;
-            try {
-
-                //creating a statement to execute the query
-                statement = connection.createStatement();
-
-                    //executing the Insert query
-                    statement.executeUpdate(query);
-                    return true;
-
-                }
-
-             catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-         else
-            return false;
-
-        return false;
+       return val;
 
     }
 
@@ -391,6 +360,14 @@ public class DbConnection {
         //query to add items into the database
         String query = "INSERT INTO tbl_customers(firstName,lastName,userName,password) " + "VALUES('" + customerDetails[1] + "','" + customerDetails[2] + "','" + customerDetails[3] + "','" + customerDetails[4] + "')";
 
+        boolean val = executeQuery(query);
+
+        return val;
+    }
+
+
+    public boolean executeQuery(String query){
+
         //checking if connection is not null
         if (connection != null) {
 
@@ -400,11 +377,11 @@ public class DbConnection {
                 //creating a statement
                 statement = connection.createStatement();
 
-                    //executing the Insert query
-                    statement.executeUpdate(query);
-                    return true;
+                //executing the Insert query
+                statement.executeUpdate(query);
+                return true;
 
-                } catch (SQLException e) {
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
         } else
