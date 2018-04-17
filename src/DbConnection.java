@@ -398,7 +398,7 @@ public class DbConnection {
      */
     public boolean addNewAdmin(String[] adminDetails){
 
-        String query = "INSERT INTO tbl_customers(firstName,lastName,userName,password) " + "VALUES('" + adminDetails[1] + "','" + adminDetails[2] + "','" + adminDetails[3] + "','" + adminDetails[4] + "')";
+        String query = "INSERT INTO tbl_admin(firstName,lastName,userName,password) " + "VALUES('" + adminDetails[1] + "','" + adminDetails[2] + "','" + adminDetails[3] + "','" + adminDetails[4] + "')";
 
         boolean val;
         synchronized (this) {
