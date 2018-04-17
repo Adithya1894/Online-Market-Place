@@ -47,8 +47,11 @@ public class MplaceModel {
         resultSet = dbConnection.loginUser(uname, pass);
         try {
 
-            if(!resultSet.next())
+            if(!resultSet.next()!=false)
+            {
+                //resultSet.beforeFirst();
                 return true;
+            }
 
         }catch (SQLException e)
         {
@@ -69,8 +72,13 @@ public class MplaceModel {
         //if resultSet is not null, then the user is authenticated, return true
         try {
 
-            if(!resultSet.next())
+            if(resultSet.next()!=false)
+            {
+                //resultSet.beforeFirst();
                 return true;
+
+            }
+
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -317,12 +325,39 @@ public class MplaceModel {
      * @return
      */
     public List<String> listAllCustomers(){
-        //declared a list to store the customer details.
-        List<String> customersList;
-        //calling the database to get the list of customers.
-        customersList = dbConnection.listAllCustomers();
-        //returning the list to the server controller.
-        return customersList;
+        //Creating a new arrayList to add the items and return it to the Client
+        List<String> customerList = new ArrayList<>();
+        String data;
+        int i = 0;
+
+        //careating a new object of the DbConnection class
+
+        //checking if the connection is established
+        if (dbConnection.isConnectionEstablished()) {
+
+            try {
+
+                resultSet = dbConnection.listAllCustomers();
+                while (resultSet.next()) {
+                    //getting the result from the database using the DbConnection class
+                    data = resultSet.getString("customer_id") + "," + resultSet.getString("firstName") + "," + resultSet.getString("lastName") + "," + resultSet.getString("userName");
+                    //adding the items into the arrayList
+                    customerList.add(i, data);
+                    i++;
+                }
+
+                return customerList;
+
+                //catching the sql exception
+            } catch (SQLException e) {
+
+                System.out.println("cannot get the result!");
+
+            }
+
+        }
+
+        return null;
     }
 
 }
