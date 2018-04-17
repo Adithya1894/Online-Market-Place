@@ -235,7 +235,11 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
      */
     @Override
     public boolean addNewCustomer(Session session, String[] customerDetails) throws RemoteException {
-        return false;
+
+        //calls the addNewCustomer method present in the Model to add the datails of the customer to the database
+        boolean status = obj.addNewCustomer(customerDetails);
+        //returns the status about adding the customer.
+        return status;
     }
 
     /**
@@ -247,7 +251,10 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
      */
     @Override
     public boolean addNewAdmin(Session session, String[] adminDetails) throws RemoteException {
-        return false;
+        //calls the addNewAdmin method present in the Model to add the details of the Admin to the database
+        boolean val = obj.addnewAdmin(adminDetails);
+        //returns the status to the client controller
+        return val;
     }
 
     /**
@@ -259,7 +266,13 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
      */
     @Override
     public boolean removeCustomer(Session session, int userId) throws RemoteException {
-        return false;
+
+
+        //calling the removeProduct method in the model to remove the items and return true if removed successfully.
+        boolean val = obj.removeCustomer(userId);
+        //returns the status of the deletion
+        return val;
+
     }
 
     /**
