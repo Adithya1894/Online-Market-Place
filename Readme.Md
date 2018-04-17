@@ -1,6 +1,6 @@
-# Assignment 4    
-Implementation of RMI, MVC, Command Pattern  
-Abstract Factory, Front Controller for the online MarketPlace application  
+# Assignment 5    
+Full App Functionality  
+Implementation of the synchronization patterns  
 
 Clone the project using the command git clone https://github.iu.edu/amorampu/csci50700_spring2018_marketplace.git  
 
