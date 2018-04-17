@@ -440,7 +440,7 @@ public class ConcreteAdmin implements Admin {
             userName="User Name";
 
 
-            System.out.println("====================================================================================");
+            System.out.println("================================================================================");
             //Formatting the output.
             System.out.printf("\n%-7s %-15s %-10s %-15s \n",customerId,firstName,lastName,userName);
             for(int i=0;i<val.size();i++)
@@ -464,9 +464,10 @@ public class ConcreteAdmin implements Admin {
                     }
                 }
                 System.out.printf("\n");
-                System.out.println("================================================================================");
+
 
             }
+            System.out.println("================================================================================");
         }
         catch (AuthorizationException e){
             e.getMessage();
