@@ -99,9 +99,11 @@ public interface MPlaceInterface extends Remote{
     Session processLogin(String userType, String userName) throws RemoteException;
 
     //method to add items into the cart for the specific user
+    @RequiresRole("User")
     boolean addItemToCart(Session session, int itemId) throws RemoteException;
 
     /**
+     * This method is only accessible to customers
      * Method delete item from cart takes the session and item Id as input and deletes the item from the cart
      * of specific user
      * @param session
@@ -109,14 +111,58 @@ public interface MPlaceInterface extends Remote{
      * @return
      * @throws RemoteException
      */
+    @RequiresRole("User")
     boolean deleteItemFromCart(Session session, int itemId) throws RemoteException;
 
     /**
+     * This method is only accessible to Customer
      * Mehtod displayUserData takes the session as argument and displays the user's cart data.
      * @param session
      * @return
      * @throws RemoteException
      */
+    @RequiresRole("User")
     List<String> displayUserCart(Session session) throws RemoteException;
 
+    /**
+     * This method is used to add new customers into the database,
+     * This is only accessible to Administrator and it takes the argument as a String array of customer details.
+     * @param session
+     * @param customerDetails
+     * @return
+     * @throws RemoteException
+     */
+    @RequiresRole("Admin")
+    boolean addNewCustomer(Session session, String[] customerDetails) throws RemoteException;
+
+    /**
+     * This method is used to add new admin into the database
+     * This is only accessible to Administrator.
+     * @param session
+     * @param adminDetails
+     * @return
+     * @throws RemoteException
+     */
+    @RequiresRole("Admin")
+    boolean addNewAdmin(Session session, String[] adminDetails) throws RemoteException;
+
+    /**
+     * This method is to remove the specific user from the system
+     * This method is only accessible to Administrator.
+     * @param session
+     * @param userId
+     * @return
+     * @throws RemoteException
+     */
+    @RequiresRole("Admin")
+    boolean removeCustomer(Session session, int userId) throws RemoteException;
+
+    /**
+     * This method is used by the Administrator to list all the registered users in the system.
+     * @param session
+     * @return
+     * @throws RemoteException
+     */
+    @RequiresRole("Admin")
+    List<String> listAllCustomers(Session session) throws RemoteException;
 }
