@@ -85,6 +85,9 @@ public class ConcreteAdmin implements Admin {
                 //removeCustomer method is invoked on case 8
                 case 8:
                     return 8;
+                 //this case is for listing all the customers in the database.
+                case 9:
+                    return 9;
                 //default case
                 default:
                     System.out.println("Please enter a valid choice! from the menu, you entered" + i);
