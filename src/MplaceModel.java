@@ -226,7 +226,7 @@ public class MplaceModel {
     }
 
     /**
-     *
+     *This method is used to delete the items present in the user cart
      * @param userName
      * @param itemId
      * @return
@@ -234,10 +234,9 @@ public class MplaceModel {
     public boolean deleteItemFromCart(String userName, int itemId){
         boolean val;
 
-
+        //calling the database conncetion calss to get the hold of deleteItemFromCart method to delete the items present in the users cart.
         val = dbConnection.deleteItemFromCart(userName, itemId);
-
-
+        //Returns the status of deletion.
         return val;
     }
 
@@ -247,13 +246,12 @@ public class MplaceModel {
      * @return
      */
     public List<String> displayUserCart(String userName){
-        List<String> cartList = new ArrayList<String>();
-
+        //Declaring a list to store the details from the retrieved cart
+        List<String> cartList;
+        //calls the displayUserCart in the database connection class and stores the values in cartList.
         cartList = dbConnection.displayUserCart(userName);
-
+        //returns this value to the client
         return cartList;
 
     }
-
-
 }
