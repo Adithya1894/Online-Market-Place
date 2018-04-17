@@ -233,7 +233,15 @@ public class Client_Controller {
      * @return
      */
     public static boolean removeCustomer(Session session, int userId){
-
+        //trying to connect to the server and access the removeProducts method
+        try{
+            //if customer is removed then the return value is true.d
+            if(object.removeCustomer(session, userId))
+                return true;
+        }catch (RemoteException e){
+            e.printStackTrace();
+        }
+        //if customer is not removed then item value is not removed and return false.
         return false;
     }
 
@@ -244,7 +252,16 @@ public class Client_Controller {
      */
     public List<String> listAllCustomers(Session session){
 
-        return null;
+        List<String> allCustomers = new ArrayList<>();
+        try {
+            //returns a List of Strings and stored in the val variable.
+            allCustomers = object.listAllCustomers(session);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
+
+        return allCustomers;
     }
 
     /**
