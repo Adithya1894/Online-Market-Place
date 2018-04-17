@@ -382,6 +382,45 @@ public class DbConnection {
     }
 
     /**
+     *
+     * @param customerDetails
+     * @return
+     */
+    public boolean addNewCustomer(String[] customerDetails){
+
+        return false;
+    }
+
+    /**
+     *
+     * @param adminDetails
+     * @return
+     */
+    public boolean addNewAdmin(String[] adminDetails){
+
+        return false;
+    }
+
+    /**
+     *
+     * @param userId
+     * @return
+     */
+    public boolean removeCustomer(int userId){
+
+        return false;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public List<String> listAllCustomers(){
+
+        return null;
+    }
+
+    /**
      * if the connection is established, then it returns a true.
      * @return
      */
