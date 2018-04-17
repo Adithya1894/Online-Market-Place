@@ -118,7 +118,7 @@ public class ConcreteAdmin implements Admin {
             itemPrice="Price";
             itemDescription = "Description";
 
-
+            System.out.println("====================================================================================");
             //Formatting the output.
             System.out.printf("\n%-7s %-15s %-10s %-15s %-30s\n",itemId,itemName,itemStock,itemPrice,itemDescription);
             for(int i=0;i<val.size();i++)
@@ -129,13 +129,13 @@ public class ConcreteAdmin implements Admin {
                 {
                     if(j==0){
 
-                        System.out.printf("%-7s",item[j]);
+                        System.out.printf("%-8s",item[j]);
                     }
                     else if(j==1){
-                        System.out.printf("%-15s",item[j]);
+                        System.out.printf("%-16s",item[j]);
                     }
                     else if(j==2){
-                        System.out.printf("%-10s",item[j]);
+                        System.out.printf("%-11s",item[j]);
                     }
                     else if(j==3){
                         System.out.printf("$"+"%-15s",item[j]);
@@ -144,6 +144,7 @@ public class ConcreteAdmin implements Admin {
                     }
                 }
                 System.out.printf("\n");
+                System.out.println("================================================================================");
 
             }
         }
@@ -277,6 +278,7 @@ public class ConcreteAdmin implements Admin {
      * This method is used to add a new customer into the system by the administrator
      * @param session
      */
+    @Override
     public void addNewCustomer(Session session) {
         //initializing the customerDetails to empty string.
         String[] customerDetails = {"", "", "", "", ""};
@@ -328,6 +330,7 @@ public class ConcreteAdmin implements Admin {
      * This method is used to add new Admin into the system, this new admin will have all the functionality as the old admin
      * @param session
      */
+    @Override
     public void addNewAdmin(Session session){
 
         //initializing the customerDetails to empty string.
@@ -382,6 +385,7 @@ public class ConcreteAdmin implements Admin {
      * This method is used to remove customers from the database
      * @param session
      */
+    @Override
     public void removeCusomter(Session session){
 
         System.out.println("Enter the userId to be removed: ");
@@ -413,7 +417,10 @@ public class ConcreteAdmin implements Admin {
      * This method is used to list all the existing customers from the database.
      * @param session
      */
+    @Override
     public void listAllCustomers(Session session){
+
+
 
     }
 
