@@ -212,6 +212,19 @@ public class Client_Controller {
      */
     public static boolean addNewCustomer(Session session, String[] customerDetails){
 
+        boolean status;
+
+        try {
+            //returns a boolean value to show the status of the addition of customer
+            status = object.adNewCustomer(session,customerDetails);
+            if(status)
+                return status;
+
+            return false;
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
         return false;
     }
 
@@ -222,6 +235,18 @@ public class Client_Controller {
      * @return
      */
     public static boolean addNewAdmin(Session session, String[] adminDetails){
+        boolean status;
+
+        try {
+            //returns a boolean value to show the status of the addition of new Admin
+            status = object.addNewAdmin(session,adminDetails);
+            if(status)
+                return status;
+
+            return false;
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
 
         return false;
     }
