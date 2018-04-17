@@ -49,6 +49,15 @@ public class Dispatcher {
             Command concretePurchase = new ConcretePurchase(admin, session);
 
 
+            //objects to access the command methods in the concreteAdmin class
+            //object of concreteAdmin will be created here
+            Command concreteAddNewCustomer = new ConcreteAddNewCustomer(admin, session);
+
+            Command concreteRemoveCustomer = new ConcreteRemoveCustomer(admin, session);
+
+            Command concreteAddNewAdmin = new ConcreteAddNewAdmin(admin, session);
+
+
             //invoker object to invoke the functionality of command pattern
             Invoker ia = new Invoker();
 
