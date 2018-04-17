@@ -226,6 +226,53 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
         return cartList;
     }
 
+    /**
+     * This method is to add new customers into the database
+     * @param session
+     * @param customerDetails
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public boolean addNewCustomer(Session session, String[] customerDetails) throws RemoteException {
+        return false;
+    }
+
+    /**
+     * This method is to add new Admins into the database
+     * @param session
+     * @param adminDetails
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public boolean addNewAdmin(Session session, String[] adminDetails) throws RemoteException {
+        return false;
+    }
+
+    /**
+     * This method is to remove customers from the database
+     * @param session
+     * @param userId
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public boolean removeCustomer(Session session, int userId) throws RemoteException {
+        return false;
+    }
+
+    /**
+     * This method is to list all the customers present in the database
+     * @param session
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public List<String> listAllCustomers(Session session) throws RemoteException {
+        return null;
+    }
+
 
     /**
      *
