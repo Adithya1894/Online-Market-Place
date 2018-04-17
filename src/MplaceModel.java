@@ -47,7 +47,7 @@ public class MplaceModel {
         resultSet = dbConnection.loginUser(uname, pass);
         try {
 
-            if(!resultSet.next()!=false)
+            if(resultSet.next()!=false)
             {
                 //resultSet.beforeFirst();
                 return true;
