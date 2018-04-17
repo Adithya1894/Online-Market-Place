@@ -54,7 +54,7 @@ public class ConcreteAdmin implements Admin {
 
             //based on the choice, these values are returned back to the dispatcher of the front controller
             //where it creates the object of this class to access the methods such as browse, update
-        while(i!= 6) {
+
             switch (i) {
 
                 //Browse items method is invoked on returning 1
@@ -92,7 +92,7 @@ public class ConcreteAdmin implements Admin {
                 default:
                     System.out.println("Please enter a valid choice! from the menu, you entered" + i);
             }
-        }
+
         return 0;
     }
 
