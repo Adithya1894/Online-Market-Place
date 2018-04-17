@@ -102,26 +102,31 @@ public class Dispatcher {
                     case 5: {
                         ia.takeCommand(concretePurchase);
                         ia.placeCommand();
+                        break;
                     }
 
                     case 6: {
                         ia.takeCommand(concreteAddNewCustomer);
                         ia.placeCommand();
+                        break;
                     }
 
                     case 7: {
                         ia.takeCommand(concreteAddNewAdmin);
                         ia.placeCommand();
+                        break;
                     }
 
                     case 8: {
                         ia.takeCommand(concreteRemoveCustomer);
                         ia.placeCommand();
+                        break;
                     }
 
                     case 9: {
                         ia.takeCommand(concreteListAllCustomers);
                         ia.placeCommand();
+                        break;
                     }
                 }
                 option = 0;
