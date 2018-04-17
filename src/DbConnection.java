@@ -292,7 +292,7 @@ public class DbConnection {
 
 
                     //Returning the result of executed query at desired location
-                    return resultSet;
+
                 } catch (SQLException e1) {
                     System.out.println("Query can't be executed");
                 }
@@ -415,9 +415,36 @@ public class DbConnection {
      *
      * @return
      */
-    public List<String> listAllCustomers(){
+    public ResultSet listAllCustomers(){
 
-        return null;
+        //checking if the connection object is not null
+        if (connection != null) {
+            statement = null;
+            resultSet = null;
+            try {
+
+                //creating a statement.
+                statement = connection.createStatement();
+
+                try {
+                    //Executing the created statement
+                    resultSet = statement.executeQuery("SELECT * FROM `tbl_customers`");
+
+
+                    //Returning the result of executed query at desired location
+                    return resultSet;
+                } catch (SQLException e1) {
+                    System.out.println("Query cannot be executed");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            return resultSet;
+        } else {
+            System.out.println("Connection is not established");
+            return null;
+        }
     }
 
     /**
