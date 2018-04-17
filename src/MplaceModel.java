@@ -209,7 +209,7 @@ public class MplaceModel {
     }
 
     /**
-     * this method is used to add items into the cart of the particular user using the application
+     * This method is used to add items into the cart of the particular user using the application
      * @param userName
      * @param itemId
      * @return
@@ -218,9 +218,6 @@ public class MplaceModel {
         boolean val;
 
         val = dbConnection.addItemToCart(userName, itemId);
-
-
-
 
         return val;
     }
@@ -241,7 +238,7 @@ public class MplaceModel {
     }
 
     /**
-     *
+     *This method is used to display the user cart data.
      * @param userName
      * @return
      */
@@ -254,4 +251,52 @@ public class MplaceModel {
         return cartList;
 
     }
+
+    /**
+     * This method is used by Server Controller to add new users into the database
+     * This method is only accessible to the Administrator
+     * @param customerDetails
+     * @return
+     */
+    public boolean addNewCustomer(String[] customerDetails){
+
+        //declared a boolean variable
+        boolean val;
+        //this boolean variable stores the status, if the details are added successfully to the database or not
+        val = dbConnection.addNewCustomer(customerDetails);
+        //returns the status to the client.
+        return val;
+
+    }
+
+    /**
+     * This method is used to add new Administrators into the database
+     * This method is only accessible to Administrators
+     * @param adminDetails
+     * @return
+     */
+    public boolean addNewAdmin(String[] adminDetails){
+        //declared a boolean variable
+        boolean val;
+        //this is to get the status on whether the items are added into the database or not
+        val = dbConnection.addNewAdmin(adminDetails);
+        //returns the value to the server controller.
+        return val;
+    }
+
+    /**
+     * This method is used to delete the customers from the database
+     * This method is only accessible to Administrators
+     * @param userId
+     * @return
+     */
+    public boolean removeCustomer(int userId){
+        //declared a boolean variable
+        boolean val;
+        //this is to get the status on whether the user is deleted from the database or not
+        val = dbConnection.removeCustomer(userId);
+        //returns the value to the server controller.
+        return val;
+    }
+
 }
