@@ -57,12 +57,14 @@ public class Dispatcher {
 
             Command concreteAddNewAdmin = new ConcreteAddNewAdmin(admin, session);
 
+            Command concreteListAllCustomers = new ConcreteListAllCustomers(admin, session);
+
 
             //invoker object to invoke the functionality of command pattern
             Invoker ia = new Invoker();
 
 
-            while (option != 6) {
+            while (option != 10) {
                 option = admin.display(session);
 
 
@@ -99,6 +101,26 @@ public class Dispatcher {
                     //command for RBAC Demo, Admin cannot execute this
                     case 5: {
                         ia.takeCommand(concretePurchase);
+                        ia.placeCommand();
+                    }
+
+                    case 6: {
+                        ia.takeCommand(concreteAddNewCustomer);
+                        ia.placeCommand();
+                    }
+
+                    case 7: {
+                        ia.takeCommand(concreteAddNewAdmin);
+                        ia.placeCommand();
+                    }
+
+                    case 8: {
+                        ia.takeCommand(concreteRemoveCustomer);
+                        ia.placeCommand();
+                    }
+
+                    case 9: {
+                        ia.takeCommand(concreteListAllCustomers);
                         ia.placeCommand();
                     }
                 }
