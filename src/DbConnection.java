@@ -37,7 +37,8 @@ public class DbConnection {
     }
 
     //static,since we need only one instance of connection
-    private Connection connection = null;
+    //used the volatile keyword to make the system more robust towards concurrent requests towards connection
+    private volatile Connection connection = null;
     //declaring the variables of type statement and resultSet and assigning them to null.
     Statement statement = null;
     ResultSet resultSet = null;
@@ -397,7 +398,14 @@ public class DbConnection {
      */
     public boolean addNewAdmin(String[] adminDetails){
 
-        return false;
+        String query = "INSERT INTO tbl_customers(firstName,lastName,userName,password) " + "VALUES('" + adminDetails[1] + "','" + adminDetails[2] + "','" + adminDetails[3] + "','" + adminDetails[4] + "')";
+
+        boolean val;
+        synchronized (this) {
+
+            val = executeQuery(query);
+        }
+        return val;
     }
 
     /**
@@ -406,8 +414,12 @@ public class DbConnection {
      * @return
      */
     public boolean removeCustomer(int userId){
-
-        return false;
+        String query = "DELETE FROM tbl_customers where customer_id = " +userId;
+        boolean val;
+        synchronized (this) {
+            val = executeQuery(query);
+        }
+        return val;
     }
 
     /**
