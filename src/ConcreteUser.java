@@ -42,6 +42,8 @@ public class ConcreteUser implements User {
 
             System.out.println("1.browse Items");
             System.out.println("2.Purchase Items");
+            System.out.println("3. List Items in the cart");
+            System.out.println("4. Add Items to cart");
 
             System.out.println("Enter Choice");
 
@@ -59,6 +61,10 @@ public class ConcreteUser implements User {
                 case 2:
                     return 2;
 
+                case 3:
+                    return 3;
+                case 4:
+                    return 4;
                 default:
                     System.out.println("Please enter a valid choice! from the menu, you entered" + i);
             }
