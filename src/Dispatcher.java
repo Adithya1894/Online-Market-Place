@@ -146,17 +146,24 @@ public class Dispatcher {
 
             Command concreteUserPurchaseItems = new ConcreteUserPurchaseItems(user, session);
 
+            Command concreteAddItemToCart = new ConcreteAddToCart(user, session);
+
+            Command concreteListAllItems = new ConcreteListAllItems(user, session);
+
+            Command concreteDeleteFromCart = new ConcreteDeleteFromCart(user, session);
 
             Invoker ia = new Invoker();
 
-            while (option != 3) {
+            while (option != 6) {
                 option = user.display(session);
 
 
+                //we are invoking the command and executing them
                 switch (option) {
 
+
                     case 1: {
-                        //we are invoking the command and executing them
+
                         ia.takeCommand(cbr);
                         ia.placeCommand();
                         break;
@@ -165,6 +172,24 @@ public class Dispatcher {
                     //we are invoking the command and executing them
                     case 2: {
                         ia.takeCommand(concreteUserPurchaseItems);
+                        ia.placeCommand();
+                        break;
+                    }
+
+                    case 3: {
+                        ia.takeCommand(concreteAddItemToCart);
+                        ia.placeCommand();
+                        break;
+                    }
+
+                    case 4: {
+                        ia.takeCommand(concreteListAllItems);
+                        ia.placeCommand();
+                        break;
+                    }
+
+                    case 5:{
+                        ia.takeCommand(concreteDeleteFromCart);
                         ia.placeCommand();
                         break;
                     }
