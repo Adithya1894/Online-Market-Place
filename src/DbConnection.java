@@ -6,9 +6,6 @@
 
 //amorampu
 
-
-
-
 // Ryan: Do you really need the entire package here?
 //Fixed: only added the required packages
 import java.sql.ResultSet;
@@ -106,7 +103,7 @@ public class DbConnection {
 
     }
 
-    public ResultSet getUniqueItem(int itemId){
+    public synchronized ResultSet getUniqueItem(int itemId){
         //checking if the connection object is not null
         if (connection != null) {
             statement = null;
@@ -316,11 +313,11 @@ public class DbConnection {
      */
     public boolean addItemToCart(String userName, int itemId){
 
-        boolean val = false;
+        String query = "INSERT INTO tbl_cart(username, item_id) " + "VALUES('" + userName + "','" + itemId + "')";
 
+        boolean val = executeQuery(query);
 
         return val;
-
 
     }
 
@@ -332,10 +329,11 @@ public class DbConnection {
      */
     public boolean deleteItemFromCart(String userName, int itemId){
 
-        boolean val = false;
+        String query = "DELETE FROM tbl_cart WHERE username= '"+userName+"' AND item_id="+itemId;
+
+        boolean val=executeQuery(query);
 
         return val;
-
     }
 
     /**
@@ -347,6 +345,7 @@ public class DbConnection {
         //initializing a new arraylist
         List<String> cartList = new ArrayList<String>();
 
+        String query = "SELECT * from tbl_customers where username= \""+userName+ "\"";
 
 
         return cartList;
