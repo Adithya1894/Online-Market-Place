@@ -176,13 +176,13 @@ public class Dispatcher {
                         break;
                     }
 
-                    case 3: {
+                    case 4: {
                         ia.takeCommand(concreteAddItemToCart);
                         ia.placeCommand();
                         break;
                     }
 
-                    case 4: {
+                    case 3: {
                         ia.takeCommand(concreteListAllItems);
                         ia.placeCommand();
                         break;
