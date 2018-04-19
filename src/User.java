@@ -26,5 +26,12 @@ public interface User {
      */
     void purchase(Session session);
 
+    //Below 3 methods are to access and modify cart items per each user
+    void addToCart(Session session);
+
+    void deleteFromCart(Session session);
+
+    void listCartItems(Session session);
+
 
 }
