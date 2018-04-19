@@ -309,6 +309,25 @@ public class Client_Controller {
     }
 
     /**
+     * This method is used to add item to the cart.
+     * @param session
+     * @param itemId
+     * @return
+     */
+    public boolean addItemToCart(Session session, int itemId){
+
+        boolean status = false;
+
+        try {
+            status = object.addItemToCart(session,itemId);
+        }catch (RemoteException e){
+            e.getMessage();
+        }
+
+        return false;
+    }
+
+    /**
      *Main method of the controller
      * @param args
      * @throws RemoteException
