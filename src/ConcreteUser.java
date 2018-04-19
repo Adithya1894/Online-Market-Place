@@ -166,4 +166,55 @@ public class ConcreteUser implements User {
             System.out.println(e.getMessage());
         }
     }
+
+    @Override
+    public void addToCart(Session session) {
+
+
+        System.out.println("Enter the Id of the product to be added to the cart");
+        System.out.println("");
+        //reading the input from the user
+        Scanner sc = new Scanner(System.in);
+        //entering the details into the string array
+
+        int itemId =sc.nextInt();
+
+        try {
+            //calling the server using client controller and we are passing the session object as well as string array
+            boolean status = client_controller.addItemToCart(session, itemId);
+
+            if(status)
+                System.out.println("Item added to the cart successfully.");
+            else
+                System.out.println("problem adding the product, try again");
+        }//if the method cannot be accessed, then it throws an authourization exception
+        catch (AuthorizationException e){
+            System.out.println(e.getMessage());
+        }
+
+
+    }
+
+    @Override
+    public void deleteFromCart(Session session) {
+
+    }
+
+    @Override
+    public void listCartItems(Session session) {
+        //initialized a empty list of strings
+        List<String> val;
+
+        try{
+            val = client_controller.listCartItems(session);
+            //printing the data from the user cart.
+            for(String items: val){
+                System.out.println(items);
+            }
+        }catch (AuthorizationException e){
+            e.getMessage();
+        }
+
+
+    }
 }
