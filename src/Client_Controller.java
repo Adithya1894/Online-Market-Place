@@ -320,11 +320,29 @@ public class Client_Controller {
 
         try {
             status = object.addItemToCart(session,itemId);
+
+            if(status)
+                return status;
         }catch (RemoteException e){
             e.getMessage();
         }
 
-        return false;
+        return status;
+    }
+
+    public boolean deleteFromCart(Session session, int itemId){
+        boolean status = false;
+
+        try{
+            status = object.deleteItemFromCart(session, itemId);
+
+            if(status)
+                return status;
+
+        }catch (RemoteException e){
+            e.getMessage();
+        }
+        return status;
     }
 
     /**
