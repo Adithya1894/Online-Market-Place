@@ -289,6 +289,25 @@ public class Client_Controller {
         return allCustomers;
     }
 
+
+    /**
+     * This method is used to list the user cart data.
+     */
+
+    public List<String> listCartItems(Session session){
+        //initializing a empty arrayList.
+        List<String> cartData = new ArrayList<>();
+
+        try {
+            //calling the displayUserCart on server side
+            cartData=object.displayUserCart(session);
+        }catch (RemoteException e){
+            e.printStackTrace();
+        }
+
+        return cartData;
+    }
+
     /**
      *Main method of the controller
      * @param args
