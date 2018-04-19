@@ -198,6 +198,22 @@ public class ConcreteUser implements User {
     @Override
     public void deleteFromCart(Session session) {
 
+        System.out.println("Enter the Id of the product to be deleted from the cart!");
+
+        Scanner scanner = new Scanner(System.in);
+
+        int itemId = scanner.nextInt();
+
+        try {
+            boolean status = client_controller.deleteFromCart(session, itemId);
+
+            if(status)
+                System.out.println("Item deleted successfully");
+
+            System.out.println("problem deleting from the cart");
+        }catch (AuthorizationException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
