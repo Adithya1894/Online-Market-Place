@@ -33,7 +33,7 @@ public class DbConnection {
     }
 
     //static,since we need only one instance of connection
-    //used the volatile keyword to make the system more robust towards concurrent requests towards connection
+    //making the connection object volatile so that this block acts as if synchronized but doesn't lock the entire block.
     private volatile Connection connection = null;
     //declaring the variables of type statement and resultSet and assigning them to null.
     Statement statement = null;
