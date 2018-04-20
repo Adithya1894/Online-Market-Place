@@ -146,16 +146,16 @@ public class ConcreteUser implements User {
      */
     @Override
     public void purchase(Session session) {
-
-        System.out.println("Enter the itemId: ");
-        //creating a scanner object
-        Scanner scanner = new Scanner(System.in);
-        //taking the item id input from the user.
-        int option = scanner.nextInt();
+//
+//        System.out.println("Enter the itemId: ");
+//        //creating a scanner object
+//        Scanner scanner = new Scanner(System.in);
+//        //taking the item id input from the user.
+//        int option = scanner.nextInt();
         //method returns a string of array.
         try {
             //purchase items returns a boolean
-            List<String> result=client_controller.purchaseItems(session, option);
+            List<String> result=client_controller.purchaseItems(session);
 
             for(String string: result){
                 System.out.println("result");

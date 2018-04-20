@@ -297,7 +297,7 @@ public class ConcreteAdmin implements Admin {
 
         //method returns a string of array.
         try {
-            client_controller.purchaseItems(session, 3);
+            client_controller.purchaseItems(session);
             System.out.println("Method not implemented");
         }
         catch (AuthorizationException e){
