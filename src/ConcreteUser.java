@@ -167,7 +167,7 @@ public class ConcreteUser implements User {
     public void addToCart(Session session) {
 
 
-        System.out.println("Enter the Id of the product to be added to the cart");
+        System.out.println("Enter the Id of the product to be added to the cart from above list");
         System.out.println("");
         //reading the input from the user
         Scanner sc = new Scanner(System.in);
