@@ -155,11 +155,11 @@ public class ConcreteUser implements User {
         //method returns a string of array.
         try {
             //purchase items returns a boolean
-            if(client_controller.purchaseItems(session, option))
-                System.out.println("Item purchase success!");
+            List<String> result=client_controller.purchaseItems(session, option);
 
-            else
-                System.out.println("Item out of stock");
+            for(String string: result){
+                System.out.println("result");
+            }
         }
         //throws an authorization exception if the user is not authorized to access this method.
         catch (AuthorizationException e){
