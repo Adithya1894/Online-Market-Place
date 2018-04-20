@@ -25,7 +25,7 @@ public class DbConnection {
 
     //returns the connection object.
     public Connection getConnection() {
-    //checking if the connection is established, if the connection is established then it returns the connection
+        //checking if the connection is established, if the connection is established then it returns the connection
         if (connectionEstablished)
             return connection;
 
@@ -175,14 +175,17 @@ public class DbConnection {
      * @param stock
      * @return
      */
-    public boolean purchaseItems(int itemId, int stock) {
+    public String purchaseItems(int itemId, int stock) {
 
         //query to reduce the stock once the purchase is made
         String query = "UPDATE item SET item_stock="+stock+" WHERE item_id="+itemId;
 
         boolean val = executeQuery(query);
+        if(! val) {
+            return "Error in Updating Quantity";
+        }
+        return itemId+"  Purchased";
 
-        return val;
 
     }
 
@@ -298,9 +301,9 @@ public class DbConnection {
         String query = "INSERT INTO tbl_customers(firstName,lastName,userName,password) " + "VALUES('" + firstName + "','" + lastName + "','" + userName + "','" + password + "')";
 
 
-       boolean val = executeQuery(query);
+        boolean val = executeQuery(query);
 
-       return val;
+        return val;
 
     }
 
@@ -329,6 +332,21 @@ public class DbConnection {
     public boolean deleteItemFromCart(String userName, int itemId){
 
         String query = "DELETE FROM tbl_cart WHERE username= '"+userName+"' AND item_id="+itemId;
+
+        boolean val=executeQuery(query);
+
+        return val;
+    }
+
+    /**
+     * THis method is used to delete item from the cart, this is connected to the database
+     * @param userName
+     * @param
+     * @return
+     */
+    public boolean deleteItemFromCart(String userName){
+
+        String query = "DELETE FROM tbl_cart WHERE username= '"+userName+"'";
 
         boolean val=executeQuery(query);
 
