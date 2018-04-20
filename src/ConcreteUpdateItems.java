@@ -33,6 +33,8 @@ public class ConcreteUpdateItems implements Command{
     @Override
     public void execute() {
 
-        obj.updateItems();
+        obj.browseItems(session);
+        obj.updateItems(session);
+
     }
 }

@@ -164,11 +164,40 @@ public class ConcreteAdmin implements Admin {
      * this is not yet implemented
      */
     @Override
-    public void updateItems(){
+    public void updateItems(Session session){
+
+        System.out.println("Select the item to be updated from the given list!");
+
+        String update="";
+
+        Scanner scanner = new Scanner(System.in);
+
+        int itemId = scanner.nextInt();
+
+        System.out.println("1. Update Stock");
+
+        System.out.println("2. Update Price");
+
+        System.out.println("3. Update Description");
+
+        System.out.println("Enter your choice: ");
+
+        int choice = scanner.nextInt();
 
 
 
-        System.out.println("Update Items will be updated next time");
+        System.out.println("Enter the updated value: ");
+
+        Scanner string = new Scanner(System.in);
+
+        update = string.nextLine();
+
+        boolean val = client_controller.updateItems(session, itemId, choice, update);
+
+        if(val)
+            System.out.println("item Update success");
+        else
+        System.out.println("Cannot update item");
 
     }
 
