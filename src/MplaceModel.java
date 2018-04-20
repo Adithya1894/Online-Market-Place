@@ -99,60 +99,107 @@ public class MplaceModel {
      * @return
      */
     public boolean purchase(String userName, int itemId) {
-
         ResultSet resultSet = null;
-        int stock = 0;
-
-        //checking if the conection is established
-        if (dbConnection.isConnectionEstablished()) {
-            try {
-                //getting the resultset of the required item to find the available stock
-                resultSet = dbConnection.getUniqueItem(itemId);
-                while (resultSet.next()) {
-                    //getting  the stock and storing it in the stock variable
-                    stock = Integer.parseInt(resultSet.getString("item_stock").toString());
-
-                    System.out.println(stock);
-                }
-                //chaging the result set to previous point as, it is null now
-                resultSet.beforeFirst();
-
-
-                while (resultSet.next()) {
-                    if (!(stock <= 0)) {
-                        //reduce the stock by 1 after purchase
-
-                        System.out.println("before substraction" + stock);
-                        //changing the stock value to stock - 1, so we can update the table
-                        stock = stock - 1;
-
-                        System.out.println(stock);
-                        //calling the database
-                        if (dbConnection.purchaseItems(itemId, stock)) ;
-                        {
-                            //System.out.println(val);
-                            //if success returns true
-                            dbConnection.deleteItemFromCart(userName, itemId);
-                            return true;
-                        }
-                    } else {
-                        return false;
-                    }
-                }
-                System.out.println("Hello bug");
-
-            } catch (SQLException e) {
-                e.printStackTrace();
+        List<Integer> itemList = new ArrayList<Integer>();
+        List<Integer> quantityList = new ArrayList<Integer>();
+        int i = 0;
+        try{
+            resultSet = dbConnection.displayUserCart(userName);
+            while(resultSet.next()!= false){
+                itemList.add(i,resultSet.getInt("item_id"));
+                quantityList.add(i,resultSet.getInt("item_quantity"));
+                i++;
             }
+            System.out.println(itemList);
         }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        return true;
 
-        return false;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //
+//        ResultSet resultSet = null;
+//        int stock = 0;
+//
+//        //checking if the conection is established
+//        if (dbConnection.isConnectionEstablished()) {
+//            try {
+//                //getting the resultset of the required item to find the available stock
+//                resultSet = dbConnection.getUniqueItem(itemId);
+//                while (resultSet.next()) {
+//                    //getting  the stock and storing it in the stock variable
+//                    stock = Integer.parseInt(resultSet.getString("item_stock").toString());
+//
+//                    System.out.println(stock);
+//                }
+//                //chaging the result set to previous point as, it is null now
+//                resultSet.beforeFirst();
+//
+//
+//                while (resultSet.next()) {
+//                    if (!(stock <= 0)) {
+//                        //reduce the stock by 1 after purchase
+//
+//                        System.out.println("before substraction" + stock);
+//                        //changing the stock value to stock - 1, so we can update the table
+//                        stock = stock - 1;
+//
+//                        System.out.println(stock);
+//                        //calling the database
+//                        if (dbConnection.purchaseItems(itemId, stock)) ;
+//                        {
+//                            //System.out.println(val);
+//                            //if success returns true
+//                            dbConnection.deleteItemFromCart(userName, itemId);
+//                            return true;
+//                        }
+//                    } else {
+//                        return false;
+//                    }
+//                }
+//                System.out.println("Hello bug");
+//
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//        return false;
 
     }
 
     /**
      *
-     * @param
+     *
      * @return
      */
     public List<String> browsingUser() {
@@ -419,6 +466,7 @@ public class MplaceModel {
         return null;
     }
 
+    //This function is used to update the fields of the items
     public boolean updateItems(int itemId, int choice, String update) {
 
         boolean status;
