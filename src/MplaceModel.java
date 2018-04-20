@@ -98,7 +98,7 @@ public class MplaceModel {
      * @param itemId
      * @return
      */
-    public List<String> purchase(String userName, int itemId) {
+    public List<String> purchase(String userName) {
         ResultSet resultSet = null;
         List<String> displayResult = new ArrayList<String>() ;
         List<Integer> itemList = new ArrayList<Integer>();
@@ -116,7 +116,7 @@ public class MplaceModel {
                 System.out.println(itemList);
                 for(i = 0; i<itemList.size();i++) {
                     int stock = 0;
-                    resultSet = dbConnection.getUniqueItem(itemId);
+                    resultSet = dbConnection.getUniqueItem(itemList.get(i));
                     while(resultSet.next()) {
                         stock = resultSet.getInt("item_stock");
                     }
@@ -140,84 +140,6 @@ public class MplaceModel {
         }
         displayResult.add(0,"Error In purchase, Try Again");
         return displayResult;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //
-//        ResultSet resultSet = null;
-//        int stock = 0;
-//
-//        //checking if the conection is established
-//        if (dbConnection.isConnectionEstablished()) {
-//            try {
-//                //getting the resultset of the required item to find the available stock
-//                resultSet = dbConnection.getUniqueItem(itemId);
-//                while (resultSet.next()) {
-//                    //getting  the stock and storing it in the stock variable
-//                    stock = Integer.parseInt(resultSet.getString("item_stock").toString());
-//
-//                    System.out.println(stock);
-//                }
-//                //chaging the result set to previous point as, it is null now
-//                resultSet.beforeFirst();
-//
-//
-//                while (resultSet.next()) {
-//                    if (!(stock <= 0)) {
-//                        //reduce the stock by 1 after purchase
-//
-//                        System.out.println("before substraction" + stock);
-//                        //changing the stock value to stock - 1, so we can update the table
-//                        stock = stock - 1;
-//
-//                        System.out.println(stock);
-//                        //calling the database
-//                        if (dbConnection.purchaseItems(itemId, stock)) ;
-//                        {
-//                            //System.out.println(val);
-//                            //if success returns true
-//                            dbConnection.deleteItemFromCart(userName, itemId);
-//                            return true;
-//                        }
-//                    } else {
-//                        return false;
-//                    }
-//                }
-//                System.out.println("Hello bug");
-//
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        return false;
 
     }
 

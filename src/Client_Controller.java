@@ -162,12 +162,12 @@ public class Client_Controller {
 
 
     //calling the purchase items method on the server side
-    public static List<String> purchaseItems(Session session, int id){
+    public static List<String> purchaseItems(Session session){
 
         List<String> status = new ArrayList<>();
         try{
             //purchase function at the server returns true if purchase is made.
-          status = object.purchase(session,id);
+          status = object.purchase(session);
         }catch (RemoteException e)
         {
             e.printStackTrace();

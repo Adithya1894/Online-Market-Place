@@ -87,11 +87,11 @@ public interface MPlaceInterface extends Remote{
 
     /**
      *added annotation for role based access control
-     * @param itemId
+     * @param
      * @throws RemoteException
      */
     @RequiresRole("User")
-    List<String> purchase(Session session, int itemId) throws RemoteException;
+    List<String> purchase(Session session) throws RemoteException;
     
     String hello() throws RemoteException;
 
