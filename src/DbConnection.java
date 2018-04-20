@@ -341,14 +341,35 @@ public class DbConnection {
      * @param userName
      * @return
      */
-    public List<String> displayUserCart(String userName){
+    public ResultSet displayUserCart(String userName){
         //initializing a new arraylist
-        List<String> cartList = new ArrayList<String>();
+        if (connection != null) {
+            statement = null;
+            resultSet = null;
+            try {
 
-        String query = "SELECT * from tbl_customers where username= \""+userName+ "\"";
+                //creating a statement.
+                statement = connection.createStatement();
+
+                try {
+                    //Executing the created statement
+                    resultSet = statement.executeQuery("SELECT * FROM tbl_cart WHERE username='"+userName+"'");
 
 
-        return cartList;
+                    //Returning the result of executed query at desired location
+                    return resultSet;
+                } catch (SQLException e1) {
+                    System.out.println("Query cannot be executed");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            return resultSet;
+        } else {
+            System.out.println("Connection is not established");
+            return null;
+        }
     }
 
     /**

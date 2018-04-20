@@ -235,11 +235,46 @@ public class MplaceModel {
      * @return
      */
     public boolean addItemToCart(String userName, int itemId){
-        boolean val;
+        ResultSet resultSet = null;
+        int stock = 0;
 
-        val = dbConnection.addItemToCart(userName, itemId);
+        //checking if the conection is established
+        if (dbConnection.isConnectionEstablished()) {
+            try {
+                //getting the resultset of the required item to find the available stock
+                resultSet = dbConnection.getUniqueItem(itemId);
+                while (resultSet.next()) {
+                    //getting  the stock and storing it in the stock variable
+                    stock = Integer.parseInt(resultSet.getString("item_stock").toString());
 
-        return val;
+                    //System.out.println(stock);
+                }
+                //chaging the result set to previous point as, it is null now
+                resultSet.beforeFirst();
+
+
+                while (resultSet.next()) {
+                    if (!(stock <= 0)) {
+
+                        //calling the database
+                        if (dbConnection.addItemToCart(userName, itemId)) ;
+                        {
+                            //System.out.println(val);
+                            //if success returns true
+                            return true;
+                        }
+                    } else {
+                        return false;
+                    }
+                }
+                System.out.println("Hello bug");
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -264,11 +299,38 @@ public class MplaceModel {
      */
     public List<String> displayUserCart(String userName){
         //Declaring a list to store the details from the retrieved cart
-        List<String> cartList;
-        //calls the displayUserCart in the database connection class and stores the values in cartList.
-        cartList = dbConnection.displayUserCart(userName);
-        //returns this value to the client
-        return cartList;
+        List<String> customerList = new ArrayList<>();
+        String data;
+        int i = 0;
+
+        //careating a new object of the DbConnection class
+
+        //checking if the connection is established
+        if (dbConnection.isConnectionEstablished()) {
+
+            try {
+
+                resultSet = dbConnection.displayUserCart(userName);
+                while (resultSet.next()) {
+                    //getting the result from the database using the DbConnection class
+                    data = resultSet.getString("item_id");
+                    //adding the items into the arrayList
+                    customerList.add(i, data);
+                    i++;
+                }
+
+                return customerList;
+
+                //catching the sql exception
+            } catch (SQLException e) {
+
+                System.out.println("cannot get the result!");
+
+            }
+
+        }
+
+        return null;
 
     }
 
