@@ -30,6 +30,7 @@ public class ConcreteAddToCart implements Command {
      */
     @Override
     public void execute() {
+        user.browseItems(session);
 
         user.addToCart(session);
 

@@ -33,7 +33,7 @@ public class ConcreteUserPurchaseItems implements Command {
      */
     @Override
     public void execute() {
-
+        obj.browseItems(session);
         obj.purchase(session);
     }
 
