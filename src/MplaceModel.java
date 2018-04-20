@@ -20,14 +20,14 @@ public class MplaceModel {
     //Removed the unneccessary fields.
 
 
-	// Ryan: Shouldn't these have a scope associated with them?
+    // Ryan: Shouldn't these have a scope associated with them?
     //Fixed: assigned the scope to the variable.
     private DbConnection dbConnection;
 
     ResultSet resultSet = null;
 
 
-    public MplaceModel(){
+    public MplaceModel() {
 
         //creating the object of the DbConnection class.
         dbConnection = new DbConnection();
@@ -47,14 +47,12 @@ public class MplaceModel {
         resultSet = dbConnection.loginUser(uname, pass);
         try {
 
-            if(resultSet.next()!=false)
-            {
+            if (resultSet.next() != false) {
                 //resultSet.beforeFirst();
                 return true;
             }
 
-        }catch (SQLException e)
-        {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -68,27 +66,27 @@ public class MplaceModel {
         ResultSet resultSet;
 
         //getting the result set from the database, if the values match.
-        resultSet = dbConnection.loginAdmin(adminId,adminPass);
+        resultSet = dbConnection.loginAdmin(adminId, adminPass);
         //if resultSet is not null, then the user is authenticated, return true
         try {
 
-            if(resultSet.next()!=false)
-            {
+            if (resultSet.next() != false) {
                 //resultSet.beforeFirst();
                 return true;
 
             }
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         //else return false
         return false;
     }
-    //This method is used for new User registration.
-    boolean registered(String firstName, String lastName, String userName, String password){
 
-        if(dbConnection.registration(firstName, lastName, userName, password)) {
+    //This method is used for new User registration.
+    boolean registered(String firstName, String lastName, String userName, String password) {
+
+        if (dbConnection.registration(firstName, lastName, userName, password)) {
             return true;
         }
         return false;
@@ -97,11 +95,10 @@ public class MplaceModel {
     /**
      * purchase method to purchase the items and change the stock to stock - 1 in the database.
      *
-     *
      * @param itemId
      * @return
      */
-    public boolean purchase(int itemId) {
+    public boolean purchase(String userName, int itemId) {
 
         ResultSet resultSet = null;
         int stock = 0;
@@ -135,6 +132,7 @@ public class MplaceModel {
                         {
                             //System.out.println(val);
                             //if success returns true
+                            dbConnection.deleteItemFromCart(userName, itemId);
                             return true;
                         }
                     } else {
@@ -149,7 +147,6 @@ public class MplaceModel {
         }
 
         return false;
-
 
     }
 
