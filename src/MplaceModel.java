@@ -421,14 +421,15 @@ public class MplaceModel {
 
     public boolean updateItems(int itemId, int choice, String update) {
 
-        boolean status=false;
+        boolean status;
         if(dbConnection.isConnectionEstablished()){
 
                 status=dbConnection.updateItems(itemId, choice, update);
-                return status;
+                if(status)
+                return true;
 
             }
-            return status;
+            return false;
         }
 
     }

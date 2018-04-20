@@ -298,11 +298,14 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
     @Override
     public boolean updateItems(Session session, int itemId, int choice, String update) throws RemoteException {
 
-        boolean status = false;
+        boolean status;
 
         status = obj.updateItems(itemId, choice, update);
 
-        return status;
+        if(status) {
+            return true;
+        }
+        return false;
 
     }
 

@@ -13,8 +13,7 @@ import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+
 
 
 public class DbConnection {
@@ -388,6 +387,11 @@ public class DbConnection {
     }
 
 
+    /**
+     *
+     * @param query
+     * @return
+     */
     public boolean executeQuery(String query){
 
         //checking if connection is not null
@@ -400,14 +404,22 @@ public class DbConnection {
                 statement = connection.createStatement();
 
                 //executing the Insert query
-                statement.executeUpdate(query);
-                return true;
-
+                try {
+                    int val = statement.executeUpdate(query);
+                    if(val==1){
+                        return true;
+                    }else
+                        return false;
+                }
+                catch (SQLException e1){
+                    System.out.println("cannot execute query");
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        } else
+        } else {
             return false;
+        }
 
         return false;
     }

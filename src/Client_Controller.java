@@ -352,8 +352,9 @@ public class Client_Controller {
         boolean status;
         try{
             status = object.updateItems(session, itemId, choice, update);
-              if(status)
-                return true;
+              if(status) {
+                  return status;
+              }
         }catch (RemoteException e){
             e.getMessage();
         }

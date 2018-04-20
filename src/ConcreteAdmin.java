@@ -194,11 +194,12 @@ public class ConcreteAdmin implements Admin {
 
         boolean val = client_controller.updateItems(session, itemId, choice, update);
 
-        if(val)
+        if(val) {
             System.out.println("item Update success");
-        else
-        System.out.println("Cannot update item");
-
+        }
+        else {
+            System.out.println("Cannot update item");
+        }
     }
 
     /**
