@@ -121,7 +121,7 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
         return list;
 
     }
-
+    //need to remove this method, this is not accessed by any user.
     @Override
     public void update(Session session, int itemId) throws RemoteException {
 
@@ -140,7 +140,7 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
      * This method is only accessible to User and this is used to purchase items
      * takes a session object and item id as parameters
      * @param session
-     * @param itemId
+     * @param
      * @return
      * @throws RemoteException
      */
@@ -219,7 +219,7 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
     @Override
     public List<String> displayUserCart(Session session) throws RemoteException {
 
-        List<String> cartList = new ArrayList<String>();
+        List<String> cartList;
 
         cartList = obj.displayUserCart(session.getUser().getUserName().toString());
 
@@ -269,7 +269,13 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
 
 
         //calling the removeProduct method in the model to remove the items and return true if removed successfully.
-        boolean val = obj.removeCustomer(userId);
+        boolean val;
+
+        //synchronizing this block, so that only one can remove a customer
+        synchronized (this) {
+
+            val = obj.removeCustomer(userId);
+        }
         //returns the status of the deletion
         return val;
 
@@ -299,9 +305,11 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
     public boolean updateItems(Session session, int itemId, int choice, String update) throws RemoteException {
 
         boolean status;
+        //synchronizing this block of code, so that only one can update at a time
+        synchronized (this) {
 
-        status = obj.updateItems(itemId, choice, update);
-
+            status = obj.updateItems(itemId, choice, update);
+        }
         if(status) {
             return true;
         }
