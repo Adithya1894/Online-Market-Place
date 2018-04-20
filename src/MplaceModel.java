@@ -98,24 +98,48 @@ public class MplaceModel {
      * @param itemId
      * @return
      */
-    public boolean purchase(String userName, int itemId) {
+    public List<String> purchase(String userName, int itemId) {
         ResultSet resultSet = null;
+        List<String> displayResult = new ArrayList<String>() ;
         List<Integer> itemList = new ArrayList<Integer>();
         List<Integer> quantityList = new ArrayList<Integer>();
         int i = 0;
         try{
             resultSet = dbConnection.displayUserCart(userName);
-            while(resultSet.next()!= false){
-                itemList.add(i,resultSet.getInt("item_id"));
-                quantityList.add(i,resultSet.getInt("item_quantity"));
-                i++;
+            if(resultSet.next() != false) {
+                resultSet.beforeFirst();
+                while(resultSet.next()!= false){
+                    itemList.add(i,resultSet.getInt("item_id"));
+                    quantityList.add(i,resultSet.getInt("item_quantity"));
+                    i++;
+                }
+                System.out.println(itemList);
+                for(i = 0; i<itemList.size();i++) {
+                    int stock = 0;
+                    resultSet = dbConnection.getUniqueItem(itemId);
+                    while(resultSet.next()) {
+                        stock = resultSet.getInt("item_stock");
+                    }
+                    if(stock >= quantityList.get(i)) {
+                        displayResult.add(i,dbConnection.purchaseItems(itemList.get(i),stock-quantityList.get(i)));
+                    }
+                    else {
+                        displayResult.add(i,itemList.get(i)+ "  Out of Stock");
+                    }
+                }
+                dbConnection.deleteItemFromCart(userName);
+                return displayResult;
             }
-            System.out.println(itemList);
+            else {
+                displayResult.add(0,"Shopping cart is empty");
+                return displayResult;
+            }
         }
         catch(SQLException e){
             e.printStackTrace();
         }
-        return true;
+        displayResult.add(0,"Error In purchase, Try Again");
+        return displayResult;
 
 
 
@@ -265,7 +289,7 @@ public class MplaceModel {
 
         if(itemId!=0){
             if(dbConnection.removeProduct(itemId));
-                return true;
+            return true;
         }else{
             System.out.println("Item Id cannot be 0");
         }
@@ -472,12 +496,12 @@ public class MplaceModel {
         boolean status;
         if(dbConnection.isConnectionEstablished()){
 
-                status=dbConnection.updateItems(itemId, choice, update);
-                if(status)
+            status=dbConnection.updateItems(itemId, choice, update);
+            if(status)
                 return true;
 
-            }
-            return false;
         }
-
+        return false;
     }
+
+}

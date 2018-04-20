@@ -91,7 +91,7 @@ public interface MPlaceInterface extends Remote{
      * @throws RemoteException
      */
     @RequiresRole("User")
-    boolean purchase(Session session, int itemId) throws RemoteException;
+    List<String> purchase(Session session, int itemId) throws RemoteException;
     
     String hello() throws RemoteException;
 
