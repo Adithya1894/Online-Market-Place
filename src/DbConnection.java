@@ -101,7 +101,7 @@ public class DbConnection {
         }
 
     }
-
+    //this method is used to get the stock from the items table, for verification of adding into cart and purchasing the items
     public  ResultSet getUniqueItem(int itemId){
         //checking if the connection object is not null
         if (connection != null) {
@@ -264,7 +264,7 @@ public class DbConnection {
 
     }
 
-
+    //this method is used to check the login of a user, by matching the username and password from the users table
     public ResultSet loginUser(String userName, String password){
 
         //query to find if the user is a valid user
@@ -299,12 +299,13 @@ public class DbConnection {
         }
 
     }
-
+    //this is for user registration
     public boolean registration(String firstName, String lastName, String userName, String password){
 
+        //this query is used to insert a new recordd into the user table
         String query = "INSERT INTO tbl_customers(firstName,lastName,userName,password) " + "VALUES('" + firstName + "','" + lastName + "','" + userName + "','" + password + "')";
 
-
+        //calling the method to execute the query
         boolean val = executeQuery(query);
 
         return val;
@@ -318,7 +319,7 @@ public class DbConnection {
      * @return
      */
     public boolean addItemToCart(String userName, int itemId, int quantity){
-
+        //query to add items into a particular user cart, based on the unique user name
         String query = "INSERT INTO tbl_cart(username, item_id, item_quantity) " + "VALUES('" + userName + "','" + itemId + "','" +quantity+"')";
 
         boolean val = executeQuery(query);
@@ -335,6 +336,7 @@ public class DbConnection {
      */
     public boolean deleteItemFromCart(String userName, int itemId){
 
+        //query to delete the cart items from the particular user's cart
         String query = "DELETE FROM tbl_cart WHERE username= '"+userName+"' AND item_id="+itemId;
 
         boolean val=executeQuery(query);
@@ -525,16 +527,20 @@ public class DbConnection {
         return connectionEstablished;
     }
 
+    //This method is used to update the items present in the database
+    //This method is only accessible to admin
     public boolean updateItems(int itemId, int choice, String update) {
 
-
+        //updating the fields based on user choice.
         switch (choice){
 
-
+            //if choice is 1, then the stock is updated.
             case 1: {
+                //checking for numbee format exceptions.
                 try {
                     int stock = Integer.parseInt(update);
                     String query="UPDATE item SET item_stock = '"+stock+"' WHERE item_id ="+itemId;
+                    //synchronize this block, so only one user can update at one time
                     synchronized (this) {
                         return executeQuery(query);
                     }
@@ -546,7 +552,7 @@ public class DbConnection {
 
 
             }
-
+            //if choice is 2, then price is updated
             case 2: {
                 try {
                     int price =  Integer.parseInt(update);
@@ -560,7 +566,7 @@ public class DbConnection {
                 }
 
             }
-
+            //if choice is 3, then description is updated.
             case 3: {
                 String query = "UPDATE item SET item_description = '" + update + "' WHERE item_id =" + itemId;
                 synchronized (this) {
