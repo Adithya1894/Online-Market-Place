@@ -145,10 +145,10 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
      * @throws RemoteException
      */
     @Override
-    public synchronized boolean purchase(Session session, int itemId) throws RemoteException {
+    public synchronized List<String> purchase(Session session, int itemId) throws RemoteException {
 
         //calling the purchase method in the model
-        boolean val = obj.purchase(session.getUser().getUserName(), itemId);
+        List<String> val = obj.purchase(session.getUser().getUserName(), itemId);
 
         //boolean value
         return val;
