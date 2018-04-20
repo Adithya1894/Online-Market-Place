@@ -165,4 +165,7 @@ public interface MPlaceInterface extends Remote{
      */
     @RequiresRole("Admin")
     List<String> listAllCustomers(Session session) throws RemoteException;
+
+    @RequiresRole("Admin")
+    boolean updateItems(Session session, int itemId, int choice, String update) throws RemoteException;
 }
