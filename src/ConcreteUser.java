@@ -224,8 +224,12 @@ public class ConcreteUser implements User {
         try{
             val = client_controller.listCartItems(session);
             //printing the data from the user cart.
-            for(String items: val){
+            if(val!=null){
+
+                System.out.println("Items present in the cart are: ");
+                for(String items: val){
                 System.out.println("ItemId: "+items);
+            }
             }
         }catch (AuthorizationException e){
             e.getMessage();
