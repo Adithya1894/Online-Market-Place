@@ -40,8 +40,8 @@ public class ConcreteUser implements User {
 
 
 
-            System.out.println("1.browse Items");
-            System.out.println("2.Purchase Items");
+            System.out.println("1. browse Items");
+            System.out.println("2. Purchase Items");
             System.out.println("3. List Items in the cart");
             System.out.println("4. Add Items to cart");
             System.out.println("5. Delete From cart");
