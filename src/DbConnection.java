@@ -487,4 +487,50 @@ public class DbConnection {
         return connectionEstablished;
     }
 
+    public boolean updateItems(int itemId, int choice, String update) {
+
+
+        switch (choice){
+
+
+            case 1: {
+                try {
+                    int stock = Integer.parseInt(update);
+                    String query="UPDATE item SET item_stock = '"+stock+"' WHERE item_id ="+itemId;
+                    synchronized (this) {
+                        return executeQuery(query);
+                    }
+                }
+                catch (NumberFormatException e)
+                {
+                    e.getMessage();
+                }
+
+
+            }
+
+            case 2: {
+                try {
+                    int price =  Integer.parseInt(update);
+                    String query="UPDATE item SET item_price = '"+price+"' WHERE item_id ="+itemId;
+                    synchronized (this) {
+                        return executeQuery(query);
+                    }
+                }catch (NumberFormatException e)
+                {
+                    e.getMessage();
+                }
+
+            }
+
+            case 3: {
+                String query = "UPDATE item SET item_description = '" + update + "' WHERE item_id =" + itemId;
+                synchronized (this) {
+                    return executeQuery(query);
+                }
+            }
+
+        }
+        return false;
+    }
 }
