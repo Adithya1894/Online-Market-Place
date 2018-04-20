@@ -95,7 +95,7 @@ public class MplaceModel {
     /**
      * purchase method to purchase the items and change the stock to stock - 1 in the database.
      *
-     * @param itemId
+     * @param
      * @return
      */
     public List<String> purchase(String userName) {
@@ -116,19 +116,23 @@ public class MplaceModel {
                 System.out.println(itemList);
                 for(i = 0; i<itemList.size();i++) {
                     int stock = 0;
-                    resultSet = dbConnection.getUniqueItem(itemList.get(i));
-                    while(resultSet.next()) {
-                        stock = resultSet.getInt("item_stock");
-                    }
-                    if(stock >= quantityList.get(i)) {
-                        displayResult.add(i,dbConnection.purchaseItems(itemList.get(i),stock-quantityList.get(i)));
-                    }
-                    else {
-                        displayResult.add(i,itemList.get(i)+ "  Out of Stock");
+                   //only synchronizing this block, since this is the critical section.
+                    synchronized (this) {
+                        resultSet = dbConnection.getUniqueItem(itemList.get(i));
+
+                        while (resultSet.next()) {
+                            stock = resultSet.getInt("item_stock");
+                        }
+                        if (stock >= quantityList.get(i)) {
+                            displayResult.add(i, dbConnection.purchaseItems(itemList.get(i), stock - quantityList.get(i)));
+                        } else {
+                            displayResult.add(i, itemList.get(i) + "  Out of Stock");
+                        }
+
+                        dbConnection.deleteItemFromCart(userName);
+                        return displayResult;
                     }
                 }
-                dbConnection.deleteItemFromCart(userName);
-                return displayResult;
             }
             else {
                 displayResult.add(0,"Shopping cart is empty");
@@ -417,11 +421,9 @@ public class MplaceModel {
 
         boolean status;
         if(dbConnection.isConnectionEstablished()){
-
-            status=dbConnection.updateItems(itemId, choice, update);
-            if(status)
-                return true;
-
+            status = dbConnection.updateItems(itemId, choice, update);
+                if (status)
+                    return true;
         }
         return false;
     }

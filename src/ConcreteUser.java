@@ -158,7 +158,7 @@ public class ConcreteUser implements User {
             List<String> result=client_controller.purchaseItems(session);
 
             for(String string: result){
-                System.out.println("result");
+                System.out.println(string);
             }
         }
         //throws an authorization exception if the user is not authorized to access this method.

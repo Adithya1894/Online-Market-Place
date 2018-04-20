@@ -102,32 +102,35 @@ public class DbConnection {
 
     }
 
-    public synchronized ResultSet getUniqueItem(int itemId){
+    public  ResultSet getUniqueItem(int itemId){
         //checking if the connection object is not null
         if (connection != null) {
             statement = null;
             resultSet = null;
-            try {
-
-                //creating a statement.
-                statement = connection.createStatement();
-
+            //keeping this block of code synchronized
+            synchronized (this) {
                 try {
-                    //Executing the created statement
-                    resultSet = statement.executeQuery("SELECT * FROM `item` WHERE item_id="+itemId);
+
+                    //creating a statement.
+                    statement = connection.createStatement();
+
+                    try {
+                        //Executing the created statement
+                        resultSet = statement.executeQuery("SELECT * FROM `item` WHERE item_id=" + itemId);
 
 
-                    //Returning the result of executed query at desired location
-                    return resultSet;
-                } catch (SQLException e1) {
-                    System.out.println("Query cannot be executed");
+                        //Returning the result of executed query at desired location
+                        return resultSet;
+                    } catch (SQLException e1) {
+                        System.out.println("Query cannot be executed");
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
-            } catch (SQLException e) {
-                e.printStackTrace();
             }
-
-            return resultSet;
-        } else {
+                return resultSet;
+            }
+        else {
             System.out.println("Cannot retreive item, try again");
             return null;
         }
@@ -179,13 +182,14 @@ public class DbConnection {
 
         //query to reduce the stock once the purchase is made
         String query = "UPDATE item SET item_stock="+stock+" WHERE item_id="+itemId;
-
-        boolean val = executeQuery(query);
-        if(! val) {
-            return "Error in Updating Quantity";
+        //synchronized this block, so that multiple users cannot update at same time
+        synchronized (this) {
+            boolean val = executeQuery(query);
+            if (!val) {
+                return "Error in Updating Quantity";
+            }
+            return itemId + "  Purchased";
         }
-        return itemId+"  Purchased";
-
 
     }
 
@@ -339,6 +343,7 @@ public class DbConnection {
     }
 
     /**
+     * This method is a overloaded method
      * THis method is used to delete item from the cart, this is connected to the database
      * @param userName
      * @param
@@ -399,7 +404,10 @@ public class DbConnection {
         //query to add customers into the database
         String query = "INSERT INTO tbl_customers(firstName,lastName,userName,password) " + "VALUES('" + customerDetails[1] + "','" + customerDetails[2] + "','" + customerDetails[3] + "','" + customerDetails[4] + "')";
         //calling the execute query method
-        boolean val = executeQuery(query);
+
+        boolean val;
+
+            val = executeQuery(query);
 
         return val;
     }
