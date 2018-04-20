@@ -330,6 +330,7 @@ public class Client_Controller {
         return status;
     }
 
+    //method to delete item from cart
     public boolean deleteFromCart(Session session, int itemId){
         boolean status = false;
 
@@ -343,6 +344,21 @@ public class Client_Controller {
             e.getMessage();
         }
         return status;
+    }
+
+    //method to update items in cart
+    public boolean updateItems(Session session, int itemId, int choice, String update) {
+
+        boolean status;
+        try{
+            status = object.updateItems(session, itemId, choice, update);
+              if(status)
+                return true;
+        }catch (RemoteException e){
+            e.getMessage();
+        }
+        return false;
+
     }
 
     /**
@@ -394,4 +410,6 @@ public class Client_Controller {
         }
 
     }
+
+
 }

@@ -25,7 +25,7 @@ public interface Admin {
     /**
      * updateItems to update the items
      */
-    void updateItems();
+    void updateItems(Session session);
 
     /**
      * RemoveItems to remove the items
