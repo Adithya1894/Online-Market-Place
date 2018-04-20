@@ -105,7 +105,7 @@ public class ConcreteUser implements User {
             itemPrice="Price";
             itemDescription = "Description";
 
-
+            System.out.println("=================================================================================");
             //Formatting the output.
             System.out.printf("\n%-7s %-15s %-10s %-15s %-30s\n",itemId,itemName,itemStock,itemPrice,itemDescription);
             for(int i=0;i<val.size();i++)
@@ -131,8 +131,9 @@ public class ConcreteUser implements User {
                     }
                 }
                 System.out.printf("\n");
-
+                System.out.println("=================================================================================");
             }
+
         }
         catch (AuthorizationException e){
             e.getMessage();
