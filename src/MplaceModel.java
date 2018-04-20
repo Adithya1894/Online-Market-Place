@@ -339,8 +339,9 @@ public class MplaceModel {
         //declared a boolean variable
         boolean val;
         //this boolean variable stores the status, if the details are added successfully to the database or not
-        val = dbConnection.addNewCustomer(customerDetails);
-        //returns the status to the client.
+        synchronized (this) {
+            val = dbConnection.addNewCustomer(customerDetails);
+        }//returns the status to the client.
         return val;
 
     }
@@ -355,8 +356,9 @@ public class MplaceModel {
         //declared a boolean variable
         boolean val;
         //this is to get the status on whether the items are added into the database or not
-        val = dbConnection.addNewAdmin(adminDetails);
-        //returns the value to the server controller.
+        synchronized (this) {
+            val = dbConnection.addNewAdmin(adminDetails);
+        }//returns the value to the server controller.
         return val;
     }
 
@@ -370,8 +372,9 @@ public class MplaceModel {
         //declared a boolean variable
         boolean val;
         //this is to get the status on whether the user is deleted from the database or not
-        val = dbConnection.removeCustomer(userId);
-        //returns the value to the server controller.
+        synchronized (this) {
+            val = dbConnection.removeCustomer(userId);
+        }//returns the value to the server controller.
         return val;
     }
 
