@@ -231,7 +231,7 @@ public class MplaceModel {
      * @param itemId
      * @return
      */
-    public boolean addItemToCart(String userName, int itemId){
+    public boolean addItemToCart(String userName, int itemId, int quantity){
         ResultSet resultSet = null;
         int stock = 0;
 
@@ -251,10 +251,10 @@ public class MplaceModel {
 
 
                 while (resultSet.next()) {
-                    if (!(stock <= 0)) {
+                    if (!(stock <= quantity)) {
 
                         //calling the database
-                        if (dbConnection.addItemToCart(userName, itemId)) ;
+                        if (dbConnection.addItemToCart(userName, itemId, quantity)) ;
                         {
                             //System.out.println(val);
                             //if success returns true
@@ -310,7 +310,7 @@ public class MplaceModel {
                 resultSet = dbConnection.displayUserCart(userName);
                 while (resultSet.next()) {
                     //getting the result from the database using the DbConnection class
-                    data = resultSet.getString("item_id");
+                    data = resultSet.getString("item_id")+ "\t" + resultSet.getString("item_quantity");
                     //adding the items into the arrayList
                     customerList.add(i, data);
                     i++;

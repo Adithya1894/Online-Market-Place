@@ -182,12 +182,12 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
      * @throws RemoteException
      */
     @Override
-    public boolean addItemToCart(Session session, int itemId) throws RemoteException {
+    public boolean addItemToCart(Session session, int itemId, int quantity) throws RemoteException {
 
         boolean val;
 
         //calling the addItemToCart method present in the Model. return true if the item is added successfully, else false.
-        val = obj.addItemToCart(session.getUser().getUserName().toString(), itemId);
+        val = obj.addItemToCart(session.getUser().getUserName().toString(), itemId, quantity);
 
 
         return val;

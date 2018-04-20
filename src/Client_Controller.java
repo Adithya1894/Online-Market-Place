@@ -314,12 +314,12 @@ public class Client_Controller {
      * @param itemId
      * @return
      */
-    public boolean addItemToCart(Session session, int itemId){
+    public boolean addItemToCart(Session session, int itemId, int quantity){
 
         boolean status = false;
 
         try {
-            status = object.addItemToCart(session,itemId);
+            status = object.addItemToCart(session,itemId, quantity);
 
             if(status)
                 return status;

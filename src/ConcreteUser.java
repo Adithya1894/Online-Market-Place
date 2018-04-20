@@ -179,9 +179,13 @@ public class ConcreteUser implements User {
 
         int itemId =sc.nextInt();
 
+        System.out.println("Enter the quantity of the product.");
+
+        int quantity = sc.nextInt();
+
         try {
             //calling the server using client controller and we are passing the session object as well as string array
-            boolean status = client_controller.addItemToCart(session, itemId);
+            boolean status = client_controller.addItemToCart(session, itemId, quantity);
 
             if(status)
                 System.out.println("Item added to the cart successfully.");
@@ -227,8 +231,10 @@ public class ConcreteUser implements User {
             if(val!=null){
 
                 System.out.println("Items present in the cart are: ");
+
+                System.out.println("ItemId\tquantity");
                 for(String items: val){
-                System.out.println("ItemId: "+items);
+                System.out.println(items);
             }
             }
         }catch (AuthorizationException e){

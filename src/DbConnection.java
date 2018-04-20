@@ -310,9 +310,9 @@ public class DbConnection {
      * @param itemId
      * @return
      */
-    public boolean addItemToCart(String userName, int itemId){
+    public boolean addItemToCart(String userName, int itemId, int quantity){
 
-        String query = "INSERT INTO tbl_cart(username, item_id) " + "VALUES('" + userName + "','" + itemId + "')";
+        String query = "INSERT INTO tbl_cart(username, item_id, item_quantity) " + "VALUES('" + userName + "','" + itemId + "','" +quantity+"')";
 
         boolean val = executeQuery(query);
 

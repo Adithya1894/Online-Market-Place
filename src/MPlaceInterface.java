@@ -100,7 +100,7 @@ public interface MPlaceInterface extends Remote{
 
     //method to add items into the cart for the specific user
     @RequiresRole("User")
-    boolean addItemToCart(Session session, int itemId) throws RemoteException;
+    boolean addItemToCart(Session session, int itemId, int quantity) throws RemoteException;
 
     /**
      * This method is only accessible to customers
