@@ -107,24 +107,6 @@ public class Client_Controller {
     }
 
 
-    /**
-     * Method to browse Admin Items.
-     * @param session
-     * @return
-     */
-
-    public static String[] browseAdminItems(Session session){
-
-        String[] val = {" "};
-        try {
-            val = object.browsingAdmin(session);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-
-
-        return val;
-    }
 
     //Gets the list of products from the database.
     public static List<String> browseUserItems(Session session){

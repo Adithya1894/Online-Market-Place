@@ -38,4 +38,7 @@ public class ConcretePurchase implements Command {
 
         obj.purchase(session);
     }
+
+
+
 }

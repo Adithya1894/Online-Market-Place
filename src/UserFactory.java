@@ -10,9 +10,6 @@
 //fixed
 public class UserFactory extends AbstractFactory{
 
-
-
-
     //returns null since we don't need Admin object in UserFactory
     @Override
     Admin getAdmin(String admin) {
