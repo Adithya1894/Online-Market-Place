@@ -1,6 +1,6 @@
-# Assignment 5    
+# Assignment 6    
 Full App Functionality  
-Implementation of the synchronization patterns  
+Implementation of the Database Access Pattern  
 
 Clone the project using the command git clone https://github.iu.edu/amorampu/csci50700_spring2018_marketplace.git  
 
