@@ -130,7 +130,7 @@ public class ServerController extends UnicastRemoteObject implements MPlaceInter
 
         //calling the removeProduct method in the model to remove the items and return true if removed successfully.
         boolean val = obj.removeProduct(itemId);
-
+        //System.out.println("i am server controller" + val);
         return val;
     }
 

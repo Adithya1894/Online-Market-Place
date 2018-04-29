@@ -218,11 +218,12 @@ public class ConcreteAdmin implements Admin {
         try {
             //calling the server using client controller and we are passing the session object as well as item id.
             boolean status = client_controller.removeProduct(session, val);
-
+            //System.out.println(status);
             if(status)
                 System.out.println("Item removed successfully from the database");
-            else
+            else {
                 System.out.println("problem removing the product, please try again");
+            }
         }//if the method cannot be accessed, then it throws an authourization exception
         catch (AuthorizationException e){
             System.out.println(e.getMessage());

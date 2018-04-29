@@ -203,24 +203,11 @@ public class DbConnection {
 
         String query = "DELETE FROM item WHERE item_id="+itemId;
 
-        if(connection!=null)
-            //assigning the statement to null
-            statement = null;
+        boolean val;
 
-        try {
-            //creating a statement.
-            statement = connection.createStatement();
-            //executing the query
-            statement.executeUpdate(query);
-            return true;
-        } catch (SQLException e) {
-            System.out.println("cannot execute query");
-            e.printStackTrace();
-        }
-
-
-
-        return false;
+        val = executeQuery(query);
+        //System.out.println(val);
+        return val;
     }
 
     /**

@@ -213,14 +213,14 @@ public class MplaceModel {
      * @throws RemoteException
      */
     public boolean removeProduct(int itemId) throws RemoteException {
-
+        boolean val=false;
         if(itemId!=0){
-            if(dbConnection.removeProduct(itemId));
-            return true;
+            val = dbConnection.removeProduct(itemId);
+            return val;
         }else{
             System.out.println("Item Id cannot be 0");
         }
-        return false;
+        return val;
     }
 
     /**

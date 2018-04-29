@@ -162,6 +162,7 @@ public class Client_Controller {
         //trying to connect to the server and access the removeProducts method
         try{
             //if item removed then the return value is true.d
+           // System.out.println("i am client controller"+ object.removeProduct(session, itemId));
             if(object.removeProduct(session, itemId))
                 return true;
         }catch (RemoteException e){
