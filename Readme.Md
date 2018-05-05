@@ -1,4 +1,4 @@
-# Assignment 6    
+# Online Market Place   
 Full App Functionality  
 Implementation of the Database Access Pattern  
 
